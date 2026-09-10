@@ -1,0 +1,21 @@
+# Core (spec-pinned deterministic path). Install with:  pip install -r requirements-full.txt
+# Optional LLM-judge / Phoenix / deepsig backends: see pyproject.toml [project.optional-dependencies].
+# Floors here mirror pyproject.toml [project] dependencies; keep both in sync.
+#
+# This is the COMPLETE environment needed to *run* the pipeline (scoring, ranx IR
+# metrics, LettuceDetect faithfulness, power logging, Postgres ingest).
+#
+# It is deliberately NOT named requirements.txt: Streamlit Community Cloud auto-
+# installs a file with that exact name, and this set resolves to 120 packages
+# including torch + 17 nvidia-*/triton wheels (several GB), which cannot fit the
+# free tier's 1 GB budget. The root requirements.txt holds the viewer-only subset
+# the hosted read-only app actually needs.
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+pyyaml>=6.0
+numpy>=1.24
+scipy>=1.11
+ranx>=0.3.21
+lettucedetect>=0.2.2
+langmet>=0.1.0
+streamlit>=1.49

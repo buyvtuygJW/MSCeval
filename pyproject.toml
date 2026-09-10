@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veridic-eval"
+version = "0.1.0"
+description = "Logs-only, offline retrieval + LLM evaluation for the VERIDIC RAG app (no telemetry)."
+readme = "README.md"
+requires-python = ">=3.11"   # lettucedetect floor
+license = { text = "MIT" }
+
+# Core: everything needed for the spec-pinned deterministic path
+# (ranx IR + LettuceDetect faithfulness + promptfoo/echo abstention + scipy CIs)
+# plus LangMet for shared analytics/cost aggregation and Streamlit for the cell
+# app. Streamlit is the one dependency here that ships usage stats; they are off
+# via .streamlit/config.toml (server-side) and telemetry_off.py (env).
+dependencies = [
+    "sqlalchemy>=2.0",
+    "psycopg2-binary>=2.9",
+    "pyyaml>=6.0",
+    "numpy>=1.24",
+    "scipy>=1.11",             # BCa bootstrap + permutation_test
+    "ranx>=0.3.21",            # MIT, pure-python wheel (avoid pytrec_eval: C build, broken on Windows)
+    "lettucedetect>=0.2.2",    # MIT; needs Python >=3.11; pulls torch/transformers
+    "langmet>=0.1.0",          # pure analytics/cost/scoring; MIT; no phone-home
+    "streamlit>=1.49",         # cells_app.py UI; 1.49 is the width="stretch" API floor
+]
+# The detector agreement rate is stdlib-only, no scikit-learn needed.
+
+[project.optional-dependencies]
+# Opt-in LLM-judge faithfulness backends, pointed at LOCAL Ollama.
+llm-judge = ["ragas>=0.2", "langchain-openai>=0.2", "pandas>=2.0"]
+# Opt-in Arize Phoenix evals backend (telemetry force-disabled at import).
+phoenix = ["arize-phoenix-evals>=0.17", "pandas>=2.0"]
+# Opt-in SIRG white-box faithfulness detector (arXiv 2601.03052; no official
+# release, reimplemented in veridic_eval/sirg.py). torch/transformers already
+# arrive via lettucedetect. Also run: python -m spacy download en_core_web_sm
+sirg = ["lxt>=2.0", "spacy>=3.7", "stanza>=1.8"]
+# Optional ASO significance score (GPL-3.0).
+stats-extra = ["deepsig>=1.2"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+veridic-eval = "veridic_eval.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["veridic_eval*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

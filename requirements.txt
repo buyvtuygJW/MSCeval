@@ -1,0 +1,24 @@
+# Viewer-only dependencies for the hosted, read-only eval view.
+# Streamlit Community Cloud installs THIS file automatically (it matches the
+# reserved name). The complete pipeline environment lives in requirements-full.txt.
+#
+# The hosted app only reads the committed JSON under out/ and out-v2/ and renders
+# it, so it needs just the third-party packages imported at module scope:
+#
+#   sqlalchemy  <- veridic_eval.db / .extract / .gold_evidence
+#   numpy       <- veridic_eval.stats
+#   pyyaml      <- veridic_eval.conditions / .benchmark  (parses conditions.yaml)
+#   streamlit   <- the UI; brings pandas + altair + pyarrow with it
+#
+# Everything else the project uses (ranx, scipy, lettucedetect, ragas, phoenix,
+# langmet, deepsig, psycopg2) is imported lazily on scoring paths the viewer never
+# enters. Verified by AST import-closure analysis plus a headless render of every
+# view and section in a venv containing only these four packages.
+#
+# Pinned to the exact versions that were rehearsed, so a mid-demo resolver change
+# cannot break the app.
+
+streamlit==1.63.0
+sqlalchemy==2.0.52
+numpy==2.4.6
+pyyaml==6.0.3

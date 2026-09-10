@@ -1,0 +1,15 @@
+# Streamlit config for the hosted eval viewer (`streamlit run streamlit_app.py`).
+#
+# Community Cloud overrides gatherUsageStats, fastReruns, runOnSave,
+# enableXsrfProtection and showErrorDetails regardless of what is written here,
+# so this file only matters when someone clones the repo and runs it locally.
+# Kept for parity with the environment the deploy bundle was rehearsed in.
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true
+fileWatcherType = "none"   # the app reads committed JSON cells, not live source
+
+[runner]
+fastReruns = true

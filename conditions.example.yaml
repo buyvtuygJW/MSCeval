@@ -1,0 +1,65 @@
+# The single declaration of the experiment: which cells are scored in the 2x2,
+# which chat marks each one, whether a cell is dumped to json before the next
+# ingest, and the GBP cost quantities behind the CFCA. `veridic-eval init`
+# writes this file, `veridic-eval run` reads it.
+#
+# The app has no `condition` column and we make no schema change, so the label
+# is applied HERE, after the answers exist: `veridic-eval sit <cell>` reads the
+# live chats and writes this cell's `conversation_ids: [<uuid>, ...]` and its
+# `start`/`end` window. Chat names never enter it; the app cannot rename chats
+# and the eval never reads a title. Whatever a cell declares must ALL match.
+# `per_answer_cost` (USD) is the recurring per-query serving cost -
+# supply it for a non-degenerate CFCUA on local/Ollama runs, whose per-token API
+# cost is 0. Cell names come from veridic_eval/cells.py.
+
+reference: control
+grid: [control, chunk_opt, qdora, combined] # the scored 2x2, in report order
+offgrid: [prebaseline]            # measured, never scored inside the 2x2
+snapshot: true                    # dump each cell to json before the next ingest
+cost_defaults:
+  watts: 140.0                    # mean_w from `veridic-eval power`, else 1.0*TDP
+  kwh_gbp: 0.26                   # Ofgem unit rate; cite the retrieval date
+  A: 1000.0                       # answers the one-time cost amortises over
+  Q: 1000.0                       # queries in the period
+
+conditions:
+  # Off the grid, so it is measured but never scored inside the 2x2. Run this
+  # window FIRST: it is the app before the one-time baseline construction, and
+  # the re-ingest that the chunking correction forces deletes the served
+  # evidence rows it needs (dump it as soon as its conversations are done).
+  # Its delta against the reference is the before/after check on that
+  # construction, reported uncorrected and outside the Bonferroni family.
+  prebaseline:                    # Pre-baseline app / RCTS, uncorrected / base model
+    # start: 2026-06-30T00:00:00Z # fallback if the chat carries no title
+    # end:   2026-07-01T00:00:00Z
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+
+  control:                        # Controlled baseline / RCTS ~400 tok / base model
+    # start: 2026-07-01T00:00:00Z # fallback if the chat carries no title
+    # end:   2026-07-02T00:00:00Z
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+  chunk_opt:                      # Chunking-optimised RAG / optimised chunking / base model
+    # start: 2026-07-02T00:00:00Z # fallback if the chat carries no title
+    # end:   2026-07-03T00:00:00Z
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+  qdora:                          # Fine-tuned RAG / RCTS ~400 tok / QDoRA-merged
+    # start: 2026-07-03T00:00:00Z # fallback if the chat carries no title
+    # end:   2026-07-04T00:00:00Z
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+  combined:                       # Combined / optimised chunking / QDoRA-merged
+    # start: 2026-07-04T00:00:00Z # fallback if the chat carries no title
+    # end:   2026-07-05T00:00:00Z
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+
+# `cost:` keys are the arguments of veridic_eval.cfca_cost.cost_per_answer, one
+# per quantity, plus `watts` / `kwh_gbp`, which convert to `p_gpu_hour` when no
+# price is given directly. `cost_defaults:` is merged under every cell's own
+# `cost:` block, so a cell only names what differs: the QDoRA fine-tune hours go
+# in `onetime_gpu_hours` on the cells that were fine-tuned. A cell with no
+# `cost:` block gets no CFCA line at all rather than a fabricated 0, and an
+# unknown key raises instead of being silently dropped.

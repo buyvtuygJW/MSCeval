@@ -1,0 +1,575 @@
+{
+  "config": {
+    "ir_k": 5,
+    "faithfulness_backend": "lettucedetect",
+    "abstention_marker": "I can not answer the question because of the insufficient information in documents.",
+    "seed": 42
+  },
+  "reference": "control",
+  "conditions": [
+    "qdora"
+  ],
+  "grid": [
+    "qdora"
+  ],
+  "offgrid": [],
+  "n_contrasts": 1,
+  "run_counts": {
+    "qdora": 1
+  },
+  "cells": {
+    "qdora": {
+      "n_queries": 10,
+      "n_linked": 9,
+      "n_unlinked": 1,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.4555555555555555,
+          "mrr@5": 0.7037037037037037,
+          "ndcg@5": 0.4839470087322915,
+          "hit_rate@5": 0.7777777777777778
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 8,
+        "aggregate": {
+          "faithfulness": 1.0,
+          "faithful_rate": 1.0,
+          "total_ungrounded_spans": 0,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 26606,
+            "chunk_chars": 26429,
+            "answer_chars": 281,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 2393,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 61383,
+            "chunk_chars": 61176,
+            "answer_chars": 234,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 3785,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5386,
+            "chunk_chars": 5179,
+            "answer_chars": 802,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1459,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 7122,
+            "chunk_chars": 6912,
+            "answer_chars": 820,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1520,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 15117,
+            "chunk_chars": 14909,
+            "answer_chars": 799,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1925,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 11215,
+            "chunk_chars": 11005,
+            "answer_chars": 351,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1750,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5352,
+            "chunk_chars": 5145,
+            "answer_chars": 257,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1386,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 6706,
+            "chunk_chars": 6497,
+            "answer_chars": 468,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1581,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 9,
+            "overall_score": 0.5830618055555555
+          },
+          "scores": {
+            "faithfulness": 1.0,
+            "answer_relevancy": null,
+            "context_precision": 0.7229125000000001,
+            "context_recall": 0.5125,
+            "context_relevancy": 0.8519333333333333,
+            "answer_correctness": 0.1769125,
+            "answer_similarity": 0.2341125
+          },
+          "evaluation_counts": {
+            "faithfulness": 8,
+            "answer_relevancy": 0,
+            "context_precision": 8,
+            "context_recall": 8,
+            "context_relevancy": 9,
+            "answer_correctness": 8,
+            "answer_similarity": 8
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 1,
+          "answerable": 8,
+          "refusals_total": 0,
+          "refusals_on_unanswerable": 0,
+          "wrongly_refused_answerable": 0
+        },
+        "aggregate": {
+          "abstention_recall": 0.0,
+          "abstention_precision": null,
+          "over_abstention_rate": 0.0
+        }
+      },
+      "cfca": {
+        "n_answerable": 8,
+        "cost_per_answer_gbp": 4.42e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 1.0,
+        "cfca": 4.42e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 1.0,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 9,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.000977,
+          "query_out_mtok": 0.000113,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 8,
+          "counted": 8,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 7813,
+          "tokens_output": 907,
+          "tokens_total": 8720,
+          "per_answer_input": 976.6,
+          "per_answer_output": 113.4,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "veridic-q4km:latest"
+          ],
+          "source": "measured (completion_logs, 8/8 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 7511,
+        "e2e_p95_ms": 67940,
+        "retrieval_p50_ms": 88,
+        "rerank_p50_ms": 2,
+        "e2e_mean_ms": 13848.2
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.455556,
+          "ci_low": 0.244444,
+          "ci_high": 0.707407,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.703704,
+          "ci_low": 0.37037,
+          "ci_high": 0.925926,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.483947,
+          "ci_low": 0.254496,
+          "ci_high": 0.703356,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 0.777778,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "faithful": {
+          "n": 8,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "abstention_recall": {
+          "n": 1,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "method": "degenerate"
+        },
+        "over_abstention_rate": {
+          "n": 8,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "method": "degenerate"
+        },
+        "cfca_joint_P": {
+          "n": 8,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "cfca_cost": {
+          "n": 8,
+          "mean": 4.4e-05,
+          "ci_low": 4.4e-05,
+          "ci_high": 4.4e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 9,
+        "n_with_top_n": 9,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 9
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 5,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 10,
+      "n_questions": 10
+    }
+  },
+  "deltas_vs_control": {},
+  "partial": {
+    "reason": "reference cell 'control' has no scored answers",
+    "missing_reference": "control"
+  },
+  "sources": {
+    "qdora": "snapshot"
+  },
+  "power_provenance": {
+    "prebaseline": "measured (busy basis, omen-system, coverage 0.9229), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "prebaseline2": "measured (busy basis, omen-system, coverage 0.8726), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "control": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "chunk_opt": "declared (no measurement)",
+    "qdora": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "combined": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms"
+  },
+  "serving_seconds": {
+    "chunk_opt": null,
+    "combined": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 14.0471,
+        "total_s": 140.471,
+        "covered_s": 140.471,
+        "watts": 44.138,
+        "energy_wh": 1.722234,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 13.615,
+        "total_s": 136.15,
+        "covered_s": 136.15,
+        "watts": 44.148,
+        "energy_wh": 1.669643,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    },
+    "control": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 7.4673,
+        "total_s": 74.673,
+        "covered_s": 74.673,
+        "watts": 42.422,
+        "energy_wh": 0.879946,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 7.446,
+        "total_s": 74.46,
+        "covered_s": 74.46,
+        "watts": 42.422,
+        "energy_wh": 0.877433,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    },
+    "prebaseline": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 8.083,
+        "total_s": 80.83,
+        "covered_s": 74.595,
+        "watts": 42.886,
+        "energy_wh": 0.888634,
+        "coverage": 0.9229,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 8.0306,
+        "total_s": 80.306,
+        "covered_s": 74.132,
+        "watts": 42.889,
+        "energy_wh": 0.883189,
+        "coverage": 0.9231,
+        "upper_bound": false
+      }
+    },
+    "prebaseline2": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 4.7283,
+        "total_s": 47.283,
+        "covered_s": 41.257,
+        "watts": 43.247,
+        "energy_wh": 0.495619,
+        "coverage": 0.8726,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 4.6263,
+        "total_s": 46.263,
+        "covered_s": 40.378,
+        "watts": 43.24,
+        "energy_wh": 0.484988,
+        "coverage": 0.8728,
+        "upper_bound": false
+      }
+    },
+    "qdora": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 9,
+        "per_answer_s": 13.9497,
+        "total_s": 125.547,
+        "covered_s": 125.547,
+        "watts": 43.777,
+        "energy_wh": 1.526699,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 9,
+        "per_answer_s": 13.8482,
+        "total_s": 124.634,
+        "covered_s": 124.634,
+        "watts": 43.783,
+        "energy_wh": 1.515775,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    }
+  },
+  "ingest_provenance": {
+    "prebaseline": "measured (lifecycle basis, 4/4 docs, 1314.816s, 0.170925 Mtok estimated at 4.0 chars/token)",
+    "prebaseline2": "measured (index_build_logs, 4 run(s), 79.558s, policy context_rag_t256_o64); span chunks basis 70.007s not used",
+    "control": "measured (index_build_logs, 4 run(s), 33.722s, policy context_rag_t256_o64); span chunks basis 16.745s not used",
+    "chunk_opt": "declared (no ingest measurement)",
+    "qdora": "measured (index_build_logs, 4 run(s), 31.686s, policy context_rag_t256_o64); span chunks basis 16.96s not used",
+    "combined": "measured (index_build_logs, 4 run(s), 309.89s, policy context_rag_t1000_o40); span chunks basis 7.512s not used"
+  },
+  "token_provenance": {
+    "prebaseline": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "prebaseline2": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "control": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "chunk_opt": "declared (no token count)",
+    "qdora": "measured (completion_logs, 8/8 answers carry an input/output token split)",
+    "combined": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+  },
+  "snapshots": {
+    "prebaseline": "skipped",
+    "prebaseline2": "skipped",
+    "control": "skipped",
+    "chunk_opt": "skipped",
+    "qdora": "written",
+    "combined": "skipped"
+  },
+  "cfca_gbp": {
+    "currency": "GBP",
+    "cells": {
+      "qdora": {
+        "cost_per_answer": 4.42e-05,
+        "currency": "GBP",
+        "p_hat": 1.0,
+        "cfca": 4.42e-05,
+        "breakdown": {
+          "C_onetime": 0.00010018,
+          "C_onetime/A": 1e-07,
+          "C_query": 4.41e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 4.42e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.008802,
+          "query_gpu_seconds": 13.9497,
+          "p_gpu_hour": 0.01138202,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.000977,
+          "query_out_mtok": 0.000113
+        }
+      }
+    },
+    "reference": "control"
+  }
+}

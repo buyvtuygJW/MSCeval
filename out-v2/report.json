@@ -1,0 +1,3675 @@
+{
+  "config": {
+    "ir_k": 5,
+    "faithfulness_backend": "lettucedetect",
+    "abstention_marker": "I can not answer the question because of the insufficient information in documents.",
+    "seed": 42
+  },
+  "reference": "control",
+  "conditions": [
+    "control",
+    "chunk_opt",
+    "qdora",
+    "combined",
+    "prebaseline",
+    "prebaseline2"
+  ],
+  "grid": [
+    "control",
+    "chunk_opt",
+    "qdora",
+    "combined"
+  ],
+  "offgrid": [
+    "prebaseline",
+    "prebaseline2"
+  ],
+  "n_contrasts": 3,
+  "run_counts": {
+    "control": 1,
+    "chunk_opt": 1,
+    "qdora": 1,
+    "combined": 1,
+    "prebaseline": 1,
+    "prebaseline2": 1
+  },
+  "cells": {
+    "control": {
+      "n_queries": 12,
+      "n_linked": 12,
+      "n_unlinked": 0,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.5666666666666668,
+          "mrr@5": 0.7592592592592592,
+          "ndcg@5": 0.5609943869119882,
+          "hit_rate@5": 0.8888888888888888
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 9,
+        "aggregate": {
+          "faithfulness": 0.9837,
+          "faithful_rate": 0.7778,
+          "total_ungrounded_spans": 3,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 26606,
+            "chunk_chars": 26429,
+            "answer_chars": 225,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 2376,
+            "truncated": 0
+          },
+          "q002": {
+            "faithfulness": 0.9547,
+            "faithful": 0,
+            "ungrounded_spans": 2,
+            "halluc_char_frac": 0.0453,
+            "n_served": 5,
+            "context_chars": 6063,
+            "chunk_chars": 5876,
+            "answer_chars": 287,
+            "spans": [
+              {
+                "start": 272,
+                "end": 280,
+                "confidence": 0.6324,
+                "text": " July 21"
+              },
+              {
+                "start": 281,
+                "end": 286,
+                "confidence": 0.6594,
+                "text": " 2025"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1577,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 61383,
+            "chunk_chars": 61176,
+            "answer_chars": 158,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 3765,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5386,
+            "chunk_chars": 5179,
+            "answer_chars": 638,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1422,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 7122,
+            "chunk_chars": 6912,
+            "answer_chars": 706,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1497,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 0.8988,
+            "faithful": 0,
+            "ungrounded_spans": 1,
+            "halluc_char_frac": 0.1012,
+            "n_served": 5,
+            "context_chars": 15117,
+            "chunk_chars": 14909,
+            "answer_chars": 741,
+            "spans": [
+              {
+                "start": 50,
+                "end": 125,
+                "confidence": 0.8633,
+                "text": " there are a total of 34 actions identified in the health and safety report"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1911,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 11215,
+            "chunk_chars": 11005,
+            "answer_chars": 349,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1748,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5352,
+            "chunk_chars": 5145,
+            "answer_chars": 279,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1390,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 6706,
+            "chunk_chars": 6497,
+            "answer_chars": 381,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1568,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 12,
+            "overall_score": 0.5969161111111112
+          },
+          "scores": {
+            "faithfulness": 0.9837222222222223,
+            "answer_relevancy": null,
+            "context_precision": 0.7074,
+            "context_recall": 0.5666666666666667,
+            "context_relevancy": 0.8549299999999999,
+            "answer_correctness": 0.2063111111111111,
+            "answer_similarity": 0.2624666666666667
+          },
+          "evaluation_counts": {
+            "faithfulness": 9,
+            "answer_relevancy": 0,
+            "context_precision": 9,
+            "context_recall": 9,
+            "context_relevancy": 10,
+            "answer_correctness": 9,
+            "answer_similarity": 9
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 3,
+          "answerable": 9,
+          "refusals_total": 4,
+          "refusals_on_unanswerable": 2,
+          "wrongly_refused_answerable": 2
+        },
+        "aggregate": {
+          "abstention_recall": 0.6667,
+          "abstention_precision": 0.5,
+          "over_abstention_rate": 0.2222
+        }
+      },
+      "cfca": {
+        "n_answerable": 9,
+        "cost_per_answer_gbp": 1.323e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 0.7778,
+        "cfca": 1.701e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 0.7778,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 12,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.000983,
+          "query_out_mtok": 9.5e-05,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 9,
+          "counted": 9,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 8849,
+          "tokens_output": 859,
+          "tokens_total": 9708,
+          "per_answer_input": 983.2,
+          "per_answer_output": 95.4,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "mistral:7b-instruct"
+          ],
+          "source": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 3396,
+        "e2e_p95_ms": 5891,
+        "retrieval_p50_ms": 17,
+        "rerank_p50_ms": 2,
+        "e2e_mean_ms": 4253.8
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.566667,
+          "ci_low": 0.340741,
+          "ci_high": 0.796296,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.759259,
+          "ci_low": 0.444444,
+          "ci_high": 0.944444,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.560994,
+          "ci_low": 0.344567,
+          "ci_high": 0.737179,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 0.888889,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "faithful": {
+          "n": 9,
+          "mean": 0.777778,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "abstention_recall": {
+          "n": 3,
+          "mean": 0.666667,
+          "ci_low": 0.0,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "over_abstention_rate": {
+          "n": 9,
+          "mean": 0.222222,
+          "ci_low": 0.0,
+          "ci_high": 0.555556,
+          "method": "BCa"
+        },
+        "cfca_joint_P": {
+          "n": 9,
+          "mean": 0.777778,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "cfca_cost": {
+          "n": 9,
+          "mean": 1.3e-05,
+          "ci_low": 1.3e-05,
+          "ci_high": 1.3e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 12,
+        "n_with_top_n": 12,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 12
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 0,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 12,
+      "n_questions": 12
+    },
+    "chunk_opt": {
+      "n_queries": 12,
+      "n_linked": 12,
+      "n_unlinked": 0,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.6018518518518517,
+          "mrr@5": 0.5925925925925926,
+          "ndcg@5": 0.5323861358072439,
+          "hit_rate@5": 0.7777777777777778
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 9,
+        "aggregate": {
+          "faithfulness": 1.0,
+          "faithful_rate": 1.0,
+          "total_ungrounded_spans": 0,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 31885,
+            "chunk_chars": 31706,
+            "answer_chars": 278,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 5002,
+            "truncated": 0
+          },
+          "q002": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 17170,
+            "chunk_chars": 16983,
+            "answer_chars": 374,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4491,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 57019,
+            "chunk_chars": 56812,
+            "answer_chars": 103,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4694,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 50229,
+            "chunk_chars": 50022,
+            "answer_chars": 378,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 5043,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 28562,
+            "chunk_chars": 28353,
+            "answer_chars": 768,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4036,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 47595,
+            "chunk_chars": 47387,
+            "answer_chars": 1078,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4586,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 42031,
+            "chunk_chars": 41821,
+            "answer_chars": 334,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4707,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 31126,
+            "chunk_chars": 30918,
+            "answer_chars": 557,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4565,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 30187,
+            "chunk_chars": 29979,
+            "answer_chars": 812,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4820,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 12,
+            "overall_score": 0.5649740740740741
+          },
+          "scores": {
+            "faithfulness": 1.0,
+            "answer_relevancy": null,
+            "context_precision": 0.5746888888888889,
+            "context_recall": 0.6018555555555556,
+            "context_relevancy": 0.8666999999999999,
+            "answer_correctness": 0.14386666666666667,
+            "answer_similarity": 0.20273333333333332
+          },
+          "evaluation_counts": {
+            "faithfulness": 9,
+            "answer_relevancy": 0,
+            "context_precision": 9,
+            "context_recall": 9,
+            "context_relevancy": 12,
+            "answer_correctness": 9,
+            "answer_similarity": 9
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 3,
+          "answerable": 9,
+          "refusals_total": 4,
+          "refusals_on_unanswerable": 3,
+          "wrongly_refused_answerable": 1
+        },
+        "aggregate": {
+          "abstention_recall": 1.0,
+          "abstention_precision": 0.75,
+          "over_abstention_rate": 0.1111
+        }
+      },
+      "cfca": {
+        "n_answerable": 9,
+        "cost_per_answer_gbp": 2.395e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 1.0,
+        "cfca": 2.395e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 1.0,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 12,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.002051,
+          "query_out_mtok": 0.000108,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 9,
+          "counted": 9,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 18459,
+          "tokens_output": 968,
+          "tokens_total": 19427,
+          "per_answer_input": 2051.0,
+          "per_answer_output": 107.6,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "mistral:7b-instruct"
+          ],
+          "source": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 4801,
+        "e2e_p95_ms": 10209,
+        "retrieval_p50_ms": 437,
+        "rerank_p50_ms": 8,
+        "e2e_mean_ms": 7151.5
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.601852,
+          "ci_low": 0.324074,
+          "ci_high": 0.814815,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.592593,
+          "ci_low": 0.314815,
+          "ci_high": 0.833333,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.532386,
+          "ci_low": 0.294185,
+          "ci_high": 0.744274,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 0.777778,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "faithful": {
+          "n": 9,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "abstention_recall": {
+          "n": 3,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "over_abstention_rate": {
+          "n": 9,
+          "mean": 0.111111,
+          "ci_low": 0.0,
+          "ci_high": 0.555556,
+          "method": "BCa"
+        },
+        "cfca_joint_P": {
+          "n": 9,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "cfca_cost": {
+          "n": 9,
+          "mean": 2.4e-05,
+          "ci_low": 2.4e-05,
+          "ci_high": 2.4e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 12,
+        "n_with_top_n": 12,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 12
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 5,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 12,
+      "n_questions": 12
+    },
+    "qdora": {
+      "n_queries": 12,
+      "n_linked": 12,
+      "n_unlinked": 0,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.5666666666666668,
+          "mrr@5": 0.7592592592592592,
+          "ndcg@5": 0.5609943869119882,
+          "hit_rate@5": 0.8888888888888888
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 9,
+        "aggregate": {
+          "faithfulness": 1.0,
+          "faithful_rate": 1.0,
+          "total_ungrounded_spans": 0,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 26606,
+            "chunk_chars": 26429,
+            "answer_chars": 274,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 2387,
+            "truncated": 0
+          },
+          "q002": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 6063,
+            "chunk_chars": 5876,
+            "answer_chars": 267,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1575,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 61383,
+            "chunk_chars": 61176,
+            "answer_chars": 234,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 3785,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5386,
+            "chunk_chars": 5179,
+            "answer_chars": 802,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1459,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 7122,
+            "chunk_chars": 6912,
+            "answer_chars": 820,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1520,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 15117,
+            "chunk_chars": 14909,
+            "answer_chars": 799,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1925,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 11215,
+            "chunk_chars": 11005,
+            "answer_chars": 351,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1750,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5352,
+            "chunk_chars": 5145,
+            "answer_chars": 257,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1386,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 6706,
+            "chunk_chars": 6497,
+            "answer_chars": 468,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1581,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 12,
+            "overall_score": 0.5998446296296295
+          },
+          "scores": {
+            "faithfulness": 1.0,
+            "answer_relevancy": null,
+            "context_precision": 0.7074,
+            "context_recall": 0.5666666666666667,
+            "context_relevancy": 0.8548899999999999,
+            "answer_correctness": 0.20177777777777778,
+            "answer_similarity": 0.2683333333333333
+          },
+          "evaluation_counts": {
+            "faithfulness": 9,
+            "answer_relevancy": 0,
+            "context_precision": 9,
+            "context_recall": 9,
+            "context_relevancy": 10,
+            "answer_correctness": 9,
+            "answer_similarity": 9
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 3,
+          "answerable": 9,
+          "refusals_total": 3,
+          "refusals_on_unanswerable": 2,
+          "wrongly_refused_answerable": 1
+        },
+        "aggregate": {
+          "abstention_recall": 0.6667,
+          "abstention_precision": 0.6667,
+          "over_abstention_rate": 0.1111
+        }
+      },
+      "cfca": {
+        "n_answerable": 9,
+        "cost_per_answer_gbp": 2.175e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 1.0,
+        "cfca": 2.175e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 1.0,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 12,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.000976,
+          "query_out_mtok": 0.000108,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 9,
+          "counted": 9,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 8780,
+          "tokens_output": 972,
+          "tokens_total": 9752,
+          "per_answer_input": 975.6,
+          "per_answer_output": 108.0,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "veridic-q4km:latest"
+          ],
+          "source": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 7177,
+        "e2e_p95_ms": 9163,
+        "retrieval_p50_ms": 88,
+        "rerank_p50_ms": 2,
+        "e2e_mean_ms": 6608.6
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.566667,
+          "ci_low": 0.340741,
+          "ci_high": 0.796296,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.759259,
+          "ci_low": 0.444444,
+          "ci_high": 0.944444,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.560994,
+          "ci_low": 0.344567,
+          "ci_high": 0.737179,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 0.888889,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "faithful": {
+          "n": 9,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "abstention_recall": {
+          "n": 3,
+          "mean": 0.666667,
+          "ci_low": 0.0,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "over_abstention_rate": {
+          "n": 9,
+          "mean": 0.111111,
+          "ci_low": 0.0,
+          "ci_high": 0.444444,
+          "method": "BCa"
+        },
+        "cfca_joint_P": {
+          "n": 9,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "cfca_cost": {
+          "n": 9,
+          "mean": 2.2e-05,
+          "ci_low": 2.2e-05,
+          "ci_high": 2.2e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 12,
+        "n_with_top_n": 12,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 12
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 0,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 12,
+      "n_questions": 12
+    },
+    "combined": {
+      "n_queries": 12,
+      "n_linked": 12,
+      "n_unlinked": 0,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.7129629629629629,
+          "mrr@5": 0.7037037037037037,
+          "ndcg@5": 0.6434972469183551,
+          "hit_rate@5": 0.8888888888888888
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 9,
+        "aggregate": {
+          "faithfulness": 0.8242,
+          "faithful_rate": 0.5556,
+          "total_ungrounded_spans": 12,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 31885,
+            "chunk_chars": 31706,
+            "answer_chars": 239,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 5001,
+            "truncated": 0
+          },
+          "q002": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 17170,
+            "chunk_chars": 16983,
+            "answer_chars": 223,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4473,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 0.3189,
+            "faithful": 0,
+            "ungrounded_spans": 4,
+            "halluc_char_frac": 0.6811,
+            "n_served": 5,
+            "context_chars": 50229,
+            "chunk_chars": 50022,
+            "answer_chars": 461,
+            "spans": [
+              {
+                "start": 13,
+                "end": 17,
+                "confidence": 0.5323,
+                "text": " the"
+              },
+              {
+                "start": 20,
+                "end": 320,
+                "confidence": 0.9623,
+                "text": "CR 2.pdf, page 1, the address of the installation covered by the Electrical Installation Condition Report is not explicitly stated in the provided document. However, it can be assumed that the address is associated with the property for which the tenancy management compliance documents are provided."
+              },
+              {
+                "start": 371,
+                "end": 372,
+                "confidence": 0.5236,
+                "text": "-"
+              },
+              {
+                "start": 434,
+                "end": 443,
+                "confidence": 0.5036,
+                "text": " property"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 5052,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 0.5723,
+            "faithful": 0,
+            "ungrounded_spans": 1,
+            "halluc_char_frac": 0.4277,
+            "n_served": 5,
+            "context_chars": 50229,
+            "chunk_chars": 50022,
+            "answer_chars": 311,
+            "spans": [
+              {
+                "start": 178,
+                "end": 311,
+                "confidence": 0.9924,
+                "text": " The report states that the next inspection and test should be conducted no later than [redacted for privacy] (year, month, and day)."
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 5033,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 28562,
+            "chunk_chars": 28353,
+            "answer_chars": 528,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4000,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 0.6529,
+            "faithful": 0,
+            "ungrounded_spans": 3,
+            "halluc_char_frac": 0.3471,
+            "n_served": 5,
+            "context_chars": 42332,
+            "chunk_chars": 42124,
+            "answer_chars": 242,
+            "spans": [
+              {
+                "start": 64,
+                "end": 75,
+                "confidence": 0.7965,
+                "text": " 15 actions"
+              },
+              {
+                "start": 142,
+                "end": 204,
+                "confidence": 0.9518,
+                "text": " the report specifies that 8 actions fall under this category."
+              },
+              {
+                "start": 231,
+                "end": 242,
+                "confidence": 0.8256,
+                "text": " pages 1-3)"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4541,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 0.8736,
+            "faithful": 0,
+            "ungrounded_spans": 4,
+            "halluc_char_frac": 0.1264,
+            "n_served": 5,
+            "context_chars": 42031,
+            "chunk_chars": 41821,
+            "answer_chars": 522,
+            "spans": [
+              {
+                "start": 230,
+                "end": 238,
+                "confidence": 0.5227,
+                "text": " However"
+              },
+              {
+                "start": 239,
+                "end": 285,
+                "confidence": 0.6979,
+                "text": " the log does not specify a specific timeframe"
+              },
+              {
+                "start": 289,
+                "end": 300,
+                "confidence": 0.6226,
+                "text": " the repair"
+              },
+              {
+                "start": 519,
+                "end": 520,
+                "confidence": 0.5022,
+                "text": "-"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4743,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 31126,
+            "chunk_chars": 30918,
+            "answer_chars": 368,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4542,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 30187,
+            "chunk_chars": 29979,
+            "answer_chars": 675,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 4803,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 12,
+            "overall_score": 0.5968365740740741
+          },
+          "scores": {
+            "faithfulness": 0.8241888888888889,
+            "answer_relevancy": null,
+            "context_precision": 0.6858,
+            "context_recall": 0.7129666666666667,
+            "context_relevancy": 0.8648750000000001,
+            "answer_correctness": 0.21238888888888888,
+            "answer_similarity": 0.2808
+          },
+          "evaluation_counts": {
+            "faithfulness": 9,
+            "answer_relevancy": 0,
+            "context_precision": 9,
+            "context_recall": 9,
+            "context_relevancy": 12,
+            "answer_correctness": 9,
+            "answer_similarity": 9
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 3,
+          "answerable": 9,
+          "refusals_total": 0,
+          "refusals_on_unanswerable": 0,
+          "wrongly_refused_answerable": 0
+        },
+        "aggregate": {
+          "abstention_recall": 0.0,
+          "abstention_precision": null,
+          "over_abstention_rate": 0.0
+        }
+      },
+      "cfca": {
+        "n_answerable": 9,
+        "cost_per_answer_gbp": 4.264e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 0.5556,
+        "cfca": 7.675e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 0.5556,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 12,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.003134,
+          "query_out_mtok": 8.8e-05,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 9,
+          "counted": 9,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 28208,
+          "tokens_output": 796,
+          "tokens_total": 29004,
+          "per_answer_input": 3134.2,
+          "per_answer_output": 88.4,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "veridic-q4km:latest"
+          ],
+          "source": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 7871,
+        "e2e_p95_ms": 12396,
+        "retrieval_p50_ms": 298,
+        "rerank_p50_ms": 6,
+        "e2e_mean_ms": 12626.3
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.712963,
+          "ci_low": 0.435185,
+          "ci_high": 0.87963,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.703704,
+          "ci_low": 0.425926,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.643497,
+          "ci_low": 0.416597,
+          "ci_high": 0.823826,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 0.888889,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "faithful": {
+          "n": 9,
+          "mean": 0.555556,
+          "ci_low": 0.222222,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "abstention_recall": {
+          "n": 3,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "method": "degenerate"
+        },
+        "over_abstention_rate": {
+          "n": 9,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "method": "degenerate"
+        },
+        "cfca_joint_P": {
+          "n": 9,
+          "mean": 0.555556,
+          "ci_low": 0.222222,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "cfca_cost": {
+          "n": 9,
+          "mean": 4.3e-05,
+          "ci_low": 4.3e-05,
+          "ci_high": 4.3e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 12,
+        "n_with_top_n": 12,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 12
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 5,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 12,
+      "n_questions": 12
+    },
+    "prebaseline": {
+      "n_queries": 10,
+      "n_linked": 10,
+      "n_unlinked": 0,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.8611111111111112,
+          "mrr@5": 0.8333333333333334,
+          "ndcg@5": 0.7832586371247717,
+          "hit_rate@5": 1.0
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 9,
+        "aggregate": {
+          "faithfulness": 0.9728,
+          "faithful_rate": 0.6667,
+          "total_ungrounded_spans": 12,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 38664,
+            "chunk_chars": 38485,
+            "answer_chars": 434,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 6500,
+            "truncated": 0
+          },
+          "q002": {
+            "faithfulness": 0.8971,
+            "faithful": 0,
+            "ungrounded_spans": 8,
+            "halluc_char_frac": 0.1029,
+            "n_served": 5,
+            "context_chars": 30319,
+            "chunk_chars": 30133,
+            "answer_chars": 836,
+            "spans": [
+              {
+                "start": 198,
+                "end": 210,
+                "confidence": 0.5241,
+                "text": " no junction"
+              },
+              {
+                "start": 231,
+                "end": 244,
+                "confidence": 0.6347,
+                "text": "counter Light"
+              },
+              {
+                "start": 269,
+                "end": 291,
+                "confidence": 0.8082,
+                "text": " 21 July 2025 22:50:34"
+              },
+              {
+                "start": 384,
+                "end": 410,
+                "confidence": 0.8595,
+                "text": " using 2.5mm T&E cable for"
+              },
+              {
+                "start": 488,
+                "end": 495,
+                "confidence": 0.6219,
+                "text": " Socket"
+              },
+              {
+                "start": 519,
+                "end": 521,
+                "confidence": 0.581,
+                "text": "25"
+              },
+              {
+                "start": 525,
+                "end": 527,
+                "confidence": 0.699,
+                "text": "51"
+              },
+              {
+                "start": 528,
+                "end": 530,
+                "confidence": 0.559,
+                "text": "01"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 2,
+            "prompt_tokens": 7128,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 0.9722,
+            "faithful": 0,
+            "ungrounded_spans": 1,
+            "halluc_char_frac": 0.0278,
+            "n_served": 5,
+            "context_chars": 238780,
+            "chunk_chars": 238573,
+            "answer_chars": 288,
+            "spans": [
+              {
+                "start": 67,
+                "end": 75,
+                "confidence": 0.5264,
+                "text": " contain"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 2,
+            "prompt_tokens": 7485,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 124404,
+            "chunk_chars": 124197,
+            "answer_chars": 490,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 2,
+            "prompt_tokens": 5532,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 0.8862,
+            "faithful": 0,
+            "ungrounded_spans": 3,
+            "halluc_char_frac": 0.1138,
+            "n_served": 5,
+            "context_chars": 120419,
+            "chunk_chars": 120211,
+            "answer_chars": 580,
+            "spans": [
+              {
+                "start": 361,
+                "end": 373,
+                "confidence": 0.5873,
+                "text": " it does not"
+              },
+              {
+                "start": 381,
+                "end": 415,
+                "confidence": 0.5829,
+                "text": " the location of these limitations"
+              },
+              {
+                "start": 426,
+                "end": 446,
+                "confidence": 0.708,
+                "text": " document (page 19)."
+              }
+            ],
+            "window": 8192,
+            "n_windows": 2,
+            "prompt_tokens": 4942,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 52833,
+            "chunk_chars": 52625,
+            "answer_chars": 871,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 6970,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 45141,
+            "chunk_chars": 44931,
+            "answer_chars": 498,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 5436,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 39889,
+            "chunk_chars": 39681,
+            "answer_chars": 550,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 6884,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 57723,
+            "chunk_chars": 57515,
+            "answer_chars": 603,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 6954,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 10,
+            "overall_score": 0.6083790740740741
+          },
+          "scores": {
+            "faithfulness": 0.9728333333333333,
+            "answer_relevancy": null,
+            "context_precision": 0.839511111111111,
+            "context_recall": 0.8611111111111112,
+            "context_relevancy": 0.70443,
+            "answer_correctness": 0.10964444444444446,
+            "answer_similarity": 0.16274444444444447
+          },
+          "evaluation_counts": {
+            "faithfulness": 9,
+            "answer_relevancy": 0,
+            "context_precision": 9,
+            "context_recall": 9,
+            "context_relevancy": 10,
+            "answer_correctness": 9,
+            "answer_similarity": 9
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 1,
+          "answerable": 9,
+          "refusals_total": 3,
+          "refusals_on_unanswerable": 1,
+          "wrongly_refused_answerable": 2
+        },
+        "aggregate": {
+          "abstention_recall": 1.0,
+          "abstention_precision": 0.3333,
+          "over_abstention_rate": 0.2222
+        }
+      },
+      "cfca": {
+        "n_answerable": 9,
+        "cost_per_answer_gbp": 2.911e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 0.6667,
+        "cfca": 4.367e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 0.6667,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 10,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.000987,
+          "query_out_mtok": 0.000128,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 9,
+          "counted": 9,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 8885,
+          "tokens_output": 1149,
+          "tokens_total": 10034,
+          "per_answer_input": 987.2,
+          "per_answer_output": 127.7,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "mistral:7b-instruct"
+          ],
+          "source": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 8039,
+        "e2e_p95_ms": 16734,
+        "retrieval_p50_ms": 28,
+        "rerank_p50_ms": 9,
+        "e2e_mean_ms": 8030.6
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.861111,
+          "ci_low": 0.694444,
+          "ci_high": 0.972222,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.833333,
+          "ci_low": 0.666667,
+          "ci_high": 0.944444,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.783259,
+          "ci_low": 0.68533,
+          "ci_high": 0.897424,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "faithful": {
+          "n": 9,
+          "mean": 0.666667,
+          "ci_low": 0.333333,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "abstention_recall": {
+          "n": 1,
+          "mean": 1.0,
+          "ci_low": 1.0,
+          "ci_high": 1.0,
+          "method": "degenerate"
+        },
+        "over_abstention_rate": {
+          "n": 9,
+          "mean": 0.222222,
+          "ci_low": 0.0,
+          "ci_high": 0.555556,
+          "method": "BCa"
+        },
+        "cfca_joint_P": {
+          "n": 9,
+          "mean": 0.666667,
+          "ci_low": 0.333333,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "cfca_cost": {
+          "n": 9,
+          "mean": 2.9e-05,
+          "ci_low": 2.9e-05,
+          "ci_high": 2.9e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 10,
+        "n_with_top_n": 10,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 10
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 5,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 10,
+      "n_questions": 10
+    },
+    "prebaseline2": {
+      "n_queries": 10,
+      "n_linked": 10,
+      "n_unlinked": 0,
+      "retrieval": {
+        "k": 5,
+        "n_judged": 9,
+        "aggregate": {
+          "recall@5": 0.5666666666666668,
+          "mrr@5": 0.7592592592592592,
+          "ndcg@5": 0.5609943869119882,
+          "hit_rate@5": 0.8888888888888888
+        }
+      },
+      "faithfulness": {
+        "backend": "lettucedetect",
+        "n_scored": 9,
+        "aggregate": {
+          "faithfulness": 0.8644,
+          "faithful_rate": 0.5556,
+          "total_ungrounded_spans": 10,
+          "n_answers_truncated": 0
+        },
+        "per_query": {
+          "q001": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 26606,
+            "chunk_chars": 26429,
+            "answer_chars": 133,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 2359,
+            "truncated": 0
+          },
+          "q002": {
+            "faithfulness": 0.9858,
+            "faithful": 0,
+            "ungrounded_spans": 2,
+            "halluc_char_frac": 0.0142,
+            "n_served": 5,
+            "context_chars": 6063,
+            "chunk_chars": 5876,
+            "answer_chars": 424,
+            "spans": [
+              {
+                "start": 311,
+                "end": 314,
+                "confidence": 0.5082,
+                "text": " 21"
+              },
+              {
+                "start": 315,
+                "end": 318,
+                "confidence": 0.5663,
+                "text": " 20"
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1600,
+            "truncated": 0
+          },
+          "q003": {
+            "faithfulness": 0.7354,
+            "faithful": 0,
+            "ungrounded_spans": 4,
+            "halluc_char_frac": 0.2646,
+            "n_served": 5,
+            "context_chars": 61383,
+            "chunk_chars": 61176,
+            "answer_chars": 378,
+            "spans": [
+              {
+                "start": 35,
+                "end": 38,
+                "confidence": 0.6119,
+                "text": "pdf"
+              },
+              {
+                "start": 39,
+                "end": 133,
+                "confidence": 0.7656,
+                "text": " the address of the electrical installation is not explicitly stated in the provided document."
+              },
+              {
+                "start": 165,
+                "end": 167,
+                "confidence": 0.5324,
+                "text": " \""
+              },
+              {
+                "start": 192,
+                "end": 193,
+                "confidence": 0.5305,
+                "text": "\""
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 3818,
+            "truncated": 0
+          },
+          "q004": {
+            "faithfulness": 0.3333,
+            "faithful": 0,
+            "ungrounded_spans": 1,
+            "halluc_char_frac": 0.6667,
+            "n_served": 5,
+            "context_chars": 5386,
+            "chunk_chars": 5179,
+            "answer_chars": 444,
+            "spans": [
+              {
+                "start": 148,
+                "end": 444,
+                "confidence": 0.9943,
+                "text": " it is indicated that the report authorizes the next inspection on July 21, 2025, which would mean the next inspection should occur within the subsequent 5-year period after this date. The exact date for the next inspection is not specified but it is implied to be within the mentioned timeframe."
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1392,
+            "truncated": 0
+          },
+          "q005": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 7122,
+            "chunk_chars": 6912,
+            "answer_chars": 374,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1421,
+            "truncated": 0
+          },
+          "q006": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5332,
+            "chunk_chars": 5125,
+            "answer_chars": 913,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1652,
+            "truncated": 0
+          },
+          "q007": {
+            "faithfulness": 0.7247,
+            "faithful": 0,
+            "ungrounded_spans": 3,
+            "halluc_char_frac": 0.2753,
+            "n_served": 5,
+            "context_chars": 11215,
+            "chunk_chars": 11005,
+            "answer_chars": 574,
+            "spans": [
+              {
+                "start": 386,
+                "end": 399,
+                "confidence": 0.8982,
+                "text": " To determine"
+              },
+              {
+                "start": 408,
+                "end": 413,
+                "confidence": 0.6456,
+                "text": "frame"
+              },
+              {
+                "start": 434,
+                "end": 574,
+                "confidence": 0.9946,
+                "text": ", you would need to cross-reference this information with the priority list and timeframes mentioned on pages 9 and 39 of the same document."
+              }
+            ],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1796,
+            "truncated": 0
+          },
+          "q008": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 5352,
+            "chunk_chars": 5145,
+            "answer_chars": 279,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1399,
+            "truncated": 0
+          },
+          "q009": {
+            "faithfulness": 1.0,
+            "faithful": 1,
+            "ungrounded_spans": 0,
+            "halluc_char_frac": 0.0,
+            "n_served": 5,
+            "context_chars": 6706,
+            "chunk_chars": 6497,
+            "answer_chars": 245,
+            "spans": [],
+            "window": 8192,
+            "n_windows": 1,
+            "prompt_tokens": 1542,
+            "truncated": 0
+          }
+        },
+        "langmet_summary": {
+          "period": {
+            "start": null,
+            "end": null
+          },
+          "overview": {
+            "total_evaluations": 10,
+            "overall_score": 0.5501153703703704
+          },
+          "scores": {
+            "faithfulness": 0.8643555555555555,
+            "answer_relevancy": null,
+            "context_precision": 0.7074,
+            "context_recall": 0.5666666666666667,
+            "context_relevancy": 0.71147,
+            "answer_correctness": 0.19463333333333332,
+            "answer_similarity": 0.2561666666666667
+          },
+          "evaluation_counts": {
+            "faithfulness": 9,
+            "answer_relevancy": 0,
+            "context_precision": 9,
+            "context_recall": 9,
+            "context_relevancy": 10,
+            "answer_correctness": 9,
+            "answer_similarity": 9
+          }
+        }
+      },
+      "abstention": {
+        "tool": "python",
+        "marker": "I can not answer the question because of the insufficient information in documents.",
+        "counts": {
+          "unanswerable": 1,
+          "answerable": 9,
+          "refusals_total": 0,
+          "refusals_on_unanswerable": 0,
+          "wrongly_refused_answerable": 0
+        },
+        "aggregate": {
+          "abstention_recall": 0.0,
+          "abstention_precision": null,
+          "over_abstention_rate": 0.0
+        }
+      },
+      "cfca": {
+        "n_answerable": 9,
+        "cost_per_answer_gbp": 1.502e-05,
+        "currency": "GBP",
+        "cost_source": "measured cost per answer (GBP): electricity + any API bill",
+        "p_faithful_cited_version": 0.5556,
+        "cfca": 2.704e-05,
+        "note": null,
+        "components_mean": {
+          "faithful": 0.5556,
+          "cited": 1.0,
+          "right_version": 1.0
+        }
+      },
+      "cost": {
+        "n_completions": 10,
+        "providers": [
+          "ollama"
+        ],
+        "local_zero_cost": true,
+        "note": "Local/Ollama serving has no per-token API cost; per-answer API cost = 0. Supply the recurring per-query serving cost via per_answer_cost= for a non-degenerate CFCA.",
+        "langmet_cost": {},
+        "serving_tokens": {
+          "query_in_mtok": 0.001024,
+          "query_out_mtok": 9.8e-05,
+          "measured": true,
+          "upper_bound": false,
+          "answers": 9,
+          "counted": 9,
+          "total_only": 0,
+          "missing": [],
+          "coverage": 1.0,
+          "tokens_input": 9219,
+          "tokens_output": 881,
+          "tokens_total": 10100,
+          "per_answer_input": 1024.3,
+          "per_answer_output": 97.9,
+          "providers": [
+            "ollama"
+          ],
+          "models": [
+            "mistral:7b-instruct"
+          ],
+          "source": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+        }
+      },
+      "latency": {
+        "e2e_p50_ms": 3819,
+        "e2e_p95_ms": 8606,
+        "retrieval_p50_ms": 84,
+        "rerank_p50_ms": 2,
+        "e2e_mean_ms": 4626.3
+      },
+      "confidence_intervals": {
+        "recall@5": {
+          "n": 9,
+          "mean": 0.566667,
+          "ci_low": 0.340741,
+          "ci_high": 0.796296,
+          "method": "BCa"
+        },
+        "mrr@5": {
+          "n": 9,
+          "mean": 0.759259,
+          "ci_low": 0.444444,
+          "ci_high": 0.944444,
+          "method": "BCa"
+        },
+        "ndcg@5": {
+          "n": 9,
+          "mean": 0.560994,
+          "ci_low": 0.344567,
+          "ci_high": 0.737179,
+          "method": "BCa"
+        },
+        "hit_rate@5": {
+          "n": 9,
+          "mean": 0.888889,
+          "ci_low": 0.444444,
+          "ci_high": 1.0,
+          "method": "BCa"
+        },
+        "faithful": {
+          "n": 9,
+          "mean": 0.555556,
+          "ci_low": 0.222222,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "abstention_recall": {
+          "n": 1,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "method": "degenerate"
+        },
+        "over_abstention_rate": {
+          "n": 9,
+          "mean": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0,
+          "method": "degenerate"
+        },
+        "cfca_joint_P": {
+          "n": 9,
+          "mean": 0.555556,
+          "ci_low": 0.222222,
+          "ci_high": 0.888889,
+          "method": "BCa"
+        },
+        "cfca_cost": {
+          "n": 9,
+          "mean": 1.5e-05,
+          "ci_low": 1.5e-05,
+          "ci_high": 1.5e-05,
+          "method": "degenerate"
+        }
+      },
+      "ir_pool": {
+        "k": 5,
+        "n_records": 10,
+        "n_with_top_n": 10,
+        "n_missing_top_n": 0,
+        "top_n_min": 5,
+        "top_n_max": 5,
+        "top_n_values": {
+          "5": 10
+        },
+        "top_k_min": 20,
+        "top_k_max": 20,
+        "served_min": 5,
+        "served_max": 5
+      },
+      "n_runs": 1,
+      "run_ids": [
+        "r1"
+      ],
+      "n_answers": 10,
+      "n_questions": 10
+    }
+  },
+  "deltas_vs_control": {
+    "chunk_opt_vs_control": {
+      "recall@5": {
+        "n": 9,
+        "delta": 0.035185,
+        "ci_low": -0.37037,
+        "ci_high": 0.233333,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.875,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "mrr@5": {
+        "n": 9,
+        "delta": -0.166667,
+        "ci_low": -0.5,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.375,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "ndcg@5": {
+        "n": 9,
+        "delta": -0.028608,
+        "ci_low": -0.404986,
+        "ci_high": 0.149169,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.90625,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "hit_rate@5": {
+        "n": 9,
+        "delta": -0.111111,
+        "ci_low": -0.333333,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "faithful": {
+        "n": 9,
+        "delta": 0.222222,
+        "ci_low": 0.0,
+        "ci_high": 0.555556,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "abstention_recall": {
+        "n": 3,
+        "delta": 0.333333,
+        "ci_low": 0.0,
+        "ci_high": 1.0,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "over_abstention_rate": {
+        "n": 9,
+        "delta": -0.111111,
+        "ci_low": -0.444444,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca_joint_P": {
+        "n": 9,
+        "delta": 0.222222,
+        "ci_low": 0.0,
+        "ci_high": 0.555556,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca": {
+        "cell": 2.395e-05,
+        "reference": 1.701e-05,
+        "delta": 6.94e-06,
+        "n": 9,
+        "ci_low": -5.82e-06,
+        "ci_high": 1.072e-05,
+        "significant": false,
+        "method": "BCa",
+        "zero_denominator_draws": 0,
+        "resample_draws": 20018,
+        "delta_resampled": 6.94e-06,
+        "perm_p": 0.042969,
+        "perm_p_bonferroni": 0.128906,
+        "note": null
+      }
+    },
+    "qdora_vs_control": {
+      "recall@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "mrr@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "ndcg@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "hit_rate@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "faithful": {
+        "n": 9,
+        "delta": 0.222222,
+        "ci_low": 0.0,
+        "ci_high": 0.555556,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "abstention_recall": {
+        "n": 3,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "over_abstention_rate": {
+        "n": 9,
+        "delta": -0.111111,
+        "ci_low": -0.444444,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca_joint_P": {
+        "n": 9,
+        "delta": 0.222222,
+        "ci_low": 0.0,
+        "ci_high": 0.555556,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca": {
+        "cell": 2.175e-05,
+        "reference": 1.701e-05,
+        "delta": 4.74e-06,
+        "n": 9,
+        "ci_low": -8.02e-06,
+        "ci_high": 8.52e-06,
+        "significant": false,
+        "method": "BCa",
+        "zero_denominator_draws": 0,
+        "resample_draws": 20018,
+        "delta_resampled": 4.74e-06,
+        "perm_p": 0.179688,
+        "perm_p_bonferroni": 0.539062,
+        "note": null
+      }
+    },
+    "combined_vs_control": {
+      "recall@5": {
+        "n": 9,
+        "delta": 0.146296,
+        "ci_low": 0.014815,
+        "ci_high": 0.287037,
+        "significant": true,
+        "method": "BCa",
+        "perm_p": 0.125,
+        "perm_p_bonferroni": 0.375,
+        "aso": null
+      },
+      "mrr@5": {
+        "n": 9,
+        "delta": -0.055556,
+        "ci_low": -0.222222,
+        "ci_high": 0.037037,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.75,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "ndcg@5": {
+        "n": 9,
+        "delta": 0.082503,
+        "ci_low": -0.030512,
+        "ci_high": 0.195562,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.21875,
+        "perm_p_bonferroni": 0.65625,
+        "aso": null
+      },
+      "hit_rate@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "faithful": {
+        "n": 9,
+        "delta": -0.222222,
+        "ci_low": -0.555556,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.625,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "abstention_recall": {
+        "n": 3,
+        "delta": -0.666667,
+        "ci_low": -1.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "over_abstention_rate": {
+        "n": 9,
+        "delta": -0.222222,
+        "ci_low": -0.555556,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca_joint_P": {
+        "n": 9,
+        "delta": -0.222222,
+        "ci_low": -0.555556,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.625,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca": {
+        "cell": 7.675e-05,
+        "reference": 1.701e-05,
+        "delta": 5.974e-05,
+        "n": 9,
+        "ci_low": 3.096e-05,
+        "ci_high": 0.00017487,
+        "significant": true,
+        "method": "BCa",
+        "zero_denominator_draws": 2,
+        "resample_draws": 20018,
+        "delta_resampled": 5.974e-05,
+        "perm_p": 0.007812,
+        "perm_p_bonferroni": 0.023438,
+        "note": "2 of 20018 resample draws had a zero all-pass denominator, where cost per faithful cited answer is undefined"
+      }
+    }
+  },
+  "offgrid_reference": "control",
+  "offgrid_n_contrasts": 1,
+  "offgrid_deltas": {
+    "prebaseline_vs_control": {
+      "recall@5": {
+        "n": 9,
+        "delta": 0.294444,
+        "ci_low": 0.085185,
+        "ci_high": 0.553704,
+        "significant": true,
+        "method": "BCa",
+        "perm_p": 0.09375,
+        "perm_p_bonferroni": 0.09375,
+        "aso": null
+      },
+      "mrr@5": {
+        "n": 9,
+        "delta": 0.074074,
+        "ci_low": -0.166667,
+        "ci_high": 0.444444,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.75,
+        "perm_p_bonferroni": 0.75,
+        "aso": null
+      },
+      "ndcg@5": {
+        "n": 9,
+        "delta": 0.222264,
+        "ci_low": 0.016918,
+        "ci_high": 0.517399,
+        "significant": true,
+        "method": "BCa",
+        "perm_p": 0.140625,
+        "perm_p_bonferroni": 0.140625,
+        "aso": null
+      },
+      "hit_rate@5": {
+        "n": 9,
+        "delta": 0.111111,
+        "ci_low": 0.0,
+        "ci_high": 0.555556,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "faithful": {
+        "n": 9,
+        "delta": -0.111111,
+        "ci_low": -0.555556,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "abstention_recall": {
+        "n": 1,
+        "delta": 1.0,
+        "ci_low": 1.0,
+        "ci_high": 1.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "over_abstention_rate": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": -0.444444,
+        "ci_high": 0.444444,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca_joint_P": {
+        "n": 9,
+        "delta": -0.111111,
+        "ci_low": -0.555556,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 1.0,
+        "perm_p_bonferroni": 1.0,
+        "aso": null
+      },
+      "cfca": {
+        "cell": 4.367e-05,
+        "reference": 1.701e-05,
+        "delta": 2.666e-05,
+        "n": 9,
+        "ci_low": 1.29e-05,
+        "ci_high": 7.245e-05,
+        "significant": true,
+        "method": "BCa",
+        "zero_denominator_draws": 0,
+        "resample_draws": 20018,
+        "delta_resampled": 2.666e-05,
+        "perm_p": 0.03125,
+        "perm_p_bonferroni": 0.03125,
+        "note": null
+      }
+    },
+    "prebaseline2_vs_control": {
+      "recall@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "mrr@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "ndcg@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "hit_rate@5": {
+        "n": 9,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "faithful": {
+        "n": 9,
+        "delta": -0.222222,
+        "ci_low": -0.555556,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.625,
+        "perm_p_bonferroni": 0.625,
+        "aso": null
+      },
+      "abstention_recall": {
+        "n": 1,
+        "delta": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "degenerate",
+        "perm_p": null,
+        "perm_p_bonferroni": null,
+        "aso": null
+      },
+      "over_abstention_rate": {
+        "n": 9,
+        "delta": -0.222222,
+        "ci_low": -0.555556,
+        "ci_high": 0.0,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.5,
+        "perm_p_bonferroni": 0.5,
+        "aso": null
+      },
+      "cfca_joint_P": {
+        "n": 9,
+        "delta": -0.222222,
+        "ci_low": -0.555556,
+        "ci_high": 0.222222,
+        "significant": false,
+        "method": "BCa",
+        "perm_p": 0.625,
+        "perm_p_bonferroni": 0.625,
+        "aso": null
+      },
+      "cfca": {
+        "cell": 2.704e-05,
+        "reference": 1.701e-05,
+        "delta": 1.003e-05,
+        "n": 9,
+        "ci_low": -2.73e-06,
+        "ci_high": 5.271e-05,
+        "significant": false,
+        "method": "BCa",
+        "zero_denominator_draws": 9,
+        "resample_draws": 20018,
+        "delta_resampled": 1.003e-05,
+        "perm_p": 0.128906,
+        "perm_p_bonferroni": 0.128906,
+        "note": "9 of 20018 resample draws had a zero all-pass denominator, where cost per faithful cited answer is undefined"
+      }
+    }
+  },
+  "sources": {
+    "prebaseline": "snapshot",
+    "prebaseline2": "snapshot",
+    "control": "snapshot",
+    "chunk_opt": "snapshot",
+    "qdora": "snapshot",
+    "combined": "snapshot"
+  },
+  "power_provenance": {
+    "prebaseline": "measured (busy basis, omen-system, coverage 0.9229), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "prebaseline2": "measured (busy basis, omen-system, coverage 0.8726), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "control": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "chunk_opt": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "qdora": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+    "combined": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms"
+  },
+  "serving_seconds": {
+    "chunk_opt": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 7.6189,
+        "total_s": 91.427,
+        "covered_s": 91.427,
+        "watts": 42.211,
+        "energy_wh": 1.072008,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 7.1515,
+        "total_s": 85.818,
+        "covered_s": 85.818,
+        "watts": 42.206,
+        "energy_wh": 1.006109,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    },
+    "combined": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 13.0453,
+        "total_s": 156.543,
+        "covered_s": 156.543,
+        "watts": 44.206,
+        "energy_wh": 1.92228,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 12.6263,
+        "total_s": 151.516,
+        "covered_s": 151.516,
+        "watts": 44.22,
+        "energy_wh": 1.861125,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    },
+    "control": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 4.2763,
+        "total_s": 51.316,
+        "covered_s": 51.316,
+        "watts": 42.601,
+        "energy_wh": 0.60726,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 4.2538,
+        "total_s": 51.045,
+        "covered_s": 51.045,
+        "watts": 42.603,
+        "energy_wh": 0.604073,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    },
+    "prebaseline": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 8.083,
+        "total_s": 80.83,
+        "covered_s": 74.595,
+        "watts": 42.886,
+        "energy_wh": 0.888634,
+        "coverage": 0.9229,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 8.0306,
+        "total_s": 80.306,
+        "covered_s": 74.132,
+        "watts": 42.889,
+        "energy_wh": 0.883189,
+        "coverage": 0.9231,
+        "upper_bound": false
+      }
+    },
+    "prebaseline2": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 4.7283,
+        "total_s": 47.283,
+        "covered_s": 41.257,
+        "watts": 43.247,
+        "energy_wh": 0.495619,
+        "coverage": 0.8726,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 10,
+        "per_answer_s": 4.6263,
+        "total_s": 46.263,
+        "covered_s": 40.378,
+        "watts": 43.24,
+        "energy_wh": 0.484988,
+        "coverage": 0.8728,
+        "upper_bound": false
+      }
+    },
+    "qdora": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 6.7032,
+        "total_s": 80.438,
+        "covered_s": 80.438,
+        "watts": 44.724,
+        "energy_wh": 0.999306,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 12,
+        "per_answer_s": 6.6086,
+        "total_s": 79.303,
+        "covered_s": 79.303,
+        "watts": 44.744,
+        "energy_wh": 0.985653,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    }
+  },
+  "ingest_provenance": {
+    "prebaseline": "measured (lifecycle basis, 4/4 docs, 1314.816s, 0.170925 Mtok estimated at 4.0 chars/token)",
+    "prebaseline2": "measured (index_build_logs, 4 run(s), 79.558s, policy context_rag_t256_o64); span chunks basis 70.007s not used",
+    "control": "measured (index_build_logs, 4 run(s), 23.648s, policy context_rag_t256_o64); span chunks basis 10.823s not used",
+    "chunk_opt": "measured (index_build_logs, 4 run(s), 236.782s, policy context_rag_t1000_o40); span chunks basis 8.917s not used",
+    "qdora": "measured (index_build_logs, 4 run(s), 31.686s, policy context_rag_t256_o64); span chunks basis 16.96s not used",
+    "combined": "measured (index_build_logs, 4 run(s), 309.89s, policy context_rag_t1000_o40); span chunks basis 7.512s not used"
+  },
+  "token_provenance": {
+    "prebaseline": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "prebaseline2": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "control": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "chunk_opt": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "qdora": "measured (completion_logs, 9/9 answers carry an input/output token split)",
+    "combined": "measured (completion_logs, 9/9 answers carry an input/output token split)"
+  },
+  "snapshots": {
+    "prebaseline": "reused",
+    "prebaseline2": "reused",
+    "control": "reused",
+    "chunk_opt": "reused",
+    "qdora": "reused",
+    "combined": "reused"
+  },
+  "cfca_gbp": {
+    "currency": "GBP",
+    "cells": {
+      "control": {
+        "cost_per_answer": 1.323e-05,
+        "currency": "GBP",
+        "p_hat": 0.7778,
+        "cfca": 1.701e-05,
+        "breakdown": {
+          "C_onetime": 7.276e-05,
+          "C_onetime/A": 7e-08,
+          "C_query": 1.316e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 1.323e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.006569,
+          "query_gpu_seconds": 4.2763,
+          "p_gpu_hour": 0.01107626,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.000983,
+          "query_out_mtok": 9.5e-05
+        }
+      },
+      "chunk_opt": {
+        "cost_per_answer": 2.395e-05,
+        "currency": "GBP",
+        "p_hat": 1.0,
+        "cfca": 2.395e-05,
+        "breakdown": {
+          "C_onetime": 0.00072185,
+          "C_onetime/A": 7.2e-07,
+          "C_query": 2.323e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.395e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.065773,
+          "query_gpu_seconds": 7.6189,
+          "p_gpu_hour": 0.01097486,
+          "onetime_embed_mtok": 0.078228,
+          "query_in_mtok": 0.002051,
+          "query_out_mtok": 0.000108
+        }
+      },
+      "qdora": {
+        "cost_per_answer": 2.175e-05,
+        "currency": "GBP",
+        "p_hat": 1.0,
+        "cfca": 2.175e-05,
+        "breakdown": {
+          "C_onetime": 0.00010235,
+          "C_onetime/A": 1e-07,
+          "C_query": 2.165e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.175e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.008802,
+          "query_gpu_seconds": 6.7032,
+          "p_gpu_hour": 0.01162824,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.000976,
+          "query_out_mtok": 0.000108
+        }
+      },
+      "combined": {
+        "cost_per_answer": 4.264e-05,
+        "currency": "GBP",
+        "p_hat": 0.5556,
+        "cfca": 7.674e-05,
+        "breakdown": {
+          "C_onetime": 0.00098937,
+          "C_onetime/A": 9.9e-07,
+          "C_query": 4.165e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 4.264e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.08608,
+          "query_gpu_seconds": 13.0453,
+          "p_gpu_hour": 0.01149356,
+          "onetime_embed_mtok": 0.078228,
+          "query_in_mtok": 0.003134,
+          "query_out_mtok": 8.8e-05
+        }
+      },
+      "prebaseline": {
+        "cost_per_answer": 2.911e-05,
+        "currency": "GBP",
+        "p_hat": 0.6667,
+        "cfca": 4.366e-05,
+        "breakdown": {
+          "C_onetime": 0.00407241,
+          "C_onetime/A": 4.07e-06,
+          "C_query": 2.504e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.911e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.365227,
+          "query_gpu_seconds": 8.083,
+          "p_gpu_hour": 0.01115036,
+          "onetime_embed_mtok": 0.170925,
+          "query_in_mtok": 0.000987,
+          "query_out_mtok": 0.000128
+        }
+      },
+      "prebaseline2": {
+        "cost_per_answer": 1.502e-05,
+        "currency": "GBP",
+        "p_hat": 0.5556,
+        "cfca": 2.703e-05,
+        "breakdown": {
+          "C_onetime": 0.00024849,
+          "C_onetime/A": 2.5e-07,
+          "C_query": 1.477e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 1.502e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.022099,
+          "query_gpu_seconds": 4.7283,
+          "p_gpu_hour": 0.01124422,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.001024,
+          "query_out_mtok": 9.8e-05
+        }
+      }
+    },
+    "reference": "control",
+    "deltas": {
+      "chunk_opt": {
+        "cost_per_answer": 1.072e-05,
+        "cfca": 6.94e-06
+      },
+      "qdora": {
+        "cost_per_answer": 8.52e-06,
+        "cfca": 4.74e-06
+      },
+      "combined": {
+        "cost_per_answer": 2.941e-05,
+        "cfca": 5.973e-05
+      },
+      "prebaseline": {
+        "cost_per_answer": 1.588e-05,
+        "cfca": 2.665e-05
+      },
+      "prebaseline2": {
+        "cost_per_answer": 1.79e-06,
+        "cfca": 1.002e-05
+      }
+    }
+  },
+  "ingest_policy": {
+    "ok": false,
+    "verdicts": {
+      "prebaseline": "no label in index_build_logs for this cell's scope",
+      "prebaseline2": "ran context_rag_t256_o64 as expected (exact: context_rag_t256_o64 vs context_rag_t256_o64), 3 chunk(s) truncated"
+    },
+    "faults": [
+      "prebaseline"
+    ],
+    "unread": [],
+    "expected": {
+      "prebaseline": "context_rag_w1000_o200",
+      "prebaseline2": "context_rag_t256_o64"
+    },
+    "blocks": {
+      "prebaseline": {
+        "policies": [],
+        "chunks": 63,
+        "truncated_chunks": null,
+        "corpus_tokens": 170925.2,
+        "tokens_source": null,
+        "basis": "lifecycle",
+        "hours": 0.365227,
+        "hours_source": "measured (lifecycle basis, 4/4 docs, 1314.816s, 0.170925 Mtok estimated at 4.0 chars/token)",
+        "runs": null,
+        "seconds": null,
+        "embed_models": []
+      },
+      "prebaseline2": {
+        "policies": [
+          "context_rag_t256_o64"
+        ],
+        "chunks": 288,
+        "truncated_chunks": 3,
+        "corpus_tokens": 61876,
+        "tokens_source": "index_build_logs",
+        "basis": "chunks",
+        "hours": 0.022099,
+        "hours_source": "measured (index_build_logs, 4 run(s), 79.558s, policy context_rag_t256_o64); span chunks basis 70.007s not used",
+        "runs": 4,
+        "seconds": 79.558,
+        "embed_models": [
+          "Xenova/all-MiniLM-L6-v2"
+        ]
+      }
+    }
+  },
+  "cfca_warm_only": {
+    "currency": "GBP",
+    "cells": {
+      "control": {
+        "cost_per_answer": 1.163e-05,
+        "currency": "GBP",
+        "p_hat": 0.7778,
+        "cfca": 1.495e-05,
+        "breakdown": {
+          "C_onetime": 7.276e-05,
+          "C_onetime/A": 7e-08,
+          "C_query": 1.155e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 1.163e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.006569,
+          "query_gpu_seconds": 3.7554,
+          "p_gpu_hour": 0.01107626,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.000983,
+          "query_out_mtok": 9.5e-05
+        }
+      },
+      "chunk_opt": {
+        "cost_per_answer": 2.492e-05,
+        "currency": "GBP",
+        "p_hat": 1.0,
+        "cfca": 2.492e-05,
+        "breakdown": {
+          "C_onetime": 0.00072185,
+          "C_onetime/A": 7.2e-07,
+          "C_query": 2.42e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.492e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.065773,
+          "query_gpu_seconds": 7.9375,
+          "p_gpu_hour": 0.01097486,
+          "onetime_embed_mtok": 0.078228,
+          "query_in_mtok": 0.002051,
+          "query_out_mtok": 0.000108
+        }
+      },
+      "qdora": {
+        "cost_per_answer": 2.229e-05,
+        "currency": "GBP",
+        "p_hat": 1.0,
+        "cfca": 2.229e-05,
+        "breakdown": {
+          "C_onetime": 0.00010235,
+          "C_onetime/A": 1e-07,
+          "C_query": 2.219e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.229e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.008802,
+          "query_gpu_seconds": 6.8695,
+          "p_gpu_hour": 0.01162824,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.000976,
+          "query_out_mtok": 0.000108
+        }
+      },
+      "combined": {
+        "cost_per_answer": 2.504e-05,
+        "currency": "GBP",
+        "p_hat": 0.5556,
+        "cfca": 4.506e-05,
+        "breakdown": {
+          "C_onetime": 0.00098937,
+          "C_onetime/A": 9.9e-07,
+          "C_query": 2.405e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.504e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.08608,
+          "query_gpu_seconds": 7.5323,
+          "p_gpu_hour": 0.01149356,
+          "onetime_embed_mtok": 0.078228,
+          "query_in_mtok": 0.003134,
+          "query_out_mtok": 8.8e-05
+        }
+      },
+      "prebaseline": {
+        "cost_per_answer": 2.613e-05,
+        "currency": "GBP",
+        "p_hat": 0.6667,
+        "cfca": 3.919e-05,
+        "breakdown": {
+          "C_onetime": 0.00407241,
+          "C_onetime/A": 4.07e-06,
+          "C_query": 2.205e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 2.613e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.365227,
+          "query_gpu_seconds": 7.1199,
+          "p_gpu_hour": 0.01115036,
+          "onetime_embed_mtok": 0.170925,
+          "query_in_mtok": 0.000987,
+          "query_out_mtok": 0.000128
+        }
+      },
+      "prebaseline2": {
+        "cost_per_answer": 1.592e-05,
+        "currency": "GBP",
+        "p_hat": 0.5556,
+        "cfca": 2.865e-05,
+        "breakdown": {
+          "C_onetime": 0.00024849,
+          "C_onetime/A": 2.5e-07,
+          "C_query": 1.567e-05,
+          "C_update": 0.0,
+          "recurring/Q": 0.0,
+          "Cost_per_answer": 1.592e-05
+        },
+        "inputs": {
+          "A": 1000.0,
+          "Q": 1000.0,
+          "onetime_gpu_hours": 0.022099,
+          "query_gpu_seconds": 5.0166,
+          "p_gpu_hour": 0.01124422,
+          "onetime_embed_mtok": 0.061876,
+          "query_in_mtok": 0.001024,
+          "query_out_mtok": 9.8e-05
+        }
+      }
+    },
+    "reference": "control",
+    "deltas": {
+      "chunk_opt": {
+        "cost_per_answer": 1.329e-05,
+        "cfca": 9.97e-06
+      },
+      "qdora": {
+        "cost_per_answer": 1.066e-05,
+        "cfca": 7.34e-06
+      },
+      "combined": {
+        "cost_per_answer": 1.341e-05,
+        "cfca": 3.011e-05
+      },
+      "prebaseline": {
+        "cost_per_answer": 1.45e-05,
+        "cfca": 2.424e-05
+      },
+      "prebaseline2": {
+        "cost_per_answer": 4.29e-06,
+        "cfca": 1.37e-05
+      }
+    },
+    "warmup": {
+      "control": {
+        "n_answers": 12,
+        "total_s": 51.316,
+        "per_answer_s": 4.2763,
+        "dropped": [
+          {
+            "run_id": "r1",
+            "query_id": "q001",
+            "seconds": 10.007,
+            "answered_at": "2026-08-27T14:57:13.925388+00:00"
+          }
+        ],
+        "dropped_s": 10.007,
+        "dropped_share": 0.195,
+        "warm_n_answers": 11,
+        "warm_total_s": 41.309,
+        "warm_per_answer_s": 3.7554,
+        "kept_max_s": 5.916,
+        "resummed_s": 51.316,
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      },
+      "chunk_opt": {
+        "n_answers": 12,
+        "total_s": 91.427,
+        "per_answer_s": 7.6189,
+        "dropped": [
+          {
+            "run_id": "r1",
+            "query_id": "q001",
+            "seconds": 4.115,
+            "answered_at": "2026-08-31T01:41:33.666963+00:00"
+          }
+        ],
+        "dropped_s": 4.115,
+        "dropped_share": 0.045,
+        "warm_n_answers": 11,
+        "warm_total_s": 87.312,
+        "warm_per_answer_s": 7.9375,
+        "kept_max_s": 31.553,
+        "resummed_s": 91.427,
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      },
+      "qdora": {
+        "n_answers": 12,
+        "total_s": 80.438,
+        "per_answer_s": 6.7032,
+        "dropped": [
+          {
+            "run_id": "r1",
+            "query_id": "q003",
+            "seconds": 4.873,
+            "answered_at": "2026-09-03T17:10:03.088894+00:00"
+          }
+        ],
+        "dropped_s": 4.873,
+        "dropped_share": 0.0606,
+        "warm_n_answers": 11,
+        "warm_total_s": 75.565,
+        "warm_per_answer_s": 6.8695,
+        "kept_max_s": 9.899,
+        "resummed_s": 80.438,
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      },
+      "combined": {
+        "n_answers": 12,
+        "total_s": 156.543,
+        "per_answer_s": 13.0453,
+        "dropped": [
+          {
+            "run_id": "r1",
+            "query_id": "q001",
+            "seconds": 73.688,
+            "answered_at": "2026-09-03T02:12:35.737426+00:00"
+          }
+        ],
+        "dropped_s": 73.688,
+        "dropped_share": 0.4707,
+        "warm_n_answers": 11,
+        "warm_total_s": 82.855,
+        "warm_per_answer_s": 7.5323,
+        "kept_max_s": 13.137,
+        "resummed_s": 156.543,
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      },
+      "prebaseline": {
+        "n_answers": 10,
+        "total_s": 80.83,
+        "per_answer_s": 8.083,
+        "dropped": [
+          {
+            "run_id": "r1",
+            "query_id": "q002",
+            "seconds": 16.751,
+            "answered_at": "2026-08-21T22:57:48.023755+00:00"
+          }
+        ],
+        "dropped_s": 16.751,
+        "dropped_share": 0.2072,
+        "warm_n_answers": 9,
+        "warm_total_s": 64.079,
+        "warm_per_answer_s": 7.1199,
+        "kept_max_s": 12.915,
+        "resummed_s": 80.83,
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      },
+      "prebaseline2": {
+        "n_answers": 10,
+        "total_s": 47.283,
+        "per_answer_s": 4.7283,
+        "dropped": [
+          {
+            "run_id": "r1",
+            "query_id": "q001",
+            "seconds": 2.134,
+            "answered_at": "2026-08-24T16:25:25.626169+00:00"
+          }
+        ],
+        "dropped_s": 2.134,
+        "dropped_share": 0.0451,
+        "warm_n_answers": 9,
+        "warm_total_s": 45.149,
+        "warm_per_answer_s": 5.0166,
+        "kept_max_s": 8.757,
+        "resummed_s": 47.283,
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      }
+    },
+    "drop": 1,
+    "rule": "the first 1 priced answer(s) of each sitting are dropped from query_gpu_seconds; P_hat, watts, tokens and the one-time build are the report's own",
+    "derived_from": "cfca_gbp",
+    "source": "D:\\Prog\\Actdev\\otherpubgitrepo\\VERIDIC\\thesismod\\veridic-eval\\out\\cells-v2",
+    "written_at": "2026-09-04T08:04:08.577209+00:00",
+    "vs_reported": {
+      "control": {
+        "cost_per_answer": -1.6e-06,
+        "cfca": -2.06e-06
+      },
+      "chunk_opt": {
+        "cost_per_answer": 9.7e-07,
+        "cfca": 9.7e-07
+      },
+      "qdora": {
+        "cost_per_answer": 5.4e-07,
+        "cfca": 5.4e-07
+      },
+      "combined": {
+        "cost_per_answer": -1.76e-05,
+        "cfca": -3.168e-05
+      },
+      "prebaseline": {
+        "cost_per_answer": -2.98e-06,
+        "cfca": -4.47e-06
+      },
+      "prebaseline2": {
+        "cost_per_answer": 9e-07,
+        "cfca": 1.62e-06
+      }
+    }
+  }
+}

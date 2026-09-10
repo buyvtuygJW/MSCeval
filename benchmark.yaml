@@ -1,0 +1,165 @@
+# Example benchmark (gold set). Copy to benchmark.yaml and fill in.
+# Only `id` and `text` are required per query. `answerable` defaults to true.
+#
+# The `text` must match the user message logged by the app verbatim (after
+# whitespace/case normalisation) so the eval can link it to the served answer,
+# or set `message_ids: {<condition>: <assistant_message_uuid>}` to link explicitly.
+#
+# Judge evidence with `gold_evidence` (document + page + the exact quoted text),
+# never with raw `chunks.id` UUIDs: the app writes fresh chunk rows on every ingest
+# and the 2x2 flips the chunker, so a UUID list from one cell is wrong in the other
+# three. `veridic_eval/gold_evidence.py` matches that text against whichever ingest
+# is live when a cell is dumped. `document` must equal `documents.filename`;
+# `page` is 1-based metadata, the quoted text decides the match. A `gold_chunk_ids`
+# key is rejected at load, so nothing here can carry ids across a re-ingest.
+
+queries:
+  # Two pages of one fire risk assessment: the door ratings are stated in the
+  # survey text, the thirty-minute floor in the recommendations.
+  - id: q001
+    text: "What fire door rating does the assessment record for the doors to the stairwell?"
+    category: direct_lookup
+    answerable: true
+    gold_answer: "Nominal FD30 to the stairwell, thirty minutes minimum (FD60 to the flat lobbies)."
+    gold_evidence:
+      - document: "FRA2.pdf"
+        page: 22
+        text: "The corridor and lobby doors appear to be a mixture of nominal FD30 rated doors to the stairwell and FD60 rated doors to the flat lobbies"
+      - document: "FRA2.pdf"
+        page: 39
+        text: "provide adequate and a minimum of thirty minutes fire protection"
+
+  # The interval and the condition attached to it sit in one front-page block.
+  - id: q002
+    text: "When does the EICR say the installation must next be inspected and tested, and on what condition?"
+    category: conditional_obligation
+    answerable: true
+    gold_answer: "In 5 years, subject to the necessary remedial action being taken."
+    gold_evidence:
+      - document: "EICR 2.pdf"
+        page: 1
+        text: "recommend that this installation is further inspected and tested in 5 Years Subject to the necessary remedial action being taken"
+
+  # The three below are real quotes from `EICR 1_img.pdf` (20 pages, serial
+  # 30237785), so they resolve against the live ingest without editing. Rename
+  # `document` if your DB stores that file under another filename. That file is
+  # a scan, and the OCR of its front page drops the postcode line and mangles
+  # single characters (`I/We` loses its leading glyph, `Due to` comes through as
+  # `PU to`), so every quote below stops short of the mangled runs.
+
+  # Single field on the front page. Cheapest possible retrieval: one page, one quote.
+  - id: q003
+    text: "What is the address of the installation covered by the EICR?"
+    category: direct_lookup
+    answerable: true
+    gold_answer: "Bryn Morlais Court, Heol Gwyr, Swansea."
+    gold_evidence:
+      - document: "EICR 1_img.pdf"
+        page: 1
+        text: "Bryn Morlais Court"
+
+  # Date the answer depends on: PART 4 states the recommended next inspection,
+  # and the reason for it sits in the adjacent field.
+  - id: q004
+    text: "By what date does the EICR recommend the next inspection and test?"
+    category: effective_date
+    answerable: true
+    gold_answer: "21/09/2029, recommended because of the observations on page 2."
+    gold_evidence:
+      - document: "EICR 1_img.pdf"
+        page: 1
+        text: "inspected and tested by"
+      - document: "EICR 1_img.pdf"
+        page: 1
+        text: "recommendations made on page 2"
+
+  # Two hops across 18 pages: the observation and its code sit in PART 5, the
+  # risk level and required action are defined only in the recipient guidance.
+  - id: q005
+    text: "The consumer unit is fitted behind a fixed panel. What risk does the EICR assign to that and what action does it require?"
+    category: risk_and_remedy
+    answerable: true
+    gold_answer: "Code C3, improvement recommended: no immediate or potential danger, but remedying it gives a significant safety improvement, so it is not urgent remedial work."
+    gold_evidence:
+      - document: "EICR 1_img.pdf"
+        page: 10
+        text: "Consumer unit fitted behind fixed panel awkward to gain Access for maintenance & Testing."
+      - document: "EICR 1_img.pdf"
+        page: 2
+        text: "Code C3 Improvement Recommended"
+      - document: "EICR 1_img.pdf"
+        page: 20
+        text: "whilst not presenting immediate or potential danger, would result in a significant safety improvement if remedied"
+
+  # The three below are real quotes from `HandS1_img.pdf` (46 pages, report
+  # L-333958, 28 Willowcroft Close assessed 10/08/2021), same rename rule.
+
+  # Numbers that only exist inside a table: the count and the per-priority split
+  # sit in separate cells, so a chunker that shreds the table loses the answer.
+  - id: q006
+    text: "How many actions did the health and safety report raise in total, and how many must be completed within 3 months?"
+    category: table_lookup
+    answerable: true
+    gold_answer: "18 in total: 0 priority 1, 9 priority 2 (within 3 months), 8 priority 3, 1 advisory."
+    gold_evidence:
+      - document: "HandS1_img.pdf"
+        page: 7
+        text: "In addition, the number of actions raised in the report is as follows:"
+      - document: "HandS1_img.pdf"
+        page: 7
+        text: "Total number of actions identified:"
+
+  # Three hops: the defect and its risk rating are in section 4.2, the rating to
+  # timeframe mapping is in section 5.0, the priority list is in section 5.3.
+  - id: q007
+    text: "The fire door outside flat 7 catches on its frame. How soon must that be fixed and what work is recommended?"
+    category: priority_timescale
+    answerable: true
+    gold_answer: "Hazard 10 is rated LOW, so it is a priority 3 action: start within 6 months and complete within 1 year, by re-hanging the door or adjusting the hinges or the self-closing mechanism."
+    gold_evidence:
+      - document: "HandS1_img.pdf"
+        page: 33
+        text: "Fire door is catching / sticking on frame and does not close fully."
+      - document: "HandS1_img.pdf"
+        page: 39
+        text: "To assist you, the following timeframes are suggested:"
+      - document: "HandS1_img.pdf"
+        page: 41
+        text: "5.3 PRIORITY 3 ACTIONS"
+
+  # Scope question: the honest answer is a documented exclusion, not a refusal.
+  # Separates "the corpus says no" from the abstention class below.
+  - id: q008
+    text: "Does the assessment cover the inside of the individual flats?"
+    category: scope_limitation
+    answerable: true
+    gold_answer: "No. It is a Type 1 non-invasive inspection of the common parts only, and the roof and tenants' flats are listed as excluded areas."
+    gold_evidence:
+      - document: "HandS1_img.pdf"
+        page: 6
+        text: "This report is based on a Type 1 fire risk assessment, it is a non-invasive inspection of the common parts of the property only and as such does not examine the internal aspect of individual flats"
+      - document: "HandS1_img.pdf"
+        page: 5
+        text: "Roof. Tenants flats"
+
+  # Two hops 18 pages apart: PART 5 assigns the code to an observation, and only
+  # the recipient guidance on the last page says what the code obliges.
+  - id: q009
+    text: "What does a C1 observation on this EICR mean, and how urgently must it be acted on?"
+    category: risk_and_remedy
+    answerable: true
+    gold_answer: "C1 means danger is present with a risk of injury, so it requires immediate remedial action, without delay."
+    gold_evidence:
+      - document: "EICR 1_img.pdf"
+        page: 2
+        text: "Code C1 Danger present"
+      - document: "EICR 1_img.pdf"
+        page: 20
+        text: "Classification code C1 (Danger present)"
+
+  # Unanswerable item: no supporting evidence exists in the corpus.
+  # Positive class for the abstention protocol; must be refused.
+  - id: q020
+    text: "What is the asbestos survey result for the neighbouring building?"
+    category: unanswerable
+    answerable: false

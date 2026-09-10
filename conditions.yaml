@@ -1,0 +1,110 @@
+# The single declaration of the experiment: which cells are scored in the 2x2,
+# how each one is labelled, whether a cell is dumped to json before the next
+# ingest, and the GBP cost quantities behind the CFCA. `veridic-eval init`
+# writes this file, `veridic-eval run` reads it.
+#
+# The app has no `condition` column and we make no schema change, so the label
+# is applied HERE, after the answers exist: `veridic-eval sit <cell>` reads the
+# live chats and writes this cell's `conversation_ids: [<uuid>, ...]` and its
+# `start`/`end` window. Chat names never enter it; the app cannot rename chats
+# and the eval never reads a title. Whatever a cell declares must ALL match.
+# The `cost:` block prices each answer in GBP off the measured watts, which is
+# what makes CFCA non-degenerate on local/Ollama serving. `per_answer_cost`
+# (USD) is a provider's API bill per answer, converted and added on top; it stays
+# 0.0 while every cell serves locally. Cell names come from veridic_eval/cells.py.
+
+reference: control
+grid: [control, chunk_opt, qdora, combined] # the scored 2x2, in report order
+offgrid: [prebaseline, prebaseline2]  # measured, never scored inside the 2x2
+snapshot: true                    # dump each cell to json before the next ingest
+device: omen-system               # whole machine off the CPU utilisation counter
+power: {min_samples: 1}           # slices out/power/power.csv per answer's serving span
+ingest:                           # how each cell's one-time build is read and priced
+  basis: chunks                   # first -> last chunks.created_at, the rebuild itself.
+                                  # lifecycle spans documents.created_at -> updated_at,
+                                  # both stamped in the upload INSERT, and a re-ingest
+                                  # writes chunk rows only, so it never moves them
+  tokens_total: index_build_logs  # corpus_tokens, truncated_chunks and the chunking
+                                  # policy label off the app's own build log. Without
+                                  # this the Mtok is chars/4.0, identical for every
+                                  # cell, and no label reaches the dump to be checked
+  hours_source: prefer_logged     # onetime_gpu_hours from the rag-service's own timed
+                                  # chunk_and_index() run, the chunks span as fallback
+cost_defaults:
+  watts: 140.0                    # mean_w from `veridic-eval power`, else 1.0*TDP
+  kwh_gbp: 0.26                   # Ofgem unit rate; cite the retrieval date
+  A: 1000.0                       # answers the one-time cost amortises over
+  Q: 1000.0                       # queries in the period
+
+conditions:
+  # Off the grid, so it is measured but never scored inside the 2x2. Run this
+  # window FIRST: it is the app before the one-time baseline construction, and
+  # the re-ingest that the chunking correction forces deletes the served
+  # evidence rows it needs (dump it as soon as its conversations are done).
+  # Its delta against the reference is the before/after check on that
+  # construction, reported uncorrected and outside the Bonferroni family.
+  prebaseline:                    # Pre-baseline app / RCTS, uncorrected / base model
+    conversation_ids: ["dbed6c3c-8e9f-40b4-8b13-1a4afa978696", "be33c12d-b4ef-4d85-a547-96fe219e1cd4"] # set from the live chat by `veridic-eval sit`
+    start: 2026-08-21T22:56:31Z   # set from the live chat by `veridic-eval sit`
+    end:   2026-08-22T00:33:38Z   # set from the live chat by `veridic-eval sit`
+    expect_policy: context_rag_w1000_o200  # the word builder, CHUNKING_MODE=context_rag
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+
+  # Also off the grid, and it is a check on one knob rather than on the app:
+  # the same control corpus re-ingested with CHUNKING_MODE=token_budget, which
+  # sizes every chunk by the embedder's own tokenizer so no vector is truncated
+  # at 256 tokens. Nothing else moves; MAX_SNIPPET_CHARS stays at the shipped
+  # 500, so its delta against control is the chunker alone. Run it AFTER
+  # control is dumped, because that re-ingest deletes control's served
+  # evidence rows. If the delta pays, chunk_opt adopts this builder.
+  prebaseline2:                   # Token-budgeted chunking / base model
+    # conversation_ids: ["<uuid>", ...] # `veridic-eval sit prebaseline2`, run after the
+                                  # last answer, writes the real ids and window here
+    # start: 2026-08-22T00:00:00Z # and the window they were asked in
+    # end:   2026-08-22T00:00:00Z
+    expect_policy: context_rag_t256_o64  # the token builder. `run` says so per cell, and
+                                  # says so loudly if this cell ingested under the word
+                                  # builder because CHUNKING_MODE was never flipped
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+
+  # The four scored cells carry no `expect_policy:` yet: the label is whatever
+  # CHUNK_MAX_* pair the cell was ingested under, and `run` prints the one each
+  # dump found, so copy that line in here once the cell has been ingested. Two
+  # cells sharing a label share a cost bucket, which is the thing to catch.
+  control:                        # Controlled baseline / RCTS ~400 tok / base model
+    conversation_ids: ["dfcef5f9-514b-471a-86a9-07a6b3cca977", "cfa6757a-b999-46b1-9363-a5b324b18539"] # set from the live chat by `veridic-eval sit`
+    start: 2026-08-30T01:28:18Z   # set from the live chat by `veridic-eval sit`
+    end:   2026-08-30T01:34:14Z   # set from the live chat by `veridic-eval sit`
+    # expect_policy: context_rag_w400_o80
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+  chunk_opt:                      # Chunking-optimised RAG / optimised chunking / base model
+    conversation_ids: ["09b03e32-b32d-41b2-b001-82751d7e03dd", "0ac6a850-707f-4d49-9d03-156329bce417"] # set from the live chat by `veridic-eval sit`
+    start: 2026-08-31T01:40:29Z   # set from the live chat by `veridic-eval sit`
+    end:   2026-08-31T01:46:24Z   # set from the live chat by `veridic-eval sit`
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+  qdora:                          # Fine-tuned RAG / RCTS ~400 tok / QDoRA-merged
+    conversation_ids: ["a092b55e-6662-4f57-87f3-e992e818b1f5", "fb6933ea-df21-4f5f-8e07-d27cff378093", "934182ee-78aa-48e8-9134-5ee445ef2f78"] # set from the live chat by `veridic-eval sit`
+                                  # answer, writes the real ids and window here
+    start: 2026-09-03T17:08:58Z   # set from the live chat by `veridic-eval sit`
+    end:   2026-09-03T21:03:46Z   # set from the live chat by `veridic-eval sit`
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+  combined:                       # Combined / optimised chunking / QDoRA-merged
+    conversation_ids: ["2befc36f-80c7-4e3f-bb12-13361de48b45", "201d6048-1b06-4571-9ec5-61f6c596a9b9", "b10c2769-c1e7-4530-b077-8673208a327e", "e1287852-97a5-454e-a3bd-520b02aa6008"] # set from the live chat by `veridic-eval sit`
+                                  # answer, writes the real ids and window here
+    start: 2026-09-03T02:10:21Z   # set from the live chat by `veridic-eval sit`
+    end:   2026-09-03T02:20:05Z   # set from the live chat by `veridic-eval sit`
+    per_answer_cost: 0.0
+    cost: {onetime_gpu_hours: 0.0, query_gpu_seconds: 2.1}
+
+# `cost:` keys are the arguments of veridic_eval.cfca_cost.cost_per_answer, one
+# per quantity, plus `watts` / `kwh_gbp`, which convert to `p_gpu_hour` when no
+# price is given directly. `cost_defaults:` is merged under every cell's own
+# `cost:` block, so a cell only names what differs: the QDoRA fine-tune hours go
+# in `onetime_gpu_hours` on the cells that were fine-tuned. A cell with no
+# `cost:` block gets no CFCA line at all rather than a fabricated 0, and an
+# unknown key raises instead of being silently dropped.

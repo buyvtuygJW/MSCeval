@@ -1,0 +1,1154 @@
+{
+  "schema": "veridic-eval/cell-dump/1",
+  "cell": "qdora",
+  "written_at": "2026-09-03T17:13:50.934524+00:00",
+  "include_chunk_text": true,
+  "n_records": 10,
+  "n_linked": 9,
+  "n_judged": 9,
+  "meta": {
+    "benchmark_path": "D:\\Prog\\Actdev\\otherpubgitrepo\\VERIDIC\\thesismod\\veridic-eval\\benchmark.yaml",
+    "postgres_url": "postgresql://postgres:admin@localhost:6432/veridic_db",
+    "runs": [
+      {
+        "run_id": "r1",
+        "status": "written",
+        "n_records": 10,
+        "n_linked": 9,
+        "start": "2026-09-03T17:06:38+00:00",
+        "end": "2026-09-03T17:13:15+00:00",
+        "conversation_ids": [
+          "fb6933ea-df21-4f5f-8e07-d27cff378093",
+          "934182ee-78aa-48e8-9134-5ee445ef2f78",
+          "990e6aa9-3e5a-4e86-8c29-edc5a5540ed4"
+        ],
+        "note": null
+      }
+    ],
+    "run_ids": [
+      "r1"
+    ],
+    "power": {
+      "cell": "qdora",
+      "device": {
+        "name": "omen-system",
+        "label": "HP OMEN Transcend 14-fb0xxx, whole machine, utilisation-scaled",
+        "sampler": "utilization",
+        "command": [
+          "typeperf",
+          "\\Processor Information(_Total)\\% Processor Utility",
+          "-sc",
+          "1"
+        ],
+        "channels": [],
+        "unit": "W",
+        "gpu_index": 0,
+        "tdp_w": 180.0,
+        "idle_w": 39.1,
+        "interval_s": 5.0,
+        "constant_w": 43.7,
+        "load_w": 56.3,
+        "util_scale": 0.01,
+        "util_max": null,
+        "util_exponent": 1.0,
+        "notes": "Whole machine, and the only profile that bills a CPU embedder at all. HP publishes no watts for the Transcend 14, so they are modelled as idle_w + utilisation x (load_w - idle_w) off `% Processor Utility`, which is frequency-aware and so reads past 100% on turbo, billing past load_w exactly as the silicon does. idle_w 39.1 W is the settled whole-machine idle measured off the ACPI battery's discharge rate, panel dark and the app's containers up. load_w 56.3 W = 45 W Intel Processor Base Power for the Core Ultra 9 185H + 11.3 W measured GPU idle, and the two operating points match the counter: base power is quoted for all cores at base clock, which is what 100% utility means. Cross-check: idle utility read 8.96 to 13.43% on three back-to-back polls, where the model returns 40.6 to 41.4 W against the 39.1 W settled idle; a 22-worker all-core load sat at 17 to 41% `LoadPercentage` (a different counter, coarser) and measured 43.7 W mean, 60.0 W peak, which the model brackets at 42.0 to 46.1 W. tdp_w 180 W (115 W CPU max turbo + 65 W GPU max) caps the model and prices a failed run; constant_w 43.7 W is that measured loaded mean, for a run with no meter log. `typeperf` costs ~0.3 s of the 1 s it samples, so the meter contributes well under a point of the utilisation it reads. Counter names are English-locale"
+      },
+      "basis": "busy",
+      "log_path": "D:\\Prog\\Actdev\\otherpubgitrepo\\VERIDIC\\thesismod\\veridic-eval\\out\\power\\power.csv",
+      "n_answers": 9,
+      "window": {
+        "measured": true,
+        "seconds": 285.168,
+        "covered_s": 285.168,
+        "coverage": 1.0,
+        "energy_wh": 3.412928,
+        "mean_w": 43.085,
+        "peak_w": 50.918,
+        "min_w": 40.86,
+        "samples": 114,
+        "points": 116,
+        "edges": 2,
+        "bracket_only": false,
+        "gaps": 0,
+        "gap_s": 0.0,
+        "start": "2026-09-03T17:07:38.427084+00:00",
+        "end": "2026-09-03T17:12:23.595024+00:00"
+      },
+      "busy": {
+        "measured": true,
+        "intervals": 9,
+        "measured_intervals": 9,
+        "bracket_only_intervals": 0,
+        "inside_samples": 49,
+        "seconds": 125.547,
+        "covered_s": 125.547,
+        "coverage": 1.0,
+        "energy_wh": 1.526699,
+        "mean_w": 43.777,
+        "peak_w": 48.011,
+        "gaps": 0,
+        "gap_s": 0.0
+      },
+      "cost_inputs": {
+        "watts": 43.777,
+        "query_gpu_seconds": 13.9497,
+        "source": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+        "upper_bound": false,
+        "serving_fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ]
+      },
+      "quality": {
+        "ok": true,
+        "min_coverage": 0.8,
+        "idle_subtracted_w": 0.0,
+        "busy_seconds": 125.547,
+        "log_rows": 72281,
+        "integrator": "integrate_window",
+        "measured_intervals": 9,
+        "bracket_only_intervals": 0,
+        "inside_samples": 49
+      },
+      "latency_fields": [
+        "retrieval_latency_ms",
+        "rerank_latency_ms",
+        "latency_ms"
+      ],
+      "priced": "serving",
+      "latency_field_sets": {
+        "serving": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "generation": [
+          "latency_ms"
+        ]
+      },
+      "serving_seconds": {
+        "serving": {
+          "fields": [
+            "retrieval_latency_ms",
+            "rerank_latency_ms",
+            "latency_ms"
+          ],
+          "n_answers": 9,
+          "per_answer_s": 13.9497,
+          "total_s": 125.547,
+          "covered_s": 125.547,
+          "watts": 43.777,
+          "energy_wh": 1.526699,
+          "coverage": 1.0,
+          "upper_bound": false
+        },
+        "generation": {
+          "fields": [
+            "latency_ms"
+          ],
+          "n_answers": 9,
+          "per_answer_s": 13.8482,
+          "total_s": 124.634,
+          "covered_s": 124.634,
+          "watts": 43.783,
+          "energy_wh": 1.515775,
+          "coverage": 1.0,
+          "upper_bound": false
+        }
+      },
+      "alternates": {
+        "generation": {
+          "cell": "qdora[generation]",
+          "device": {
+            "name": "omen-system",
+            "label": "HP OMEN Transcend 14-fb0xxx, whole machine, utilisation-scaled",
+            "sampler": "utilization",
+            "command": [
+              "typeperf",
+              "\\Processor Information(_Total)\\% Processor Utility",
+              "-sc",
+              "1"
+            ],
+            "channels": [],
+            "unit": "W",
+            "gpu_index": 0,
+            "tdp_w": 180.0,
+            "idle_w": 39.1,
+            "interval_s": 5.0,
+            "constant_w": 43.7,
+            "load_w": 56.3,
+            "util_scale": 0.01,
+            "util_max": null,
+            "util_exponent": 1.0,
+            "notes": "Whole machine, and the only profile that bills a CPU embedder at all. HP publishes no watts for the Transcend 14, so they are modelled as idle_w + utilisation x (load_w - idle_w) off `% Processor Utility`, which is frequency-aware and so reads past 100% on turbo, billing past load_w exactly as the silicon does. idle_w 39.1 W is the settled whole-machine idle measured off the ACPI battery's discharge rate, panel dark and the app's containers up. load_w 56.3 W = 45 W Intel Processor Base Power for the Core Ultra 9 185H + 11.3 W measured GPU idle, and the two operating points match the counter: base power is quoted for all cores at base clock, which is what 100% utility means. Cross-check: idle utility read 8.96 to 13.43% on three back-to-back polls, where the model returns 40.6 to 41.4 W against the 39.1 W settled idle; a 22-worker all-core load sat at 17 to 41% `LoadPercentage` (a different counter, coarser) and measured 43.7 W mean, 60.0 W peak, which the model brackets at 42.0 to 46.1 W. tdp_w 180 W (115 W CPU max turbo + 65 W GPU max) caps the model and prices a failed run; constant_w 43.7 W is that measured loaded mean, for a run with no meter log. `typeperf` costs ~0.3 s of the 1 s it samples, so the meter contributes well under a point of the utilisation it reads. Counter names are English-locale"
+          },
+          "basis": "busy",
+          "log_path": "D:\\Prog\\Actdev\\otherpubgitrepo\\VERIDIC\\thesismod\\veridic-eval\\out\\power\\power.csv",
+          "n_answers": 9,
+          "window": {
+            "measured": true,
+            "seconds": 285.139,
+            "covered_s": 285.139,
+            "coverage": 1.0,
+            "energy_wh": 3.412585,
+            "mean_w": 43.085,
+            "peak_w": 50.918,
+            "min_w": 40.86,
+            "samples": 114,
+            "points": 116,
+            "edges": 2,
+            "bracket_only": false,
+            "gaps": 0,
+            "gap_s": 0.0,
+            "start": "2026-09-03T17:07:38.456084+00:00",
+            "end": "2026-09-03T17:12:23.595024+00:00"
+          },
+          "busy": {
+            "measured": true,
+            "intervals": 9,
+            "measured_intervals": 9,
+            "bracket_only_intervals": 0,
+            "inside_samples": 49,
+            "seconds": 124.634,
+            "covered_s": 124.634,
+            "coverage": 1.0,
+            "energy_wh": 1.515775,
+            "mean_w": 43.783,
+            "peak_w": 48.011,
+            "gaps": 0,
+            "gap_s": 0.0
+          },
+          "cost_inputs": {
+            "watts": 43.783,
+            "query_gpu_seconds": 13.8482,
+            "source": "measured (busy basis, omen-system, coverage 1.0)",
+            "upper_bound": false
+          },
+          "quality": {
+            "ok": true,
+            "min_coverage": 0.8,
+            "idle_subtracted_w": 0.0,
+            "busy_seconds": 124.634,
+            "log_rows": 72281,
+            "integrator": "integrate_window",
+            "measured_intervals": 9,
+            "bracket_only_intervals": 0,
+            "inside_samples": 49
+          },
+          "latency_fields": [
+            "latency_ms"
+          ]
+        }
+      }
+    },
+    "cost_inputs_measured": {
+      "watts": 43.777,
+      "query_gpu_seconds": 13.9497,
+      "source": "measured (busy basis, omen-system, coverage 1.0), serving=retrieval_latency_ms+rerank_latency_ms+latency_ms",
+      "upper_bound": false,
+      "serving_fields": [
+        "retrieval_latency_ms",
+        "rerank_latency_ms",
+        "latency_ms"
+      ]
+    },
+    "serving_seconds": {
+      "serving": {
+        "fields": [
+          "retrieval_latency_ms",
+          "rerank_latency_ms",
+          "latency_ms"
+        ],
+        "n_answers": 9,
+        "per_answer_s": 13.9497,
+        "total_s": 125.547,
+        "covered_s": 125.547,
+        "watts": 43.777,
+        "energy_wh": 1.526699,
+        "coverage": 1.0,
+        "upper_bound": false
+      },
+      "generation": {
+        "fields": [
+          "latency_ms"
+        ],
+        "n_answers": 9,
+        "per_answer_s": 13.8482,
+        "total_s": 124.634,
+        "covered_s": 124.634,
+        "watts": 43.783,
+        "energy_wh": 1.515775,
+        "coverage": 1.0,
+        "upper_bound": false
+      }
+    },
+    "ingest": {
+      "cell": "qdora",
+      "scope": "corpus",
+      "basis": "chunks",
+      "documents": 4,
+      "span": {
+        "measured": true,
+        "basis": "chunks",
+        "reason": null,
+        "hours": 0.004711,
+        "seconds": 16.96,
+        "documents": 4,
+        "counted": 4,
+        "skipped": [],
+        "first": "2026-09-03T16:39:18.909328+00:00",
+        "last": "2026-09-03T16:57:48.925589+00:00",
+        "merged": 0
+      },
+      "tokens": {
+        "documents": 4,
+        "chunks": 288,
+        "chars": 658955,
+        "chars_per_token": 4.0,
+        "estimated": false,
+        "embed_passes": 1.0,
+        "tokens": 61876.0,
+        "mtok": 0.061876,
+        "source_name": "index_build_logs",
+        "policies": [
+          "context_rag_t256_o64"
+        ],
+        "truncated_chunks": 3,
+        "source": "measured (index_build_logs, 4/4 runs, latest per document, 31.686s, 0.061876 Mtok counted, policy context_rag_t256_o64)",
+        "index_build": {
+          "source_name": "index_build_logs",
+          "measured": true,
+          "runs": 4,
+          "runs_seen": 4,
+          "per_document": "latest",
+          "documents": 4,
+          "policies": [
+            "context_rag_t256_o64"
+          ],
+          "embed_models": [
+            "Xenova/all-MiniLM-L6-v2"
+          ],
+          "chunks": 288,
+          "truncated_chunks": 3,
+          "corpus_tokens": 61876,
+          "seconds": 31.686,
+          "first": "2026-09-03T16:39:25.440991+00:00",
+          "last": "2026-09-03T16:57:50.143780+00:00",
+          "upper_bound": false,
+          "onetime_gpu_hours": 0.008802,
+          "onetime_embed_mtok": 0.061876,
+          "index_gb": 0.00059,
+          "source": "measured (index_build_logs, 4/4 runs, latest per document, 31.686s, 0.061876 Mtok counted, policy context_rag_t256_o64)"
+        }
+      },
+      "cost_inputs": {
+        "onetime_gpu_hours": 0.008802,
+        "upper_bound": false,
+        "onetime_embed_mtok": 0.061876,
+        "source": "measured (index_build_logs, 4 run(s), 31.686s, policy context_rag_t256_o64); span chunks basis 16.96s not used"
+      }
+    },
+    "ingest_measured": {
+      "onetime_gpu_hours": 0.008802,
+      "upper_bound": false,
+      "onetime_embed_mtok": 0.061876,
+      "source": "measured (index_build_logs, 4 run(s), 31.686s, policy context_rag_t256_o64); span chunks basis 16.96s not used"
+    },
+    "tokens_measured": {
+      "query_in_mtok": 0.000977,
+      "query_out_mtok": 0.000113,
+      "measured": true,
+      "upper_bound": false,
+      "answers": 8,
+      "counted": 8,
+      "total_only": 0,
+      "missing": [],
+      "coverage": 1.0,
+      "tokens_input": 7813,
+      "tokens_output": 907,
+      "tokens_total": 8720,
+      "per_answer_input": 976.6,
+      "per_answer_output": 113.4,
+      "providers": [
+        "ollama"
+      ],
+      "models": [
+        "veridic-q4km:latest"
+      ],
+      "source": "measured (completion_logs, 8/8 answers carry an input/output token split)"
+    },
+    "query_ids": [
+      "q001",
+      "q002",
+      "q003",
+      "q004",
+      "q005",
+      "q006",
+      "q007",
+      "q008",
+      "q009",
+      "q020"
+    ],
+    "gold_match": {
+      "matched": 18,
+      "unmatched": 0,
+      "multi_chunk": 10,
+      "distinct_chunks": 25,
+      "chunks_seen": {
+        "FRA2.pdf": 94,
+        "EICR 2.pdf": 39,
+        "EICR 1_img.pdf": 80,
+        "HandS1_img.pdf": 75
+      },
+      "unmatched_reasons": {}
+    },
+    "gold_settings": {
+      "resolve_gold": true,
+      "gold_scope": "new",
+      "document_match": "exact",
+      "document_status": [
+        "completed"
+      ],
+      "match_mode": "containment_then_shingle",
+      "shingle_n": 5,
+      "min_shingle_coverage": 0.6,
+      "min_token_coverage": 0.9,
+      "page_window": null,
+      "page_required": false,
+      "max_chunks_per_item": 0,
+      "min_score": 0.0,
+      "tie_margin": 0.0
+    }
+  },
+  "records": [
+    {
+      "query_id": "q001",
+      "condition": "qdora",
+      "question": "What fire door rating does the assessment record for the doors to the stairwell?",
+      "answerable": true,
+      "category": "direct_lookup",
+      "gold_answer": "Nominal FD30 to the stairwell, thirty minutes minimum (FD60 to the flat lobbies).",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "a97079c8-59d9-5467-9c86-770831544941",
+        "0ad5adee-da23-5299-b948-99eed29608f5",
+        "55bd6d3a-2eaf-58cf-b151-decc652776da",
+        "ffb3ea1c-47ce-57c9-9be9-897d68ece0dd",
+        "e41ce0da-9c6b-57f0-bdfd-2f5c991c4813"
+      ],
+      "run_id": "r1",
+      "message_id": "6b3e25f3-dc69-4ea4-bddf-f7458008dd44",
+      "answer_text": " According to the document FRA2.pdf, page 40, there is no specific information provided in the evidence about the fire door rating for the doors to the stairwell. However, the internal doors within the building are observed to be nominal FD30 doors (document FRA2.pdf, page 40, E).",
+      "served_evidence": [
+        {
+          "chunk_id": "55bd6d3a-2eaf-58cf-b151-decc652776da",
+          "document_name": "FRA2.pdf",
+          "page": 9,
+          "retrieval_score": 0.6157,
+          "rerank_score": 0.8286,
+          "served_rank": 0,
+          "chunk_text": "| Confirmation is required of what progress has been made regarding the external cladding investigations.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |\n| Audit / Fire Risk Assessment / 27. Sampled Flats                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |\n| D) Does the fire door fitted to the flats sampled that lead onto the communal landings, lobbies and stairs provide adequate and a minimum of thirty minutes fire protection?                                                                                                                                                                                                                                                                                                                                                                            |\n| No                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\n| I was able to sample a percentage of doors to the flats, the doors appear to be a nominal FD30 rated doors; however, there was no identification label observed. The doors were free from distortion and fitted flush to the doorstop. The door frames were securely attached to the wall. The doorstop is present and is rigidly attached. There is a half-inch doorstop fitted. The doors had three fire rated hinges fitted (Stanley CE marked and Grade 13 rated), smoke seals (fitted within the door frame), automatic door closures were fitted. |\n| There were issues observed with damaged smoke seals.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |\n| See previous flat door survey action.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |\n| Photo 25                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| Photo 26                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| Photo 27                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| Photo 28                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| Photo 29                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| To do | Priority: Low | Due: 31.01.2025 13:11 GMT | Created by: Ioan Williams                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |"
+        },
+        {
+          "chunk_id": "c2cd2322-098c-5157-a5b2-bab5e113213c",
+          "document_name": "FRA2.pdf",
+          "page": 7,
+          "retrieval_score": 0.5087,
+          "rerank_score": 0.7862,
+          "served_rank": 1,
+          "chunk_text": "| The door to the inner room of the electrical cupboard has a hole where a vent has been removed, the door should be replaced or a fire rated ATG be fitted.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\n| Confirmation is required that this has been completed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |\n| Audit / Fire Risk Assessment / 14. Means of Escape from Fire                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |\n| M) Are there suitable fire precautions for all inner rooms?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |\n| No                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |\n| |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |\n| There is an inner room within the electrical cupboard in the ground floor parking area.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |\n| See previous door action.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |\n| Audit / Fire Risk Assessment / 16. Measures to Limit External Fire Spread and Development                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |\n| A) Does the external walls of the property provide adequate                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |\n| fire safety protection against fire spread?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |\n| No                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |\n| External wall surface: Cement and silicon based render, sections of timber cladding and a brick fa\u00e7ade to the external walls of the block. See cladding action.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |\n| Audit / Fire Risk Assessment / 25. Testing and Maintenance                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |\n| B1) Is there periodic servicing of the fire detection and alarm                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |\n| system?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |\n| No                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |"
+        },
+        {
+          "chunk_id": "baeeabb4-5c1e-5cb6-8da9-38be4efa28ed",
+          "document_name": "FRA2.pdf",
+          "page": 40,
+          "retrieval_score": 0.5399,
+          "rerank_score": 0.7753,
+          "served_rank": 2,
+          "chunk_text": "See previous flat door survey action.\nI au\nTo do | Priority: Low | Due: 31.01.2025 13:11 GMT | Created by: Ioan Williams\nFlat doors damaged smoke seals should be replaced.\nFlat doors damaged smoke seals should be replaced.\nE) Are the internal doors fitted fire doors?\nYe\nThe internal doors were observed from the hall, and they appear to be nominal FD30 doors, they have three hinges (Stanley CE marked and Grade 13 identified), intumescent strips fitted.\n40/46\nDetails of findings\nDetails of findings\nF) Is the automatic fire detection (AFD) and means of alerting\nYes\nthe resident installed adequately for the flat sampled?\nThe flats have mains powered smoke detection installed within the hallways which appears to be in accordance with BS 5839:\nPart 6: 2017, LD3 Grade D type system.\nDetails of findings\nDetails of findings\nG)\nWhat type of heating is installed within the flats sampled?\nThe flats have electric panel heaters.\nH) Is the heating system installed serviced annually?\nI) Is the fixed electrical installation periodically inspected and N/A No\ntested?"
+        },
+        {
+          "chunk_id": "ffb3ea1c-47ce-57c9-9be9-897d68ece0dd",
+          "document_name": "FRA2.pdf",
+          "page": 40,
+          "retrieval_score": 0.5303,
+          "rerank_score": 0.7746,
+          "served_rank": 3,
+          "chunk_text": "B)\nAre there appropriate records for fire training?\nStaff are given adequate fire safety instruction and training.\nC) Are there appropriate records for maintenance and testing of other fire protection systems?\nThere were records of the maintenance of the fire alarm, AOV's, Dry Risers and emergency lighting systems.\nDetails of findings\nD) Are records/logbooks up to date?\nYes\nThe logbook onsite was up to date.\nDetails of findings\n27.\nSampled Flats\n1 flagged, 2 actions, 8 / 11 (72.73%)\nA)\nAre there flats within the building?\nYes\nThere are 64 flats within the block.\nB)\nWas access gained to any of the flats?\nYes\nFlats 402, 406, 418, 427, 430, 433, 443, 444, 445, 447, 448, 450, 453, 454 & 456 were accessed at the time of the\nassessment.\nD) Does the fire door fitted to the flats sampled that lead onto the communal landings, lobbies and stairs provide adequate and a minimum of thirty minutes fire protection?\nNo"
+        },
+        {
+          "chunk_id": "d151e4de-d514-5eed-a288-5954c1d965f2",
+          "document_name": "FRA2.pdf",
+          "page": 9,
+          "retrieval_score": 0.5135,
+          "rerank_score": 0.761,
+          "served_rank": 4,
+          "chunk_text": "| No information has been provided to residents regarding the importance of fire doors. This information must be provided to all residents within the building as soon as practicable.                                                                                                                                                                                                                                                                                                                                                                    |\n| Confirmation is required that the fire door information has been forwarded to the residents of the property.                                                                                                                                                                                                                                                                                                                                                                                                                                            |\n| Audit / Fire Risk Assessment / 16. Measures to Limit External Fire Spread and Development                                                                                                                                                                                                                                                                                                                                                                                                                                                               |\n| B) Does the building have external cladding?                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |\n| Yes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |\n| There is timber cladding to the external walls it could not be ascertained as to the fire resistance of the timber cladding.                                                                                                                                                                                                                                                                                                                                                                                                                            |\n| Recommend further investigation to identify the type of cladding. To determine its fire resistance qualities (if any), and any approvals given by Building Control confirming its suitability for the building type.                                                                                                                                                                                                                                                                                                                                    |\n| We have been informed that investigations into the external cladding is ongoing and is awaiting the conclusions prior to implementing any remedial or replacement works. We have not been informed of any progress with the external cladding investigations.                                                                                                                                                                                                                                                                                           |\n| Photo 10                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| To do | Priority: Medium | Due: 31.01.2025 12:28 GMT | Created by: Ioan Williams                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |\n| Ongoing external cladding investigations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |"
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 741,
+      "tokens_input": 669,
+      "tokens_output": 72,
+      "latency_ms": 67940,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:08:46.396084+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 27,
+      "rerank_latency_ms": 2,
+      "linked": true
+    },
+    {
+      "query_id": "q002",
+      "condition": "qdora",
+      "question": "When does the EICR say the installation must next be inspected and tested, and on what condition?",
+      "answerable": true,
+      "category": "conditional_obligation",
+      "gold_answer": "In 5 years, subject to the necessary remedial action being taken.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "e18c6793-4ccf-54ab-a8ff-1fffbc45295a",
+        "e2024e2f-8547-5884-8189-23bcb1c5fa9f"
+      ],
+      "run_id": "r1",
+      "message_id": null,
+      "answer_text": "",
+      "served_evidence": [],
+      "provider": null,
+      "model": null,
+      "tokens_total": null,
+      "tokens_input": null,
+      "tokens_output": null,
+      "latency_ms": null,
+      "completion_link": null,
+      "answered_at": null,
+      "top_k": null,
+      "top_n": null,
+      "retrieval_latency_ms": null,
+      "rerank_latency_ms": null,
+      "linked": false
+    },
+    {
+      "query_id": "q003",
+      "condition": "qdora",
+      "question": "What is the address of the installation covered by the EICR?",
+      "answerable": true,
+      "category": "direct_lookup",
+      "gold_answer": "Bryn Morlais Court, Heol Gwyr, Swansea.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "f78f81fd-3f42-5bd1-b79d-64a493ecdc48"
+      ],
+      "run_id": "r1",
+      "message_id": "0148780b-1228-4fbf-bdcc-2d45a0c6bf7a",
+      "answer_text": " According to the EICR 1_img.pdf, page 1, the address of the installation covered by the report is located at 14 Copperfield Way, St Mellons Cardiff. Additionally, it is also mentioned in the address suite 5, Alderwick House, Kinross.",
+      "served_evidence": [
+        {
+          "chunk_id": "0473c207-160d-5f4f-bb4a-bc11c0a60355",
+          "document_name": "EICR 1_img.pdf",
+          "page": 1,
+          "retrieval_score": 0.4951,
+          "rerank_score": 0.8659,
+          "served_rank": 0,
+          "chunk_text": "| Building & Ele i l This certificate is not valid if the serial alle Ez Saree td number has been defaced or altered approved = sma\u2019 \u201cfem \u201cho ELECTRICAL INSTALLATION Issued in accordance with BS 7671: PART 1: DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION DETAILS OF THE CONTRACTOR (*Where applicable) | DETAILS OF THE CLIENT DETAILS OF Registration N\u00b0: 027668000 Trading Title... 8AfSpark EICR Services Ltd Address: ...14 Copperfield Way, St Mellons Cardiff AddresSuite. 5, Alderwick House, .Kingsmoor. Business Park, 12 West Ashford PART 2 : PURPOSE OF THE REPORT Purpose for which this report is required: 5 Yearly Report Date(s) when inspection and testing was carried out: (24/09/2024 Commercial: ( ) Industrial: (NIA )years Evidence of additions or alterations: ( years) Overall assessment of the installation for continued use: **An unsatisfactory assessment indicates that dangerous (Code C1) and/or potentially dangerous (Code C2) conditions have been identified (listed in PART 5 of this report) and it is PART 4: DECLARATION INSPECTION AND TESTING |/We, being"
+        },
+        {
+          "chunk_id": "07963049-ad7c-54e3-afda-32fd48c0b101",
+          "document_name": "EICR 1_img.pdf",
+          "page": 6,
+          "retrieval_score": 0.5359,
+          "rerank_score": 0.8402,
+          "served_rank": 1,
+          "chunk_text": "| Page 6 of                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |\n| the work) ing | (to the person order Or                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |\n| CONDITION REPORT amended) - Requirements for Electrical Installations                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |\n| 30237785                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |\n| volt) socket-outlets sited at least 2.5 m from                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |\n| for external influences for installed location                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |\n| (701.512.2)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |\n| and controlgear etc. for a particular                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |\n| equipment for particular position within                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |\n| or locations -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |\n| EICR18.3C                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |\n| installation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |\n| installation falling within the scope of Chapter 82 are covered by the detailing the associated inspection and testing should be provided on                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |\n| by                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |\n| Date: 24/09/2024                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| Prosumer\u2019s Continuation sheets item 10 above)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |\n| Page No(s):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |"
+        },
+        {
+          "chunk_id": "3ace8fe2-d915-5f13-b144-e0efbe6f8435",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4339,
+          "rerank_score": 0.8228,
+          "served_rank": 2,
+          "chunk_text": "The declaration must reflect the and recommendations made in PART 5.\nWhere one code given to each by the inspector indicates taken to restore the installation to a safe working inspection such as inability to gain access to parts of have noted any such limitations in PART 6.\nIt should less its value from the safety aspect.\nof the installation covered by this report and any have agreed these aspects with the person ordering insurance company, mortgage provider and the like) such as the public supply and a standby generator Characteristics and Earthing Arrangements, and the 11A & 11B) compiled accordingly.\nis RETAINED FOR FUTURE USE\n@ Copyright Certsure LLP (August 2024) GUIDANCE FOR RECIPIENTS ON THE CLASSIFICATION ONLY ONE CLASSIFICATION CODE SHOULD BE GIVEN FOR EACH RECORDED Classification code C1 (Danger present) Where an observation has been given a Classification code C1, the safety of those using the installation is at risk and immediate remedial action is required.\nThe person responsible for the maintenance of the installation is advised to take action without delay to remedy the observed deficiency in the installation, or to take other appropriate action (such as switching off and isolating the affected part(s) of the installation) to remove the danger.\nThe NICEIC contractor issuing this report will be able to provide further advice."
+        },
+        {
+          "chunk_id": "7b00b8a5-7370-51d6-8aad-8e944d0c3aca",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.431,
+          "rerank_score": 0.767,
+          "served_rank": 3,
+          "chunk_text": "For safety reasons, the electrical installation should be re-inspected at appropriate intervals by a skilled person or persons, competent in such work.\nNICEIC* recommends that you engage the services of an NICEIC contractor for the inspection.\nOnly an NICEIC contractor is authorised to issue this NICEIC Electrical Installation Condition Report, which has a unique serial number that is traceable to the contractor to which it was supplied by NICEIC.\nThe recommended date by which the next inspection should be carried out is stated in PART 4 of this report.\nWith the exception of domestic (household) premises, there should also be a notice at or near the main switchboard or distribution board/consumer unit indicating when the next inspection of the installation is due.\nThis report is intended to be issued only for the purpose of reporting on the condition of an existing electrical installation and must not be issued to certify new electrical installation work including the replacement of a distribution board or consumer unit.\nThe report consists of at least eight numbered pages.\nThe report is only valid if the Schedule of Items Inspected (PART 9) has been completed to confirm that all relevant inspections have been carried out and the Schedule of Circuit Details (PART 11A) and the Schedule of Test Results (PART 11B) are attached."
+        },
+        {
+          "chunk_id": "4b61ff4c-a683-56eb-9a81-f8a7d1d38e7e",
+          "document_name": "EICR 1_img.pdf",
+          "page": 1,
+          "retrieval_score": 0.4435,
+          "rerank_score": 0.7649,
+          "served_rank": 4,
+          "chunk_text": "the person responsible for the inspection and testing of the electrical installation (as indicated by my/our signature below), particulars of which are described in PART 6, having exercised reasonable declare that the information in this report, including the observations (PART 5) and the attached Schedules, provides an accurate assessment of the condition T electrical installation taking into account the Name (capitals) on behalf of the contractor identified in PART1;.J.. CULBERTSON Signature: \\/We further RECOMMEND, subject to the necessary remedial action being taken, that the installation is inspected and tested by: ...21/09/2029 Give reason for recommendation: ... PU to recommendations made on page 2 The proposed date for the next inspection should take into consideration any legislative or licensing requirements and the frequency and quality of maintenance that the installation can reasonably be expected to receive during its intended REVIEWED BY THE REGISTERED QUALIFIED SUPERVISOR FOR THE CONTRACTOR |"
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 806,
+      "tokens_input": 740,
+      "tokens_output": 66,
+      "latency_ms": 4777,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:10:03.088894+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 94,
+      "rerank_latency_ms": 2,
+      "linked": true
+    },
+    {
+      "query_id": "q004",
+      "condition": "qdora",
+      "question": "By what date does the EICR recommend the next inspection and test?",
+      "answerable": true,
+      "category": "effective_date",
+      "gold_answer": "21/09/2029, recommended because of the observations on page 2.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "4b61ff4c-a683-56eb-9a81-f8a7d1d38e7e",
+        "caefa059-8469-574f-ac03-26ef84e33503"
+      ],
+      "run_id": "r1",
+      "message_id": "455a9a79-5557-4c95-a02c-9bb48e83c1cc",
+      "answer_text": " According to the EICR 1_img.pdf, page 19, the recommended date by which the next inspection and test should be carried out is not explicitly stated in the provided document. However, it is recommended that the electrical installation should be re-inspected at appropriate intervals by a skilled person or persons, competent in such work. The document also suggests engaging the services of an NICEIC contractor for the inspection. Only an NICEIC contractor is authorized to issue this NICEIC Electrical Installation Condition Report, and the report has a unique serial number that is traceable to the contractor to which it was supplied by NICEIC. The recommended date for the next inspection is not specified in the document, but it is advised to contact an NICEIC contractor for further information.",
+      "served_evidence": [
+        {
+          "chunk_id": "4b61ff4c-a683-56eb-9a81-f8a7d1d38e7e",
+          "document_name": "EICR 1_img.pdf",
+          "page": 1,
+          "retrieval_score": 0.5506,
+          "rerank_score": 0.8866,
+          "served_rank": 0,
+          "chunk_text": "the person responsible for the inspection and testing of the electrical installation (as indicated by my/our signature below), particulars of which are described in PART 6, having exercised reasonable declare that the information in this report, including the observations (PART 5) and the attached Schedules, provides an accurate assessment of the condition T electrical installation taking into account the Name (capitals) on behalf of the contractor identified in PART1;.J.. CULBERTSON Signature: \\/We further RECOMMEND, subject to the necessary remedial action being taken, that the installation is inspected and tested by: ...21/09/2029 Give reason for recommendation: ... PU to recommendations made on page 2 The proposed date for the next inspection should take into consideration any legislative or licensing requirements and the frequency and quality of maintenance that the installation can reasonably be expected to receive during its intended REVIEWED BY THE REGISTERED QUALIFIED SUPERVISOR FOR THE CONTRACTOR |"
+        },
+        {
+          "chunk_id": "7b00b8a5-7370-51d6-8aad-8e944d0c3aca",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4991,
+          "rerank_score": 0.866,
+          "served_rank": 1,
+          "chunk_text": "For safety reasons, the electrical installation should be re-inspected at appropriate intervals by a skilled person or persons, competent in such work.\nNICEIC* recommends that you engage the services of an NICEIC contractor for the inspection.\nOnly an NICEIC contractor is authorised to issue this NICEIC Electrical Installation Condition Report, which has a unique serial number that is traceable to the contractor to which it was supplied by NICEIC.\nThe recommended date by which the next inspection should be carried out is stated in PART 4 of this report.\nWith the exception of domestic (household) premises, there should also be a notice at or near the main switchboard or distribution board/consumer unit indicating when the next inspection of the installation is due.\nThis report is intended to be issued only for the purpose of reporting on the condition of an existing electrical installation and must not be issued to certify new electrical installation work including the replacement of a distribution board or consumer unit.\nThe report consists of at least eight numbered pages.\nThe report is only valid if the Schedule of Items Inspected (PART 9) has been completed to confirm that all relevant inspections have been carried out and the Schedule of Circuit Details (PART 11A) and the Schedule of Test Results (PART 11B) are attached."
+        },
+        {
+          "chunk_id": "0473c207-160d-5f4f-bb4a-bc11c0a60355",
+          "document_name": "EICR 1_img.pdf",
+          "page": 1,
+          "retrieval_score": 0.4993,
+          "rerank_score": 0.8219,
+          "served_rank": 2,
+          "chunk_text": "| Building & Ele i l This certificate is not valid if the serial alle Ez Saree td number has been defaced or altered approved = sma\u2019 \u201cfem \u201cho ELECTRICAL INSTALLATION Issued in accordance with BS 7671: PART 1: DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION DETAILS OF THE CONTRACTOR (*Where applicable) | DETAILS OF THE CLIENT DETAILS OF Registration N\u00b0: 027668000 Trading Title... 8AfSpark EICR Services Ltd Address: ...14 Copperfield Way, St Mellons Cardiff AddresSuite. 5, Alderwick House, .Kingsmoor. Business Park, 12 West Ashford PART 2 : PURPOSE OF THE REPORT Purpose for which this report is required: 5 Yearly Report Date(s) when inspection and testing was carried out: (24/09/2024 Commercial: ( ) Industrial: (NIA )years Evidence of additions or alterations: ( years) Overall assessment of the installation for continued use: **An unsatisfactory assessment indicates that dangerous (Code C1) and/or potentially dangerous (Code C2) conditions have been identified (listed in PART 5 of this report) and it is PART 4: DECLARATION INSPECTION AND TESTING |/We, being"
+        },
+        {
+          "chunk_id": "5404316c-4fcb-5b0d-8b1f-d5586c5f54cd",
+          "document_name": "EICR 1_img.pdf",
+          "page": 4,
+          "retrieval_score": 0.4587,
+          "rerank_score": 0.8036,
+          "served_rank": 3,
+          "chunk_text": "415 Presence of RCD six-monthly test notice, where required (514.12.2) Confirmation that causes AFDD to trip Presence of diagrams,\nwhere required (514.911) Presence of alternative where required (514.15)\nPresence of next where required (514.12.1)\nPresence of other Compatibility of correct type and rating arcing or overheating) Single-pole switching (132.141; 530.3.3)\nProtection against (522.811; 522.8.5; 522.8.11)"
+        },
+        {
+          "chunk_id": "bd25dc59-9130-58cc-b7ac-a8ed4fc08d08",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4557,
+          "rerank_score": 0.7937,
+          "served_rank": 4,
+          "chunk_text": "Where the inspector has indicated that an item requires further out without delay to determine whether danger or potential danger codes, please see the reverse of page 2.\nWhere inadequacies in the intake equipment have been observed inspection should inform the distributor and/or supplier as Should the person ordering this report have reason to believe that electrical installation reported on, that person should in the first the contractor.\nIf the concerns remain unresolved, the person NICEIC, for which purpose a complaint form is available on request.\nThe complaints procedure offered by NICEIC is subject to certain available upon application.\nNICEIC does not investigate complaints electrical installations (such as lighting levels), or to contractual For further information about electrical safety www.niceic.com * NICEIC is operated by Certsure LLP, a partnership between the Electrical Safety First.\nNICEIC maintains and publishes registers of electrical requirements (including the technical standard of electrical work).\nContractors\u2019 Association and the charity, Electrical contractors that it has assessed against particular scheme and how NICEIC can help you, visit: terms and conditions, full details of which are relating to the operational performance of or commercial issues (such as time or cost)."
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1125,
+      "tokens_input": 956,
+      "tokens_output": 169,
+      "latency_ms": 7863,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:10:17.790833+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 50,
+      "rerank_latency_ms": 2,
+      "linked": true
+    },
+    {
+      "query_id": "q005",
+      "condition": "qdora",
+      "question": "The consumer unit is fitted behind a fixed panel. What risk does the EICR assign to that and what action does it require?",
+      "answerable": true,
+      "category": "risk_and_remedy",
+      "gold_answer": "Code C3, improvement recommended: no immediate or potential danger, but remedying it gives a significant safety improvement, so it is not urgent remedial work.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "b0391be1-879f-5688-b118-d24068e5a7aa",
+        "cc347935-969d-50fd-950e-1aa2e6cdb0fc",
+        "06305450-ad74-5ad5-99f9-b7d7457dc885"
+      ],
+      "run_id": "r1",
+      "message_id": "9f6e8789-1564-4f46-afb0-33614732db0a",
+      "answer_text": " According to the EICR 1_img.pdf, page 10, the consumer unit being fitted behind a fixed panel is noted as creating operational limitations for maintenance and testing. However, the EICR does not explicitly assign a specific risk level to this condition. The document recommends that, for safety reasons, the electrical installation should be re-inspected at appropriate intervals by a skilled person or persons, competent in such work (EICR 1_img.pdf, page 19). It is also suggested to engage the services of an NICEIC contractor for the inspection (EICR 1_img.pdf, page 19). The document does not specify any immediate action required due to the consumer unit being fitted behind a fixed panel, but it is important to address this limitation during the next inspection as per the recommendations mentioned in the EICR.",
+      "served_evidence": [
+        {
+          "chunk_id": "b0391be1-879f-5688-b118-d24068e5a7aa",
+          "document_name": "EICR 1_img.pdf",
+          "page": 10,
+          "retrieval_score": 0.4842,
+          "rerank_score": 0.9493,
+          "served_rank": 0,
+          "chunk_text": "| Building & o Electrical Services Ltd RL Ei APPROVED smas w[eeee Soe CONTRACTOR ees = = NOTES Consumer unit fitted behind fixed panel awkward to gain Access for maintenance & Testing. This certificate is not valid if the serial number has been defaced or altered GENERAL Issued in accordance with BS 7671: 2018 (as |\n| @ Copyright                                                                                                                                                                                                                                                                                                               |\n| Certsure LLP (August 2024)                                                                                                                                                                                                                                                                                                |\n| 30237785                                                                                                                                                                                                                                                                                                                  |\n| | N18.3c | CONTINUATION SHEET amended) - Requirements for Electrical Installations                                                                                                                                                                                                                                        |\n| | (to the person ordering the work) igina Or                                                                                                                                                                                                                                                                              |"
+        },
+        {
+          "chunk_id": "7b00b8a5-7370-51d6-8aad-8e944d0c3aca",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4604,
+          "rerank_score": 0.8862,
+          "served_rank": 1,
+          "chunk_text": "For safety reasons, the electrical installation should be re-inspected at appropriate intervals by a skilled person or persons, competent in such work.\nNICEIC* recommends that you engage the services of an NICEIC contractor for the inspection.\nOnly an NICEIC contractor is authorised to issue this NICEIC Electrical Installation Condition Report, which has a unique serial number that is traceable to the contractor to which it was supplied by NICEIC.\nThe recommended date by which the next inspection should be carried out is stated in PART 4 of this report.\nWith the exception of domestic (household) premises, there should also be a notice at or near the main switchboard or distribution board/consumer unit indicating when the next inspection of the installation is due.\nThis report is intended to be issued only for the purpose of reporting on the condition of an existing electrical installation and must not be issued to certify new electrical installation work including the replacement of a distribution board or consumer unit.\nThe report consists of at least eight numbered pages.\nThe report is only valid if the Schedule of Items Inspected (PART 9) has been completed to confirm that all relevant inspections have been carried out and the Schedule of Circuit Details (PART 11A) and the Schedule of Test Results (PART 11B) are attached."
+        },
+        {
+          "chunk_id": "1d1fa951-c709-5f9b-a27c-bb40306b1391",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4524,
+          "rerank_score": 0.8621,
+          "served_rank": 2,
+          "chunk_text": "The inspector should the report and with other interested parties (licensing authority, before the inspection was carried out.\nOperational limitations may have been encountered during the the installation or to an item of equipment.\nThe inspector should be noted that the greater the limitations applying to a report, the A declaration should have been given by the inspector in PART statement given in PART 3, which summarises the observations or more observations have been made in PART 5, the Classification the degree of urgency with which remedial action needs to be condition.\nWhere the inspector has indicated an observation as code C1 installation is at risk.\nWherever practicable, items classified as recommended that a skilled person(s) competent in electrical work immediately.\nWhere the inspector has indicated an observation as code C2 installation may be at risk, and it is recommended that a skilled undertakes the necessary remedial work as a matter of urgency.\nWhere the inspector has indicated that an item requires further out without delay to determine whether danger or potential danger codes, please see the reverse of page 2."
+        },
+        {
+          "chunk_id": "bd25dc59-9130-58cc-b7ac-a8ed4fc08d08",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4655,
+          "rerank_score": 0.8612,
+          "served_rank": 3,
+          "chunk_text": "Where the inspector has indicated that an item requires further out without delay to determine whether danger or potential danger codes, please see the reverse of page 2.\nWhere inadequacies in the intake equipment have been observed inspection should inform the distributor and/or supplier as Should the person ordering this report have reason to believe that electrical installation reported on, that person should in the first the contractor.\nIf the concerns remain unresolved, the person NICEIC, for which purpose a complaint form is available on request.\nThe complaints procedure offered by NICEIC is subject to certain available upon application.\nNICEIC does not investigate complaints electrical installations (such as lighting levels), or to contractual For further information about electrical safety www.niceic.com * NICEIC is operated by Certsure LLP, a partnership between the Electrical Safety First.\nNICEIC maintains and publishes registers of electrical requirements (including the technical standard of electrical work).\nContractors\u2019 Association and the charity, Electrical contractors that it has assessed against particular scheme and how NICEIC can help you, visit: terms and conditions, full details of which are relating to the operational performance of or commercial issues (such as time or cost)."
+        },
+        {
+          "chunk_id": "22e40397-d93e-5894-843d-8019b610d536",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4648,
+          "rerank_score": 0.8542,
+          "served_rank": 4,
+          "chunk_text": "Contractors\u2019 Association and the charity, Electrical contractors that it has assessed against particular scheme and how NICEIC can help you, visit: terms and conditions, full details of which are relating to the operational performance of or commercial issues (such as time or cost).\nit does not reasonably reflect the condition of the instance raise the specific concerns in writing with ordering this report may make a formal complaint to (Item 1 appropriate.\nof PART 9), the person ordering the investigation (Fl), the investigation should be carried exists.\nFor further guidance on the Classification (potentially dangerous) the safety of those using the person competent in electrical installation work (danger present) the safety of those using the C1 should be made safe on discovery, and it installation work undertakes the necessary remedial 4 of the report.\nThe declaration must reflect the and recommendations made in PART 5.\nWhere one code given to each by the inspector indicates taken to restore the installation to a safe working inspection such as inability to gain access to parts of have noted any such limitations in PART 6.\nIt should less its value from the safety aspect."
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1205,
+      "tokens_input": 1020,
+      "tokens_output": 185,
+      "latency_ms": 9803,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:10:30.112785+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 88,
+      "rerank_latency_ms": 8,
+      "linked": true
+    },
+    {
+      "query_id": "q006",
+      "condition": "qdora",
+      "question": "How many actions did the health and safety report raise in total, and how many must be completed within 3 months?",
+      "answerable": true,
+      "category": "table_lookup",
+      "gold_answer": "18 in total: 0 priority 1, 9 priority 2 (within 3 months), 8 priority 3, 1 advisory.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "25f5cf3e-3ec7-549e-b207-9c26e11ffb26"
+      ],
+      "run_id": "r1",
+      "message_id": "5d533cf9-5f43-49c5-b47d-7f32a7eaa403",
+      "answer_text": " According to the document HandS1_img.pdf, page 7, the total number of actions identified in the health and safety report is not explicitly stated. However, it is mentioned that all priority 1 actions are notified to the client on the day of the audit, and based on observations and conditions, these actions are not specified but are considered priority 1 actions.\n\nRegarding the actions that must be completed within 3 months, the document HandS1_img.pdf, page 39, provides a suggested timeframe for the specific actions and timeframes allocated to individual hazards/defects in the report. Unfortunately, the total number of actions that must be completed within 3 months is not explicitly stated in the provided evidence. However, the timeframe for actions required within 3 months is mentioned.",
+      "served_evidence": [
+        {
+          "chunk_id": "25f5cf3e-3ec7-549e-b207-9c26e11ffb26",
+          "document_name": "HandS1_img.pdf",
+          "page": 7,
+          "retrieval_score": 0.5263,
+          "rerank_score": 0.9342,
+          "served_rank": 0,
+          "chunk_text": "SITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 1.4 SUMMARY OF FINDINGS A summary of the risk controls observed in the report is as follows: Number of controls adequately in place se\nIn addition, the number of actions raised in the report is as follows: Action required within Number of actions 3 months Total number of actions identified: a All priority 1 actions are notified to the client on the day of audit.\nBased on these observations and the conditions observed during the site visit, the overall risk of harm is deemed to be: HEALTH AND SAFETY FIRE SAFETY 1.5 CLIENT SPECIFIC REQUIREMENTS None advised.\n= Tetra| Tetra \u00a9 Tetra Consulting Ltd , Report number: L-333958 Page 7 of 46\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL 1.6 RECOMMENDED REVIEW Legislation requires that risk assessments are reviewed."
+        },
+        {
+          "chunk_id": "d1e778b8-ec61-51b5-90d2-be6ac35e1ac1",
+          "document_name": "HandS1_img.pdf",
+          "page": 39,
+          "retrieval_score": 0.5036,
+          "rerank_score": 0.9301,
+          "served_rank": 1,
+          "chunk_text": "This should enable you to prioritise the allocation of time and resources when scheduling the remedial action identified.\nTo assist you, the following timeframes are suggested: Risk rating Action required Action completed Immediately (24 hours)\nWithin 1 month Within 3 months Within 6 months Within 6 months Within 1 year When practicable, or action relies on others The specific actions and time frames allocated to individual hazards / defects in this report are a guidance to effectively manage any deficiencies, as opposed to a completion timeframe.\nThey should be used as a guide to implementing remedial measures to enhance management and completed within defined timescales for the relevant property.\nYou should include a comment for every section.\nRemember \u201cNo action\u201d is still a viable option, provided you can demonstrate that the action identified is not reasonably practicable to implement.\nThis means that the cost of implementing the proposed action in terms of time, money and trouble far outweighs the benefit that will be achieved from it.\nug Actions marked with a are outstanding from the previous assessment.\nTetra \u00a9 Tetra Consulting Ltd 6 Report number: L-333958 Page 39 of 46"
+        },
+        {
+          "chunk_id": "fe4405ee-62f0-51da-8de1-83d20a720d8e",
+          "document_name": "HandS1_img.pdf",
+          "page": 38,
+          "retrieval_score": 0.4992,
+          "rerank_score": 0.8715,
+          "served_rank": 2,
+          "chunk_text": "SITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL 18 |General.\nBuilding condition survey not v v v v |None.\n2/1A\nCarry out new building condition survey in carried out.\nIncreased risk of accordance with BS8210 Guide to facilities collapse / falling object hazard.\nmaintenance management and prepare a (FALLS & FALLING building maintenance plan.\nSurvey should be OBJECTS) carried out at intervals of no more than 3 years.\nTetra \u00a9 Tetra Consulting Ltd 6 Report number: L-333958 Page 38 of 46 DATE: 10/08/2021\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 5.0 ACTION PLAN\nThe action plan which follows is a summary of all of the actions generated in section 4.2 above.\nThis should enable you to prioritise the allocation of time and resources when scheduling the remedial action identified.\nTo assist you, the following timeframes are suggested: Risk rating Action required Action completed Immediately (24 hours)"
+        },
+        {
+          "chunk_id": "7388aab5-241f-5fca-b0ff-b2cbeb6a3e11",
+          "document_name": "HandS1_img.pdf",
+          "page": 40,
+          "retrieval_score": 0.4629,
+          "rerank_score": 0.8714,
+          "served_rank": 3,
+          "chunk_text": "| SITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |\n| DATE: 10/08/2021                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |\n| 5.1 PRIORITY 1 ACTIONS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |\n| \u2014 WITHIN 24 HOURS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |\n| Hazard | Location(s) Recommended action Comments Date Ref complete NONE IDENTIFIED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |\n| NONE IDENTIFIED                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |\n| 5.2 PRIORITY 2 ACTIONS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |\n| \u2014 WITHIN 3 MONTHS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |"
+        },
+        {
+          "chunk_id": "241b9df1-db39-5020-973d-24c8114a0652",
+          "document_name": "HandS1_img.pdf",
+          "page": 3,
+          "retrieval_score": 0.4616,
+          "rerank_score": 0.8568,
+          "served_rank": 4,
+          "chunk_text": "3.2.11 MANAGEMENT CONTROLS - FIRE SAFETY 26 3.2.12 EMPLOYEE ARRANGEMENTS - FIRE SAFETY 26 _\u2014\u2014 Tetra \u00a9 Tetra Consulting Ltd 6 Report number: L-333958 Page 3 of 46\nSITE:28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 3.2.13 ARRANGEMENTS IN DEMISED AREAS 27 4.0 PRIORITY ASSESSMENT OF ACTIONS 28 4.1 METHODOLOGY 28 4.2 PRIORITY ASSESSMENT 29 5.0 ACTION PLAN 39 5.1 PRIORITY 1 ACTIONS 40 5.2 PRIORITY 2 ACTIONS 40 5.3 PRIORITY 3 ACTIONS 41 5.4 PRIORITY 4 (ADVISORY) ACTIONS 43\nTetra \u00a9 Tetra Consulting Ltd 8 Report number: L-333958 Page 4 of 46\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 1.0 INTRODUCTION 1.1 SCOPE OF ASSESSMENT In accordance with health & safety and fire safety legislation, Tetra Consulting Ltd was instructed to carry out a health, safety and fire risk assessment of 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL on behalf of Willowcroft Block Management Limited."
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1132,
+      "tokens_input": 960,
+      "tokens_output": 172,
+      "latency_ms": 9163,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:11:44.438064+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 158,
+      "rerank_latency_ms": 3,
+      "linked": true
+    },
+    {
+      "query_id": "q007",
+      "condition": "qdora",
+      "question": "The fire door outside flat 7 catches on its frame. How soon must that be fixed and what work is recommended?",
+      "answerable": true,
+      "category": "priority_timescale",
+      "gold_answer": "Hazard 10 is rated LOW, so it is a priority 3 action: start within 6 months and complete within 1 year, by re-hanging the door or adjusting the hinges or the self-closing mechanism.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "d72dd7ca-02a2-516d-8f62-95f3dd51c812",
+        "fe4405ee-62f0-51da-8de1-83d20a720d8e",
+        "d1e778b8-ec61-51b5-90d2-be6ac35e1ac1",
+        "241b9df1-db39-5020-973d-24c8114a0652",
+        "90e3a878-2cb0-5835-b351-294530cd2a57"
+      ],
+      "run_id": "r1",
+      "message_id": "e9551136-87f1-45ae-8cd0-103029760b50",
+      "answer_text": " According to the document HandS1_img.pdf, page 33, the issue of the fire door outside flat 7 catching on its frame is listed as a recommended action. However, the document does not explicitly state the timeframe for its completion. It suggests possible remedial works such as re-hanging the door or adjusting the hinges or the self-closing mechanism.",
+      "served_evidence": [
+        {
+          "chunk_id": "516d88b7-f53d-5c5e-9c60-0e6f3ff432c7",
+          "document_name": "HandS1_img.pdf",
+          "page": 41,
+          "retrieval_score": 0.6176,
+          "rerank_score": 0.9363,
+          "served_rank": 0,
+          "chunk_text": "| \u2014 WITHIN 6 MONTHS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |\n| Hazard | Location(s) Recommended action Ref 10 2nd floor - door Undertake remedial works to outside flat 7. prevent fire door catching / sticking on frame. This could include: - re- hanging door or adjusting hinges. - adjusting the self-closing mechanism. Ath floor - door outside | Install smoke seals / intumescent flat 16. strips on fire doors or frames. 3rd floor - door outside flat 11. 2nd floor - door outside flat 7.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |\n| \u00a9 Tetra Consulting Ltd                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |\n| Report number: L-333958                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |\n| Page 41 of 46                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |"
+        },
+        {
+          "chunk_id": "e3758f32-6343-5dc9-9258-633f38fa7660",
+          "document_name": "HandS1_img.pdf",
+          "page": 33,
+          "retrieval_score": 0.561,
+          "rerank_score": 0.9273,
+          "served_rank": 1,
+          "chunk_text": "2nd floor - door outside flat 7 Undertake routine testing and maintenance of the smoke ventilation system in accordance with the relevant British Standards.\nMaintain up to date records.\nUndertake remedial works to prevent fire door catching / sticking on frame.\nThis could include: - re-hanging door or adjusting hinges.\n- adjusting the self-closing mechanism.\nL\u2014\u2014 Tetra \u00a9 Tetra Consulting Ltd 6 Report number: L-333958 Page 33 of 46 DATE: 10/08/2021\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL\nAth floor - door Smoke seals / intumescent Install smoke seals / intumescent strips on fire outside flat 16.\nstrips on fire doors / frames doors or frames.\nare missing.\nIncreased potential for fire / smoke to spread throughout premises.\n3rd floor - door outside flat 11.\n2nd floor - door outside flat 7.\n(FIRE COMPARTMENTATION) 4th floor - door outside flat 16 2nd floor - door outside flat 7 Tetra| Tetra \u00a9 Tetra Consulting Ltd L-333958 .\nReport number:\nPage 34 of 46 DATE: 10/08/2021\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL Ground floor - electrical intake cupboard."
+        },
+        {
+          "chunk_id": "d72dd7ca-02a2-516d-8f62-95f3dd51c812",
+          "document_name": "HandS1_img.pdf",
+          "page": 32,
+          "retrieval_score": 0.4897,
+          "rerank_score": 0.924,
+          "served_rank": 2,
+          "chunk_text": "Carry out inventory of all portable electrical appliances used in area inspected.\nUndertake portable appliance test and label each piece of equipment with scheduled re-test date.\nThe frequency of the testing regime should be determined in consultation with a competent person in line with Health & Safety Executive guidance INDG236.\nTetra|\nTetra \u00a9 Tetra Consulting Ltd Report number: L-333958 Page 32 of 46 DATE: 10/08/2021\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL Smoke vent system.\n(MEANS OF ESCAPE) 2nd floor - door outside flat 7. (FIRE COMPARTMENTATION)\nNo records observed relating to routine testing and maintenance of the smoke ventilation system.\nSystem may not function correctly when required which increases potential for fire / smoke to spread throughout premises and could significantly hinder an emergency evacuation.\nFire door is catching / sticking on frame and does not close fully.\nIncreased potential for fire / smoke to spread throughout premises.\n2nd floor - door outside flat 7 Undertake routine testing and maintenance of the smoke ventilation system in accordance with the relevant British Standards.\nMaintain up to date records.\nUndertake remedial works to prevent fire door catching / sticking on frame.\nThis could include: - re-hanging door or adjusting hinges."
+        },
+        {
+          "chunk_id": "414a1b32-2625-59c3-96fe-d4b0a01fc391",
+          "document_name": "HandS1_img.pdf",
+          "page": 42,
+          "retrieval_score": 0.4643,
+          "rerank_score": 0.9202,
+          "served_rank": 3,
+          "chunk_text": "SITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 Herare Location(s) Recommended action Date complete Ground floor - It is often assumed that fire electrical cupboard.\nretardant foams can be used to fill large voids or openings to provide a fire stopping function.\nThis is not the case.\nFire retardant foams will only offer fire stopping properties when used in narrow voids or gaps.\nWhere fire retardant foams are used, it is important to check what independent tests have been carried out to show its suitability.\nTo ensure that suitable fire resistance is afforded, it is recommended that PU foam is replaced with fire batting treated with intumescent mastic / coating.\nAlternatively, gaps in brick / block work can be replaced with like-for-like material or a suitable fire stopping compound.\nGeneral.\nProvide a fire safety log book for retention at the premises, to record details of all testing, maintenance and management activities relating to fire safety.\nEnsure log book is kept in an obvious yet secure location, and inform all contractors and relevant persons to maintain suitable records within it.\nGround floor reception | Relocate notice board away from hallway."
+        },
+        {
+          "chunk_id": "f322f135-6636-5541-9c9e-53bb147d3496",
+          "document_name": "HandS1_img.pdf",
+          "page": 35,
+          "retrieval_score": 0.4411,
+          "rerank_score": 0.9157,
+          "served_rank": 4,
+          "chunk_text": "Where fire retardant foams are used, it is important to check what independent tests have been carried out to show its suitability.\nTo ensure that suitable fire resistance is afforded, it is recommended that PU foam is replaced with fire batting treated with intumescent mastic / coating.\nAlternatively, gaps in brick / block work can be replaced with like-for-like material or a suitable fire stopping compound.\nProvide a fire safety log book for retention at the premises, to record details of all testing, maintenance and management activities relating to fire safety.\nEnsure log book is kept in an obvious yet secure location, and inform all contractors and relevant persons to maintain suitable records within it.\nTetra|\nTetra \u00a9 Tetra Consulting Ltd L-333958 Report number:\nPage 35 of 46 DATE: 10/08/2021\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL Ground floor reception hallway.\n(SOURCES OF FUEL) General.\n(WORKPLACE SAFETY, MEANS OF ESCAPE) Unenclosed notice board in means of escape.\nIncreased fire loading with potential to compromise the means of escape, which could hinder an evacuation."
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1130,
+      "tokens_input": 1046,
+      "tokens_output": 84,
+      "latency_ms": 6636,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:11:54.183730+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 69,
+      "rerank_latency_ms": 1,
+      "linked": true
+    },
+    {
+      "query_id": "q008",
+      "condition": "qdora",
+      "question": "Does the assessment cover the inside of the individual flats?",
+      "answerable": true,
+      "category": "scope_limitation",
+      "gold_answer": "No. It is a Type 1 non-invasive inspection of the common parts only, and the roof and tenants' flats are listed as excluded areas.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "72fdb808-6334-50b3-ab08-ae999af8436d",
+        "31d1433e-600e-5b1b-8d32-10f7ba4a6c26",
+        "6dd27d1b-776e-5589-9109-7e525161543b"
+      ],
+      "run_id": "r1",
+      "message_id": "5ffedef5-2b83-4933-9221-77a345247a1d",
+      "answer_text": " According to the document HandS1_img.pdf, page 5, the assessment covers only areas that were safely accessible as listed in 1.1, which excludes the inside of individual flats. Therefore, no, the assessment does not cover the inside of the individual flats.",
+      "served_evidence": [
+        {
+          "chunk_id": "72fdb808-6334-50b3-ab08-ae999af8436d",
+          "document_name": "HandS1_img.pdf",
+          "page": 6,
+          "retrieval_score": 0.4425,
+          "rerank_score": 0.8895,
+          "served_rank": 0,
+          "chunk_text": "Code of practice e Other relevant technical British and European standards.\n1.3 LIMITATIONS The observations and recommendations made in this report relate to conditions and documentation observed during the site inspection, and information provided by the client.\nThe site inspection covered only areas that were safely accessible as listed in 1.1 above.\nThis report is based on a Type 1 fire risk assessment, it is a non-invasive inspection of the common parts of the property only and as such does not examine the internal aspect of individual flats and no invasive survey has been undertaken.\nThe external envelope of the building has been visually inspected from ground only and thus your attention is drawn to the Ministry of Housing, Communities & Local Government Consolidated Advice Note for building owners of multi-storey, multi-occupied residential buildings, dated January 2020 https://www.gov.uk/government/publications/building-safety-advice-for-building-owners- including-fire-doors (the \u201cAdvice Note\u201d).\nThe Advice Note recommends that building owners should consider the risk of external fire spread as part of the fire risk assessment for multi-occupied residential buildings.\nConsideration has been given to this matter within this fire risk assessment."
+        },
+        {
+          "chunk_id": "c9dc2157-2070-5f6d-90cf-546efed5ce36",
+          "document_name": "HandS1_img.pdf",
+          "page": 29,
+          "retrieval_score": 0.4358,
+          "rerank_score": 0.8488,
+          "served_rank": 1,
+          "chunk_text": "| People at risk Risk } Risk rating | Location(s) Hazard a Defect observed E/T P/V Existing a Recommended additional a (AREA OF OBSERVATION) . No asbestos survey available. None. Verify whether asbestos survey is available and This could present a serious up to date. If not, carry out an asbestos survey health hazard if asbestos and prepare an asbestos register and (ASBESTOS) containing material is management plan in compliance with The disturbed. Control of Asbestos Regulations 2012. Residential flats. Front doors to residential flats v v v None. 3 | 1 Front doors to flats should be rated to a could not be observed and minimum of half hour fire resistance. As may not provide the required responsibility for this issue usually rests with (ARRANGEMENTS IN | half hour fire resistance. each individual tenant, the managing agent DEMISED AREAS) Potential for fire / smoke should write to all tenants / leaseholders at within a flat to spread to other the property and advise them of the need to parts of the premises and ensure their front door is rated to a minimum compromise the means of of half hour fire resistance. Fire authorities are escape. increasingly enforcing compliance on this matter due to the importance of maintaining a safe means of escape. A fully compliant half hour rated fire door is of suitable construction"
+        },
+        {
+          "chunk_id": "0e4299b8-ce6c-5a91-95e4-7e489aa71f4b",
+          "document_name": "HandS1_img.pdf",
+          "page": 25,
+          "retrieval_score": 0.4289,
+          "rerank_score": 0.8103,
+          "served_rank": 2,
+          "chunk_text": "Overall risk rating for this area of observation: NOT APPLICABLE 3.2.9 EMERGENCY PLANNING General observation Co-ordinated emergency planning required.\nSuitable fire emergency action plan has been Evacuate if fire breaks out inside flat.\nIf formulated? not affected by fire / smoke there is a stay put policy in place for the rest of the building Suitable assembly point identified?\nN/A Residential property - assembly point is anywhere clear of building.\nEmergency action plan has been adequately v Fire action notices displayed.\ncommunicated to all relevant persons?\nEmergency arrangements tested at regular Residential property - not considered intervals during practice evacuation drills?\nnecessary.\nDefect / hazard reference(s) (see section 4) INoneidentified, = INoneidentified, = Overall risk rating for this area of observation: = Tetra| Tetra \u00a9 Tetra Consulting Ltd ; Report number: L-333958 Page 25 of 46"
+        },
+        {
+          "chunk_id": "6dd27d1b-776e-5589-9109-7e525161543b",
+          "document_name": "HandS1_img.pdf",
+          "page": 5,
+          "retrieval_score": 0.4635,
+          "rerank_score": 0.7651,
+          "served_rank": 3,
+          "chunk_text": "Landings.\nLift.\n1% floor garden area.\nPart- covered car park.\nBin store.\nElectrical cupboard Areas excluded: Roof.\nTenants flats Tetra \u00a9 Tetra Consulting Ltd 8 Report number: L-333958 Page 5 of 46\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 1.2\nBENCHMARKING This assessment follows guidance provided in:\ne Health & Safety at Work etc. Act 1974 e Management of Health & Safety at Work Regulations 1999 \u00a2 Other relevant British health and safety legislation made under the Health & Safety at Work."
+        },
+        {
+          "chunk_id": "31d1433e-600e-5b1b-8d32-10f7ba4a6c26",
+          "document_name": "HandS1_img.pdf",
+          "page": 5,
+          "retrieval_score": 0.4395,
+          "rerank_score": 0.7623,
+          "served_rank": 4,
+          "chunk_text": "SITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 1.0 INTRODUCTION 1.1 SCOPE OF ASSESSMENT In accordance with health & safety and fire safety legislation, Tetra Consulting Ltd was instructed to carry out a health, safety and fire risk assessment of 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL on behalf of Willowcroft Block Management Limited.\nThe assessment was carried out by Leo Wolffe TechlIOSH, TIFSM, who has been deemed competent by Tetra Consulting Ltd to carry out risk assessments of this nature, based on their skills, knowledge and experience.\nKey details about the assessment are as follows: Responsible Willowcroft Court RTM Company Ltd Person/Landlord:\nAdditional Duty Willowcroft Block Management Holder/Managing Agent:\nAssessment date: 10/08/2021 Person(s) consulted during inspection: Areas inspected: Common areas - Stairwell.\nLandings.\nLift.\n1% floor garden area.\nPart- covered car park.\nBin store.\nElectrical cupboard Areas excluded: Roof.\nTenants flats Tetra \u00a9 Tetra Consulting Ltd 8 Report number: L-333958 Page 5 of 46"
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1270,
+      "tokens_input": 1209,
+      "tokens_output": 61,
+      "latency_ms": 3705,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:12:05.138200+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 174,
+      "rerank_latency_ms": 16,
+      "linked": true
+    },
+    {
+      "query_id": "q009",
+      "condition": "qdora",
+      "question": "What does a C1 observation on this EICR mean, and how urgently must it be acted on?",
+      "answerable": true,
+      "category": "risk_and_remedy",
+      "gold_answer": "C1 means danger is present with a risk of injury, so it requires immediate remedial action, without delay.",
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [
+        "d1cc60ed-42e2-5f30-8ce4-5d023b9a9405",
+        "22e40397-d93e-5894-843d-8019b610d536",
+        "3ace8fe2-d915-5f13-b144-e0efbe6f8435"
+      ],
+      "run_id": "r1",
+      "message_id": "a39383d9-5fca-4460-8ab7-e17152d294a7",
+      "answer_text": " According to the evidence provided in the EICR 1_img.pdf, page 20, a C1 observation on this Electrical Installation Condition Report indicates that \"immediate action is required to remove potential danger.\" This classification code is associated with a situation where \"those using the installation may be at immediate risk.\" Therefore, it is crucial to act on a C1 observation as urgently as possible to ensure the safety of the users of the electrical installation.",
+      "served_evidence": [
+        {
+          "chunk_id": "22e40397-d93e-5894-843d-8019b610d536",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4721,
+          "rerank_score": 0.9184,
+          "served_rank": 0,
+          "chunk_text": "Contractors\u2019 Association and the charity, Electrical contractors that it has assessed against particular scheme and how NICEIC can help you, visit: terms and conditions, full details of which are relating to the operational performance of or commercial issues (such as time or cost).\nit does not reasonably reflect the condition of the instance raise the specific concerns in writing with ordering this report may make a formal complaint to (Item 1 appropriate.\nof PART 9), the person ordering the investigation (Fl), the investigation should be carried exists.\nFor further guidance on the Classification (potentially dangerous) the safety of those using the person competent in electrical installation work (danger present) the safety of those using the C1 should be made safe on discovery, and it installation work undertakes the necessary remedial 4 of the report.\nThe declaration must reflect the and recommendations made in PART 5.\nWhere one code given to each by the inspector indicates taken to restore the installation to a safe working inspection such as inability to gain access to parts of have noted any such limitations in PART 6.\nIt should less its value from the safety aspect."
+        },
+        {
+          "chunk_id": "3ace8fe2-d915-5f13-b144-e0efbe6f8435",
+          "document_name": "EICR 1_img.pdf",
+          "page": 19,
+          "retrieval_score": 0.4376,
+          "rerank_score": 0.8833,
+          "served_rank": 1,
+          "chunk_text": "The declaration must reflect the and recommendations made in PART 5.\nWhere one code given to each by the inspector indicates taken to restore the installation to a safe working inspection such as inability to gain access to parts of have noted any such limitations in PART 6.\nIt should less its value from the safety aspect.\nof the installation covered by this report and any have agreed these aspects with the person ordering insurance company, mortgage provider and the like) such as the public supply and a standby generator Characteristics and Earthing Arrangements, and the 11A & 11B) compiled accordingly.\nis RETAINED FOR FUTURE USE\n@ Copyright Certsure LLP (August 2024) GUIDANCE FOR RECIPIENTS ON THE CLASSIFICATION ONLY ONE CLASSIFICATION CODE SHOULD BE GIVEN FOR EACH RECORDED Classification code C1 (Danger present) Where an observation has been given a Classification code C1, the safety of those using the installation is at risk and immediate remedial action is required.\nThe person responsible for the maintenance of the installation is advised to take action without delay to remedy the observed deficiency in the installation, or to take other appropriate action (such as switching off and isolating the affected part(s) of the installation) to remove the danger.\nThe NICEIC contractor issuing this report will be able to provide further advice."
+        },
+        {
+          "chunk_id": "9f1126da-ae4b-5b38-8f09-b882b277ac6c",
+          "document_name": "EICR 1_img.pdf",
+          "page": 20,
+          "retrieval_score": 0.4078,
+          "rerank_score": 0.8817,
+          "served_rank": 2,
+          "chunk_text": "Careful consideration should be given to the safety benefits of improving these aspects of the installation.\nThe NICEIC contractor issuing this report will be able to provide further advice.\nCode FI (Further investigation required without It should usually be possible for the inspector to attribute indicating a need for further investigation.\nHowever, where \u2018FI\u2019 has been entered against an observation that observation is likely to reveal danger or potential inspection and/or testing (entered in PART 6), could not It would not be appropriate for the inspector to indicate reasonable doubt as to whether danger or potential danger \u2018Further investigation required without delay\u2019 (Fl) the marked as \u2018Unsatisfactory: If the inspector has indicated that an observation requires this report is advised to arrange for the NICEIC contractor competent in such work) to undertake further examination to determine whether or not danger or potential danger Further information Further information on the application of Classification to persons ordering condition reports, can be found in installation condition reporting: Classification Codes for be viewed or downloaded free of charge from For further information about electrical safety and how NICEIC can help you, visit www.niceic.com codes, primarily aimed at inspectors but of possible interest Electrical Safety First\u2019s Best Practice Guide\nNo 4 Electrical domestic and similar electrical installations."
+        },
+        {
+          "chunk_id": "34577a5a-02cb-52de-ae8b-6ec03dddc33c",
+          "document_name": "EICR 1_img.pdf",
+          "page": 3,
+          "retrieval_score": 0.4108,
+          "rerank_score": 0.8619,
+          "served_rank": 3,
+          "chunk_text": "30237785\nThis report is based on the model forms shown in Appendix 6 of BS 7671: @ Copyright Certsure LLP (August 2024)\nBuilding & o Electrical Services Ltd RL Efi APPROVED SMaAsS wfeecs wfemee CONTRACTOR ~~\n\u2122 This certificate is not valid if the serial number has been defaced or altered ELECTRICAL INSTALLATION Issued in accordance with BS 7671: 2018 (as PART 9 : SCHEDULE OF ITEMS INSPECTED (enter /\u2019, N/A or Classification Code C1, C2, C3 or Fl, as applicable) 1.0 Intake equipment (visual inspection only)\nAn outcome against an item in section 1.1, other than access to live parts, should not be used to determine the overall assessment of the installation.\nWhere inadequacies are identified, a cross should be put against the appropriate item and a comment made in Part 5 of this report.\n11 Distributor / supplier intake equipment Service cable Service head Earthing arrangement Meter tails Metering equipment Isolator, where present Where inadequacies in the intake equipment are encountered, which may result in a dangerous or potentially dangerous situation, the person ordering the work and / or dutyholder must be informed."
+        },
+        {
+          "chunk_id": "cc347935-969d-50fd-950e-1aa2e6cdb0fc",
+          "document_name": "EICR 1_img.pdf",
+          "page": 20,
+          "retrieval_score": 0.4387,
+          "rerank_score": 0.8606,
+          "served_rank": 4,
+          "chunk_text": "The NICEIC contractor issuing this report will be able to provide further advice.\nNICEIC makes available \u2018Electrical Danger Notification\u2019 forms to enable inspectors to record, and then to communicate to the person ordering the report, any dangerous condition discovered.\nClassification code C2 (Potentially dangerous) Classification code C2 indicates that, whilst those using the installation may not be at immediate risk, urgent remedial action is required to remove potential danger.\nThe NICEIC contractor issuing this report will be able to provide further advice.\nIt is important to note that the recommendation given for the next inspection date in PART 4 of this report is conditional upon all items which have been given a Classification code C1 and code C2 being remedied immediately and as a matter of urgency, respectively.\nIt would not be reasonable for the inspector to indicate that the installation is in a satisfactory condition if any observation in this report has been given a code C1 or code C2 classification.\nClassification code C3 (Improvement recommended) Where an observation has been given a Classification code C3, the inspection and/or testing has revealed a non- compliance with the current safety standard which, whilst not presenting immediate or potential danger, would result in a significant safety improvement if remedied."
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1311,
+      "tokens_input": 1213,
+      "tokens_output": 98,
+      "latency_ms": 7236,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:10:45.750301+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 122,
+      "rerank_latency_ms": 15,
+      "linked": true
+    },
+    {
+      "query_id": "q020",
+      "condition": "qdora",
+      "question": "What is the asbestos survey result for the neighbouring building?",
+      "answerable": false,
+      "category": "unanswerable",
+      "gold_answer": null,
+      "governing_doc": null,
+      "superseded_doc": null,
+      "judged_chunk_ids": [],
+      "run_id": "r1",
+      "message_id": "45c73f0e-dd60-489f-85e5-4ef3dd5128cd",
+      "answer_text": " According to the document HandS1_img.pdf, page 11, the asbestos survey result for the building at 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL is not explicitly stated. The document mentions that an asbestos survey has not been carried out, and it is stated as \"To be determined by asbestos survey.\" Therefore, the asbestos survey result for the neighbouring building is not provided in the document.",
+      "served_evidence": [
+        {
+          "chunk_id": "b147cbaf-dbac-5ee7-9776-bb1548bd9782",
+          "document_name": "HandS1_img.pdf",
+          "page": 10,
+          "retrieval_score": 0.5258,
+          "rerank_score": 0.8503,
+          "served_rank": 0,
+          "chunk_text": "LS Tetra \u00a9 Tetra C Iting Ltd era Sonsunning Report number: L-333958 Page 10 of 46\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 3.0 ASSESSMENT OF RISK & CONTROLS MEASURES The assessment has been broken down into several areas of observation, based on likely hazards found.\nFor each hazard, a series of statements is presented of possible controls that could be in place to control the inherent risks.\nAn assessment is made as to whether these controls are applicable and, if they are, whether they are correctly implemented or otherwise.\nAn overall risk rating of low, medium or high is made for each hazard considered based on the risk assessor\u2019s professional judgement of the likely harm and severity of the hazard being realised.\nWhere control measures are missing or unsuitable, a defect/hazard assessment is made with actions highlighted and prioritised to reduce the risks \u2014 see section 4 for further details.\n3.1 HEALTH & SAFETY 3.1.1 ASBESTOS General observation Potential risk from asbestos containing materials.\nAsbestos survey has been carried out?\nNo asbestos survey available.\nAsbestos containing materials managed as N/A To be determined by asbestos survey.\nper survey recommendations?"
+        },
+        {
+          "chunk_id": "c9dc2157-2070-5f6d-90cf-546efed5ce36",
+          "document_name": "HandS1_img.pdf",
+          "page": 29,
+          "retrieval_score": 0.4907,
+          "rerank_score": 0.8479,
+          "served_rank": 1,
+          "chunk_text": "| People at risk Risk } Risk rating | Location(s) Hazard a Defect observed E/T P/V Existing a Recommended additional a (AREA OF OBSERVATION) . No asbestos survey available. None. Verify whether asbestos survey is available and This could present a serious up to date. If not, carry out an asbestos survey health hazard if asbestos and prepare an asbestos register and (ASBESTOS) containing material is management plan in compliance with The disturbed. Control of Asbestos Regulations 2012. Residential flats. Front doors to residential flats v v v None. 3 | 1 Front doors to flats should be rated to a could not be observed and minimum of half hour fire resistance. As may not provide the required responsibility for this issue usually rests with (ARRANGEMENTS IN | half hour fire resistance. each individual tenant, the managing agent DEMISED AREAS) Potential for fire / smoke should write to all tenants / leaseholders at within a flat to spread to other the property and advise them of the need to parts of the premises and ensure their front door is rated to a minimum compromise the means of of half hour fire resistance. Fire authorities are escape. increasingly enforcing compliance on this matter due to the importance of maintaining a safe means of escape. A fully compliant half hour rated fire door is of suitable construction"
+        },
+        {
+          "chunk_id": "bbbc62e0-0b90-5e95-a7de-143fd3ba935c",
+          "document_name": "HandS1_img.pdf",
+          "page": 11,
+          "retrieval_score": 0.5364,
+          "rerank_score": 0.8406,
+          "served_rank": 2,
+          "chunk_text": "3.1 HEALTH & SAFETY 3.1.1 ASBESTOS General observation Potential risk from asbestos containing materials.\nAsbestos survey has been carried out?\nNo asbestos survey available.\nAsbestos containing materials managed as N/A To be determined by asbestos survey.\nper survey recommendations?\nAsbestos management plan in place?\nTo be determined by asbestos survey.\nAsbestos containing materials appear to be in N/A To be determined by asbestos survey.\ngood condition?\nAsbestos information is made available to N/A Dependent on findings of asbestos survey.\nvisiting contractors etc. as required?\nArrangements are in place for dealing with N/A Dependent on findings of asbestos survey.\naccidental disturbance of asbestos?\nDefect / hazard reference(s) (see section 4)\nOverall risk rating for this area of observation: 3.1.2 CHEMICALS & HAZARDOUS SUBSTANCES General observation There were no substances hazardous to health observed in the area inspected.\nOverall risk rating for this area of observation: NOT APPLICABLE Tetra \u00a9 Tetra Consulting Ltd 8 Report number: L-333958\nPage 11 of 46\nSITE: 28 Willowcroft Close, Hathersby, Nottinghamshire, NG14 6PL DATE: 10/08/2021 3.1.3 CONTROL OF CONTRACTORS General observation Contractors engaged in area inspected."
+        },
+        {
+          "chunk_id": "bdf0d593-c0ad-5b66-8e1b-b2d8a32daaf6",
+          "document_name": "HandS1_img.pdf",
+          "page": 40,
+          "retrieval_score": 0.4968,
+          "rerank_score": 0.8356,
+          "served_rank": 3,
+          "chunk_text": "| erate Location(s) Recommended action Date complete General. Verify whether asbestos survey is available and up to date. If not, carry out an asbestos survey and prepare an asbestos register and management plan in compliance with The Control of Asbestos Regulations 2012. Ground floor reception | Repair/replace damaged smoke vent hallway. call point. Ground to 4th floor - Undertake fire stopping works to riser cupboards to right | vertical penetrations (where cables / of lift. pipes pass through floors or ceilings) to maintain suitable compartmentation and restrict fire / smoke spread capability. Residential flats. Front doors to flats should be rated to a minimum of half hour fire resistance. As responsibility for this issue usually rests with each individual tenant, the managing agent should write to all tenants / leaseholders at the property and advise them of the need to ensure their front door is rated to a minimum of half hour fire resistance. Fire authorities are increasingly enforcing compliance on this matter due to the importance of maintaining a safe means of escape. A fully compliant half hour rated fire door is of suitable construction and has a self- closing mechanism installed, with cold smoke seals/intumescent strips around the door/frame. Self-closing mechanisms should be installed as a minimum requirement in the short term. |"
+        },
+        {
+          "chunk_id": "72fdb808-6334-50b3-ab08-ae999af8436d",
+          "document_name": "HandS1_img.pdf",
+          "page": 6,
+          "retrieval_score": 0.4837,
+          "rerank_score": 0.8218,
+          "served_rank": 4,
+          "chunk_text": "Code of practice e Other relevant technical British and European standards.\n1.3 LIMITATIONS The observations and recommendations made in this report relate to conditions and documentation observed during the site inspection, and information provided by the client.\nThe site inspection covered only areas that were safely accessible as listed in 1.1 above.\nThis report is based on a Type 1 fire risk assessment, it is a non-invasive inspection of the common parts of the property only and as such does not examine the internal aspect of individual flats and no invasive survey has been undertaken.\nThe external envelope of the building has been visually inspected from ground only and thus your attention is drawn to the Ministry of Housing, Communities & Local Government Consolidated Advice Note for building owners of multi-storey, multi-occupied residential buildings, dated January 2020 https://www.gov.uk/government/publications/building-safety-advice-for-building-owners- including-fire-doors (the \u201cAdvice Note\u201d).\nThe Advice Note recommends that building owners should consider the risk of external fire spread as part of the fire risk assessment for multi-occupied residential buildings.\nConsideration has been given to this matter within this fire risk assessment."
+        }
+      ],
+      "provider": "ollama",
+      "model": "veridic-q4km:latest",
+      "tokens_total": 1150,
+      "tokens_input": 1041,
+      "tokens_output": 109,
+      "latency_ms": 7511,
+      "completion_link": "conversation+time",
+      "answered_at": "2026-09-03T17:12:23.595024+00:00",
+      "top_k": 20,
+      "top_n": 5,
+      "retrieval_latency_ms": 80,
+      "rerank_latency_ms": 2,
+      "linked": true
+    }
+  ]
+}

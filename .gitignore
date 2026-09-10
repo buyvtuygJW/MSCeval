@@ -1,0 +1,28 @@
+# --- bytecode: ~1.1 MB of .pyc is currently sitting in veridic_eval/__pycache__
+__pycache__/
+*.py[cod]
+*.pyc.*
+
+# --- editor / tool scratch files (e.g. veridic_eval/cli.py.tmp.16460.04eda248484f)
+*.tmp.*
+*.swp
+*~
+
+# --- rotated / superseded artefacts, not part of the published record
+*.bak
+*.bak-*
+*.stale-*
+
+# --- environments: never commit these (chunk-bakeoff/.env is a 1.2 GB virtualenv)
+.env
+.venv/
+venv/
+env/
+.env/
+
+# --- Streamlit: secrets.toml must never be pushed
+.streamlit/secrets.toml
+
+# --- OS noise
+.DS_Store
+Thumbs.db
