@@ -1,4 +1,4 @@
-# veridic-eval
+# eval
 
 Logs-only, fully offline retrieval + LLM evaluation for the VERIDIC RAG app.
 
@@ -98,7 +98,7 @@ Verified against `infra/postgres/init.sql` and `chat-service/routes/messages.py`
 ## Install
 
 ```powershell
-python --version        # 3.11 or newer, the LettuceDetect floor
+python --version        # 3.11 or newer, LettuceDetect MIN
 python -m venv .venv
 .venv\Scripts\activate
 pip install -e .
