@@ -210,7 +210,11 @@ def delta_ci_chart(
     if alt is None or not rows:
         return None
     data = [dict(r) for r in rows]
-    tooltip_keys = [c for c in data[0].keys()]
+    # Inline `alt.Data(values=...)` is not a DataFrame, so altair cannot infer
+    # a type and (since v5, fatal in v6) a bare tooltip name raises at
+    # `to_dict` time instead of drawing. `typed_fields` exists for exactly
+    # this; computed before `_zero` is injected so the rule stays out of it.
+    tooltip_keys = typed_fields(data)
     has_ci = bool(lo_key and hi_key) and any(
         _is_number(r.get(lo_key)) and _is_number(r.get(hi_key)) for r in data
     )

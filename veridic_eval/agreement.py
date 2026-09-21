@@ -29,13 +29,13 @@ def raw_agreement(a: Sequence, b: Sequence) -> Optional[float]:
 
 
 def agreement_report(a: Sequence, b: Sequence, label_a: str = "A", label_b: str = "B") -> Dict:
-    """The two figures reported: n and the raw agreement rate."""
-    ra = raw_agreement(a, b)
+    """The two figures reported: n and the raw agreement rate. The rate is
+    emitted unrounded — 2/3 stays 2/3 — and any rounding is display-side."""
     return {
         "label_a": label_a,
         "label_b": label_b,
         "n": sum(1 for x, y in zip(a, b) if x is not None and y is not None),
-        "raw_agreement": round(ra, 4) if ra is not None else None,
+        "raw_agreement": raw_agreement(a, b),
     }
 
 

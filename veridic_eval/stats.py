@@ -127,10 +127,13 @@ def paired_permutation_p(
     """
     Two-sided paired permutation test on mean(a - b) over common query ids
     (scipy, dependency-free). Complements the bootstrap CI as the paired
-    test per query. Returns the p-value, or None if fewer than 2 paired items.
+    test per query. Returns the p-value, or None if fewer than 2 paired items
+    or the two columns are identical (a zero difference on every pair leaves
+    nothing to test). A constant *non-zero* difference is a real signal and
+    gets a p-value: every sign flip moves the statistic.
     """
     xa, xb, keys = _align(a, b)
-    if len(keys) < 2 or np.allclose(xa - xb, (xa - xb)[0]):
+    if len(keys) < 2 or np.allclose(xa - xb, 0.0):
         return None
 
     from scipy.stats import permutation_test  # lazy
@@ -248,14 +251,20 @@ def paired_ratio_delta_ci(
 ) -> Dict:
     """
     Paired BCa CI on a difference of two ratios: mean(num_a) / mean(den_a)
-    minus mean(num_b) / mean(den_b), resampling questions once for all four
-    columns.
+    minus mean(num_b) / mean(den_b).
 
-    CFCA is cost / P(faithful . cited . right-version), so its delta is this
-    statistic and not a mean of per-question numbers: a resampled question
-    moves the numerator and the denominator together. A
-    question that costs more to answer than its neighbours therefore widens the
-    interval instead of disappearing into a mean.
+    Each cell gets its own paired bootstrap — questions are resampled with the
+    (numerator, denominator) pair kept together, so a resampled question moves
+    cost and all-pass jointly — and a BCa interval on its ratio. The delta
+    interval is the interval difference [lo_a - hi_b, hi_a - lo_b], which is
+    conservative (coverage at least nominal) and keeps each cell's own
+    uncertainty visible: a question that costs more to answer than its
+    neighbours widens its cell's interval, and therefore the delta interval,
+    instead of disappearing into a mean or being cancelled by cross-cell
+    correlation.
+
+    CFCA is cost / P(faithful . cited . right-version), so its delta is a
+    difference of ratios and not a mean of per-question numbers.
 
     Args:
         num_a / den_a: per-question numerator and denominator for the cell.
@@ -318,20 +327,30 @@ def paired_ratio_delta_ci(
         np.divide(m_num, m_den, out=val, where=~bad)
         return val
 
-    def _stat(an, ad, bn, bd, axis=-1):
-        return _counted(an, ad, axis) - _counted(bn, bd, axis)
+    b_resamples = n_resamples or settings.bootstrap_resamples
+    b_level = confidence_level or settings.confidence_level
+    b_seed = seed if seed is not None else settings.random_state
 
-    res = bootstrap(
-        (xan, xad, xbn, xbd),
-        _stat,
-        paired=True,
-        n_resamples=n_resamples or settings.bootstrap_resamples,
-        confidence_level=confidence_level or settings.confidence_level,
-        method="BCa",
-        random_state=seed if seed is not None else settings.random_state,
-    )
-    low = float(res.confidence_interval.low)
-    high = float(res.confidence_interval.high)
+    def _cell_ci(point, num, den):
+        """Paired BCa interval on one cell's ratio; point interval when the
+        cell has no resampling variance."""
+        if _const(num) and _const(den):
+            return point, point
+        r = bootstrap(
+            (num, den),
+            _counted,
+            paired=True,
+            n_resamples=b_resamples,
+            confidence_level=b_level,
+            method="BCa",
+            random_state=b_seed,
+        )
+        return (float(r.confidence_interval.low),
+                float(r.confidence_interval.high))
+
+    la, ha = _cell_ci(ra, xan, xad)
+    lb, hb = _cell_ci(rb, xbn, xbd)
+    low, high = la - hb, ha - lb
 
     notes: List[str] = []
     if seen["zero"]:

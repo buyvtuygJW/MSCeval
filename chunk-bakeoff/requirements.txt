@@ -1,0 +1,8 @@
+numpy
+onnxruntime
+transformers
+huggingface_hub
+pyyaml
+spacy
+pandas
+tabulate

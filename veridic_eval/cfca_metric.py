@@ -336,7 +336,7 @@ def compute_cfca(
     if by_query:
         cost_source = "supplied per-question serving cost (GBP)"
     elif per_answer_cost is not None:
-        cost_source = "measured cost per answer (GBP): electricity + any API bill"
+        cost_source = "supplied cost per answer (GBP): electricity + any API bill"
     else:
         cost_source = f"api-tokens converted at {gbp_usd} USD/GBP (0.0 for local/Ollama)"
     if len(set(served)) > 1:
@@ -352,6 +352,9 @@ def compute_cfca(
     return {
         "n_answerable": n,
         "cost_per_answer_gbp": round(cost_num, 8),
+        # legacy/reporting alias: the same figure in USD, at `gbp_usd` dollars
+        # to the pound (cost_cfcua.py contract; 0.0 stays 0.0 for local/Ollama)
+        "cost_per_answer_usd": round(cost_num * gbp_usd, 8),
         "currency": "GBP",
         "cost_source": cost_source,
         "p_faithful_cited_version": round(p_joint, 4) if p_joint is not None else None,

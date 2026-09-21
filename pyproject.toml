@@ -8,10 +8,6 @@ version = "0.1.0"
 description = "Logs-only, offline retrieval + LLM evaluation for the VERIDIC RAG app (no telemetry)."
 readme = "README.md"
 requires-python = ">=3.11"   # lettucedetect floor
-# GPL-3.0-or-later: see LICENSE. This is also the only correct choice if the
-# `stats-extra` extra is distributed, since deepsig is GPL-3.0 and would impose
-# it on the combined work anyway. Apache-2.0 (streamlit) and MIT (ranx,
-# lettucedetect, langmet) dependencies are all one-way compatible into GPLv3.
 license = { text = "GPL-3.0-or-later" }
 
 # Core: everything needed for the spec-pinned deterministic path

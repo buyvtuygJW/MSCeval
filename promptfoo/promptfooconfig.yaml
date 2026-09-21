@@ -1,0 +1,41 @@
+# Reference promptfoo config for abstention scoring (RGB Rej), offline.
+#
+# veridic-eval GENERATES this config dynamically at run time from the logged
+# answers (see veridic_eval/abstention.py); this file documents the shape and
+# lets you run promptfoo by hand for spot-checking.
+#
+# The `echo` provider returns the prompt unchanged, so pre-generated answers are
+# replayed with ZERO model calls. Assertions are deterministic:
+#   * regex      - anchored on the exact RGB marker (strict Rej)
+#   * is-refusal - promptfoo's built-in heuristic (paraphrase net; catches
+#                  over-abstention on answerable items that dodge the marker)
+#
+# Telemetry/update checks are disabled via env when veridic-eval spawns the CLI
+# (PROMPTFOO_DISABLE_TELEMETRY / _ANALYTICS / _UPDATE / _SHARING); export them
+# yourself if running this file by hand.
+
+description: "VERIDIC abstention (RGB Rej, offline echo replay)"
+
+providers:
+  - id: echo
+
+prompts:
+  - "{{answer}}"
+
+defaultTest:
+  assert:
+    - type: regex
+      # ^\s*<verbatim RGB marker>\s*$
+      value: '^\s*I can not answer the question because of the insufficient information in documents\.\s*$'
+    - type: is-refusal
+
+tests:
+  # Example rows - the real run injects one row per logged answer.
+  - vars:
+      query_id: q020
+      answerable: false
+      answer: "I can not answer the question because of the insufficient information in documents."
+  - vars:
+      query_id: q001
+      answerable: true
+      answer: "The main stairwell requires FD30 fire doors."

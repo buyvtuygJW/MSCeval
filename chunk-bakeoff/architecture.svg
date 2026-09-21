@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="680" viewBox="0 0 1120 680" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+  <style>
+    .box{fill:#f6f8fa;stroke:#444;stroke-width:1.2;rx:6}
+    .new{fill:#eaf7ea;stroke:#2c7a2c;stroke-width:1.4}
+    .io{fill:#fff7e0;stroke:#8a6d00;stroke-width:1.2}
+    .t{font-size:13px;font-weight:600;fill:#111}
+    .m{font-size:12px;font-family:Consolas,monospace;fill:#333}
+    .s{font-size:11px;fill:#555}
+    .lbl{font-size:11px;fill:#8a6d00}
+    .arrow{stroke:#444;stroke-width:1.3;fill:none;marker-end:url(#a)}
+  </style>
+
+  <!-- inputs -->
+  <rect class="io" x="120" y="24" width="300" height="56" rx="6"/>
+  <text class="t" x="270" y="46" text-anchor="middle">pages.json</text>
+  <text class="s" x="270" y="66" text-anchor="middle">psql dump of the app DB (README one-liner)</text>
+
+  <rect class="io" x="700" y="24" width="300" height="56" rx="6"/>
+  <text class="t" x="850" y="46" text-anchor="middle">benchmarkv2.yaml</text>
+  <text class="s" x="850" y="66" text-anchor="middle">questions + gold (document, page)</text>
+
+  <!-- run.py container -->
+  <rect x="40" y="110" width="1040" height="480" rx="10" fill="none" stroke="#999" stroke-dasharray="6 4"/>
+  <text class="m" x="56" y="132" font-weight="700">run.py</text>
+
+  <!-- parser -->
+  <rect class="box" x="90" y="146" width="360" height="52" rx="6"/>
+  <text class="m" x="270" y="168" text-anchor="middle" font-weight="700">chunking/parser.py</text>
+  <text class="s" x="270" y="188" text-anchor="middle">parse_pages_to_elements &#8594; heading | narrative | table</text>
+  <path class="arrow" d="M270,80 L270,146"/>
+
+  <!-- strategies -->
+  <rect class="box" x="70" y="240" width="300" height="72" rx="6"/>
+  <text class="m" x="220" y="262" text-anchor="middle" font-weight="700">chunking/token_budget.py</text>
+  <text class="s" x="220" y="282" text-anchor="middle">fixed_token &#183; 400 tok, 40 overlap</text>
+  <text class="s" x="220" y="300" text-anchor="middle">verbatim app copy</text>
+
+  <rect class="box" x="410" y="240" width="300" height="72" rx="6"/>
+  <text class="m" x="560" y="262" text-anchor="middle" font-weight="700">chunking/chunk_builder.py</text>
+  <text class="s" x="560" y="282" text-anchor="middle">sentence_window &#183; 310 w, 62 overlap</text>
+  <text class="s" x="560" y="300" text-anchor="middle">verbatim app copy (control)</text>
+
+  <rect class="box new" x="750" y="240" width="300" height="72" rx="6"/>
+  <text class="m" x="900" y="262" text-anchor="middle" font-weight="700">chunking/structure_aware.py</text>
+  <text class="s" x="900" y="282" text-anchor="middle">structure &#183; element-atomic, tables intact</text>
+  <text class="s" x="900" y="300" text-anchor="middle" fill="#2c7a2c" font-weight="700">NEW &#183; drop-in for rag-service/chunking/</text>
+
+  <path class="arrow" d="M270,198 L220,240"/>
+  <path class="arrow" d="M270,198 L560,240"/>
+  <path class="arrow" d="M270,198 L900,240"/>
+
+  <!-- embedder -->
+  <rect class="box" x="310" y="356" width="500" height="60" rx="6"/>
+  <text class="m" x="560" y="378" text-anchor="middle" font-weight="700">app_embeddings.py &#183; EmbeddingsService</text>
+  <text class="s" x="560" y="398" text-anchor="middle">Xenova/all-MiniLM-L6-v2 int8 &#183; mean-pool &#183; L2 &#183; truncate 256</text>
+  <path class="arrow" d="M220,312 L460,356"/>
+  <path class="arrow" d="M560,312 L560,356"/>
+  <path class="arrow" d="M900,312 L660,356"/>
+
+  <!-- bench rail: query texts to embedder, gold to scorer -->
+  <path class="arrow" d="M1000,52 L1040,52 L1040,386 L814,386"/>
+  <text class="lbl" x="1036" y="378" text-anchor="end">query texts</text>
+  <path class="arrow" d="M1040,386 L1040,546 L814,546"/>
+  <text class="lbl" x="1036" y="538" text-anchor="end">gold (document, page)</text>
+
+  <!-- cosine -->
+  <rect class="box" x="310" y="446" width="500" height="48" rx="6"/>
+  <text class="m" x="560" y="466" text-anchor="middle" font-weight="700">cosine: q_vecs @ chunk_vecs.T</text>
+  <text class="s" x="560" y="484" text-anchor="middle">in-memory &#183; no Chroma, no re-ingest</text>
+  <path class="arrow" d="M560,416 L560,446"/>
+
+  <!-- scorer -->
+  <rect class="box" x="310" y="522" width="500" height="52" rx="6"/>
+  <text class="m" x="560" y="543" text-anchor="middle" font-weight="700">score.py</text>
+  <text class="s" x="560" y="562" text-anchor="middle">nDCG@5 = winner &#183; recall_pages tiebreak &#183; MRR@5 &#183; hit@5</text>
+  <path class="arrow" d="M560,494 L560,522"/>
+
+  <!-- output -->
+  <rect class="io" x="310" y="614" width="500" height="44" rx="6"/>
+  <text class="t" x="560" y="634" text-anchor="middle">results.json + stdout winner line</text>
+  <text class="s" x="560" y="651" text-anchor="middle">per-question scores + aggregate per strategy</text>
+  <path class="arrow" d="M560,574 L560,614"/>
+</svg>

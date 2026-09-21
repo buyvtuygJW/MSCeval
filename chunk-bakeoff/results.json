@@ -1,0 +1,682 @@
+{
+  "fixed_token+app": {
+    "aggregate": {
+      "ndcg": 0.27444210312102807,
+      "recall_pages": 0.5740740740740741,
+      "mrr": 0.337037037037037,
+      "hit": 0.6666666666666666,
+      "chunks": 280,
+      "avg_tokens": 207.2,
+      "over_embed_window": 3,
+      "tables": 87
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q002": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.34620964322385606,
+        "recall_pages": 1.0,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q004": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q005": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q006": {
+        "ndcg": 0.38685280723454163,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.7227265726449519,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q009": {
+        "ndcg": 0.13120507751234178,
+        "recall_pages": 0.5,
+        "mrr": 0.2,
+        "hit": 1.0
+      }
+    }
+  },
+  "sentence_window+app": {
+    "aggregate": {
+      "ndcg": 0.23821890891972947,
+      "recall_pages": 0.42592592592592593,
+      "mrr": 0.39814814814814814,
+      "hit": 0.6666666666666666,
+      "chunks": 138,
+      "avg_tokens": 570.6,
+      "over_embed_window": 130,
+      "tables": 25
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.19519002499605084,
+        "recall_pages": 0.5,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q002": {
+        "ndcg": 0.6131471927654584,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q004": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q005": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q006": {
+        "ndcg": 0.38685280723454163,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.3391602052736161,
+        "recall_pages": 0.3333333333333333,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.16812753627111746,
+        "recall_pages": 0.5,
+        "mrr": 0.25,
+        "hit": 1.0
+      },
+      "q009": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 0.5,
+        "mrr": 0.5,
+        "hit": 1.0
+      }
+    }
+  },
+  "structure+app": {
+    "aggregate": {
+      "ndcg": 0.17071648887053426,
+      "recall_pages": 0.2037037037037037,
+      "mrr": 0.25,
+      "hit": 0.3333333333333333,
+      "chunks": 213,
+      "avg_tokens": 333.7,
+      "over_embed_window": 32,
+      "tables": 25
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.14606834984270645,
+        "recall_pages": 0.5,
+        "mrr": 0.25,
+        "hit": 1.0
+      },
+      "q002": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q003": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q004": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q005": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q006": {
+        "ndcg": 1.0,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.3903800499921017,
+        "recall_pages": 0.3333333333333333,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q009": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      }
+    }
+  },
+  "fixed_token_t1000_o40+app": {
+    "aggregate": {
+      "ndcg": 0.27444210312102807,
+      "recall_pages": 0.5740740740740741,
+      "mrr": 0.337037037037037,
+      "hit": 0.6666666666666666,
+      "chunks": 280,
+      "avg_tokens": 207.2,
+      "over_embed_window": 3,
+      "tables": 87
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q002": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.34620964322385606,
+        "recall_pages": 1.0,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q004": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q005": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q006": {
+        "ndcg": 0.38685280723454163,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.7227265726449519,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q009": {
+        "ndcg": 0.13120507751234178,
+        "recall_pages": 0.5,
+        "mrr": 0.2,
+        "hit": 1.0
+      }
+    }
+  },
+  "fixed_token_t2048_o40+app": {
+    "aggregate": {
+      "ndcg": 0.27444210312102807,
+      "recall_pages": 0.5740740740740741,
+      "mrr": 0.337037037037037,
+      "hit": 0.6666666666666666,
+      "chunks": 280,
+      "avg_tokens": 207.2,
+      "over_embed_window": 3,
+      "tables": 87
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q002": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.34620964322385606,
+        "recall_pages": 1.0,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q004": {
+        "ndcg": 0.44149241373678083,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q005": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q006": {
+        "ndcg": 0.38685280723454163,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.7227265726449519,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q009": {
+        "ndcg": 0.13120507751234178,
+        "recall_pages": 0.5,
+        "mrr": 0.2,
+        "hit": 1.0
+      }
+    }
+  },
+  "fixed_token+gemma": {
+    "aggregate": {
+      "ndcg": 0.3576776953215564,
+      "recall_pages": 0.6481481481481481,
+      "mrr": 0.6888888888888889,
+      "hit": 0.8888888888888888,
+      "chunks": 248,
+      "avg_tokens": 351.1,
+      "over_embed_window": 0,
+      "tables": 122
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.21398626473452756,
+        "recall_pages": 0.5,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q002": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q003": {
+        "ndcg": 0.34519134224686937,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q004": {
+        "ndcg": 0.48522855511632257,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q005": {
+        "ndcg": 0.5087403079104241,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q006": {
+        "ndcg": 0.23719771276929622,
+        "recall_pages": 1.0,
+        "mrr": 0.2,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.5531464700081437,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.3903800499921017,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q009": {
+        "ndcg": 0.48522855511632257,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      }
+    }
+  },
+  "sentence_window+gemma": {
+    "aggregate": {
+      "ndcg": 0.3334908160150134,
+      "recall_pages": 0.5,
+      "mrr": 0.5777777777777778,
+      "hit": 0.7777777777777778,
+      "chunks": 138,
+      "avg_tokens": 558.8,
+      "over_embed_window": 2,
+      "tables": 25
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.3903800499921017,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q002": {
+        "ndcg": 0.6240505200038379,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q004": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q005": {
+        "ndcg": 0.5087403079104241,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q006": {
+        "ndcg": 0.23719771276929622,
+        "recall_pages": 1.0,
+        "mrr": 0.2,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.21398626473452756,
+        "recall_pages": 0.3333333333333333,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.3903800499921017,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q009": {
+        "ndcg": 0.6366824387328317,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      }
+    }
+  },
+  "structure+gemma": {
+    "aggregate": {
+      "ndcg": 0.3672782188450116,
+      "recall_pages": 0.3888888888888889,
+      "mrr": 0.6666666666666666,
+      "hit": 0.6666666666666666,
+      "chunks": 155,
+      "avg_tokens": 435.3,
+      "over_embed_window": 2,
+      "tables": 25
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.3391602052736161,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q002": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q003": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q004": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q005": {
+        "ndcg": 0.5585075862632192,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q006": {
+        "ndcg": 1.0,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q007": {
+        "ndcg": 0.46927872602275644,
+        "recall_pages": 0.3333333333333333,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q008": {
+        "ndcg": 0.46927872602275644,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q009": {
+        "ndcg": 0.46927872602275644,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      }
+    }
+  },
+  "fixed_token_t1000_o40+gemma": {
+    "aggregate": {
+      "ndcg": 0.4157583767801387,
+      "recall_pages": 0.5740740740740741,
+      "mrr": 0.462962962962963,
+      "hit": 0.6666666666666666,
+      "chunks": 100,
+      "avg_tokens": 780.3,
+      "over_embed_window": 0,
+      "tables": 51
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q002": {
+        "ndcg": 1.0,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.5307212739772434,
+        "recall_pages": 1.0,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q004": {
+        "ndcg": 0.23463936301137822,
+        "recall_pages": 1.0,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q005": {
+        "ndcg": 0.36331756126716835,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q006": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q007": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q008": {
+        "ndcg": 0.6131471927654584,
+        "recall_pages": 0.5,
+        "mrr": 1.0,
+        "hit": 1.0
+      },
+      "q009": {
+        "ndcg": 1.0,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      }
+    }
+  },
+  "fixed_token_t2048_o40+gemma": {
+    "aggregate": {
+      "ndcg": 0.3035510322577536,
+      "recall_pages": 0.5185185185185186,
+      "mrr": 0.2537037037037037,
+      "hit": 0.5555555555555556,
+      "chunks": 58,
+      "avg_tokens": 1226.7,
+      "over_embed_window": 13,
+      "tables": 29
+    },
+    "per_question": {
+      "q001": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q002": {
+        "ndcg": 0.38685280723454163,
+        "recall_pages": 1.0,
+        "mrr": 0.2,
+        "hit": 1.0
+      },
+      "q003": {
+        "ndcg": 0.5,
+        "recall_pages": 1.0,
+        "mrr": 0.3333333333333333,
+        "hit": 1.0
+      },
+      "q004": {
+        "ndcg": 0.43067655807339306,
+        "recall_pages": 1.0,
+        "mrr": 0.25,
+        "hit": 1.0
+      },
+      "q005": {
+        "ndcg": 0.4144299250118475,
+        "recall_pages": 0.6666666666666666,
+        "mrr": 0.5,
+        "hit": 1.0
+      },
+      "q006": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q007": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q008": {
+        "ndcg": 0.0,
+        "recall_pages": 0.0,
+        "mrr": 0.0,
+        "hit": 0.0
+      },
+      "q009": {
+        "ndcg": 1.0,
+        "recall_pages": 1.0,
+        "mrr": 1.0,
+        "hit": 1.0
+      }
+    }
+  }
+}
